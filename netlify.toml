@@ -2,6 +2,14 @@
 [build]
   publish = "."
 
+# The site now lives at zakat.mazinkanuga.ca. Send the old Netlify address there permanently,
+# keeping the path and any #fragment (browsers carry the fragment across the redirect).
+[[redirects]]
+  from = "https://lunchmoney-zakat.netlify.app/*"
+  to = "https://zakat.mazinkanuga.ca/:splat"
+  status = 301
+  force = true
+
 # The same policy as the meta tag in index.html, plus the headers that a meta tag cannot set
 # (frame-ancestors stops other sites from showing the page in a frame and reading the token field).
 [[headers]]
