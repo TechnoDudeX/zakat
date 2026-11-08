@@ -20,3 +20,20 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    # Start the fonts straight away instead of waiting for styles.css to name them. The paths must
+    # match the @font-face URLs exactly, or the browser downloads each font twice.
+    Link = "</fonts/nunito-sans.woff2>; rel=preload; as=font; type=font/woff2; crossorigin, </fonts/red-hat-mono.woff2>; rel=preload; as=font; type=font/woff2; crossorigin"
+
+# Fonts and the stylesheet keep their file names between deploys, so these are not "immutable".
+# styles.css has no stale-while-revalidate, so a page load refetches any copy older than its 5 minute
+# max-age. For fonts, the stale-while-revalidate window can add one stale view after the 7 day
+# max-age, up to 8 days after the fetch. HTML stays on Netlify's default.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
