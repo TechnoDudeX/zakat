@@ -1,6 +1,8 @@
-# Static site: the page is index.html, with no build step.
+# Static site: the page is index.html. The only build step removes the repository's own
+# documents and tests from the deploy, so they are not served as pages of the site.
 [build]
   publish = "."
+  command = "rm -rf README.md DESIGN.md PRODUCT.md tests"
 
 # The site now lives at zakat.mazinkanuga.ca. Send the old Netlify address there permanently,
 # keeping the path and any #fragment (browsers carry the fragment across the redirect).

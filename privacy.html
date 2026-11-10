@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- This guide loads only local styles and fonts. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="Mazin Kanuga">
+<meta name="description" content="Mizan's privacy policy: what Mizan reads from Lunch Money and YNAB, how it is handled in your browser, and what is never stored or shared.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f5f5f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17191d" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2044%2044%22%3E%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%2242%22%20height%3D%2242%22%20rx%3D%2212%22%20fill%3D%22%23191919%22%2F%3E%3Cpath%20d%3D%22M11%2029V15L22%2025L33%2015V29M15%2034H29%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2222%22%20cy%3D%2211%22%20r%3D%222%22%20fill%3D%22%23e9c879%22%2F%3E%3C%2Fsvg%3E">
+<title>Privacy policy | Mizan</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="top"><div class="wrap top-inner">
+  <a class="brand" href="./" aria-label="Mizan home">
+    <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false" fill="none"><rect x="1" y="1" width="42" height="42" rx="12" fill="currentColor"/><path d="M11 29V15L22 25L33 15V29" stroke="var(--on-deep)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 34H29" stroke="var(--on-deep)" stroke-width="2" stroke-linecap="round"/><circle cx="22" cy="11" r="2" fill="var(--accent)"/></svg>
+    <span class="brand-name">Mizan<span class="brand-sub">Made by Mazin</span></span>
+  </a>
+  <nav class="nav" aria-label="Main"><a href="index.html">Calculator</a><a href="about.html">The project</a><a href="token-guide.html">Token guide</a></nav>
+</div></header><main id="main" class="wrap"><div class="page-head"><p class="eyebrow">Privacy policy</p><h1>Your data stays<br>with you.</h1><p class="lead">Mizan reads your balances to estimate your zakat, in your browser, and keeps nothing.</p><p class="note">Last updated: 6 November 2026</p></div>
+<div class="policy">
+  <section><h2>Who runs Mizan</h2><p>Mizan is a free, open-source community project by Mazin Kanuga. It is a static website: there is no Mizan server, database or account. It is not made or supported by Lunch Money or YNAB.</p></section>
+  <section><h2>What Mizan reads, and why</h2><p>Mizan uses your data for one purpose only: to show you an estimate of your zakat and how it was calculated.</p>
+    <ul>
+      <li><strong>Lunch Money:</strong> your budget name and currency, your accounts and their balances, your crypto balances and your month-end balance history.</li>
+      <li><strong>YNAB:</strong> your plan names and currency, your accounts and their balances, and the last 13 months of transactions. Transactions are used only to work out month-end balances for the hawl (the zakat year). Mizan asks YNAB for <strong>read-only</strong> access.</li>
+    </ul>
+    <p>Mizan reads nothing else, and never changes anything in Lunch Money or YNAB.</p></section>
+  <section><h2>How your data is handled</h2>
+    <ul>
+      <li><strong>In your browser only.</strong> Your browser requests the data directly from Lunch Money (<code>api.lunchmoney.dev</code>) or YNAB (<code>api.ynab.com</code>) and does the calculation on your device. Nothing is sent to Mizan's author or to any Mizan server.</li>
+      <li><strong>Your access.</strong> A Lunch Money token that you paste is cleared from the field before the first request. A YNAB sign-in gives the page a read-only access token that YNAB ends after 2 hours; the page removes it from the address bar straight away. In both cases the token is kept only in the page's memory while your balances load, then discarded. Mizan never sees your YNAB or Lunch Money password.</li>
+      <li><strong>Not stored.</strong> Your balances, transactions and tokens are never saved: not in cookies, not in browser storage, not on a server. They are gone when you close or reload the page.</li>
+      <li><strong>Saved on your device:</strong> only your calculation choices (nisab, mortgage method, nisab weights and metal purity), in your browser's local storage. During YNAB sign-in, a random one-time code is kept in session storage to check the sign-in, and is deleted when you return.</li>
+      <li><strong>Secured.</strong> The site is served over HTTPS. A Content Security Policy lets the page connect only to Lunch Money, YNAB and the metal price service, and the page refuses redirects so a token cannot be sent elsewhere.</li>
+    </ul></section>
+  <section><h2>Third parties</h2><p>Your Lunch Money or YNAB data is never passed to any third party, sold or used for anything else. To get today's gold and silver prices, the page asks <a href="https://gold-api.com" rel="noreferrer">gold-api.com</a> for prices in your currency; that request contains only a currency code such as CAD, never your balances or token. The site is hosted on Netlify, which serves the files like any web host.</p></section>
+  <section><h2>Deleting your data</h2><p>Mizan holds no data about you, so there is nothing to delete on our side. To clear your saved calculation choices, choose <strong>Reset my method choices</strong> in the calculator or clear this site's data in your browser. To end Mizan's access, revoke your Lunch Money token on the Lunch Money developers page, or remove Mizan under Account Settings in YNAB. For any question or request, <a href="https://github.com/TechnoDudeX/zakat/issues" rel="noreferrer">open an issue on GitHub</a>.</p></section>
+  <section><h2>Changes</h2><p>If Mizan starts reading a new kind of data or uses it differently, this page will be updated first, with a new date above, and you will be asked to agree before the new data is read.</p></section>
+</div></main><footer class="foot"><div class="wrap foot-inner">
+  <div><p>Made by Mazin Kanuga.</p><p>A community project for <a href="https://lunchmoney.app" rel="noreferrer">Lunch Money</a> and <a href="https://www.ynab.com" rel="noreferrer">YNAB</a> users.</p></div>
+  <nav aria-label="Footer"><a href="zakat-guide.html">Zakat guide</a><a href="how-it-works.html">How it works</a><a href="privacy.html">Privacy policy</a><a href="https://github.com/TechnoDudeX/zakat" rel="noreferrer">Source code</a><a href="https://gold-api.com" rel="noreferrer">Metal prices</a></nav>
+</div></footer>
+</body></html>

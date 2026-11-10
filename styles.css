@@ -2344,3 +2344,17 @@ input[type=text],input[type=password],input[type=number],select { border-radius:
 .service-opt span:hover { border-color:var(--muted); }
 .service-opt input:checked+span { border-color:var(--deep); background:var(--deep); color:var(--on-deep); }
 .service-opt input:focus-visible+span { outline:2px solid var(--deep); outline-offset:3px; }
+
+/* Privacy policy */
+.policy { max-width:760px; padding-bottom:64px; }
+.policy section { padding:28px 0; border-top:1px solid var(--line); }
+.policy h2 { font-size:22px; }
+.policy ul { padding-left:20px; margin:0 0 18px; }
+.policy li { margin-bottom:10px; }
+.policy code { font:13px var(--mono); }
+.ynab-connect { display:grid; gap:14px; justify-items:start; }
+.ynab-lead { margin:0; font-size:16px; color:var(--text); }
+.ynab-connect>button { min-height:52px; padding:12px 28px; }
+.ynab-connect .hero-status:empty { display:none; }
+.ynab-facts { justify-self:stretch; list-style:none; margin:10px 0 0; padding:18px 0 0; border-top:1px solid var(--line); display:grid; gap:8px; font-size:14px; }
+.aside-links { margin:0; font-size:14px; font-weight:700; }

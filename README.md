@@ -1,6 +1,6 @@
 # Mizan: zakat calculator for Lunch Money and YNAB
 
-**Use it here: https://lunchmoney-zakat.netlify.app**
+**Use it here: https://zakat.mazinkanuga.ca**
 
 Made by Mazin Kanuga. Mizan is the Arabic word for "balance".
 
@@ -48,20 +48,21 @@ Official references: [developer tools and community projects](https://lunchmoney
 
 ## YNAB
 
-You can connect [YNAB](https://www.ynab.com) instead of Lunch Money. Choose **YNAB** on the connect screen (or open `/#connect-ynab`) and paste a personal access token from Account Settings → Developer Settings.
+You can connect [YNAB](https://www.ynab.com) instead of Lunch Money. Choose **YNAB** on the connect screen (or open `/#connect-ynab`) and choose **Connect with YNAB**.
 
-- Two GET requests: `/v1/budgets?include_accounts=true` and the last 13 months of `/v1/budgets/{id}/transactions`. The token goes only to `api.ynab.com`.
-- Mizan uses the budget changed most recently, and tells you when you have more than one.
+- **Sign-in, not a token.** Mizan uses YNAB's OAuth implicit grant with the `read-only` scope. You sign in on YNAB's site; YNAB returns a token that expires after 2 hours. A one-time `state` value guards the sign-in, and the token is removed from the address bar and history immediately, kept only in memory, and never saved.
+- **Two GET requests:** `/v1/plans?include_accounts=true` and the last 13 months of `/v1/plans/{id}/transactions`, both to `api.ynab.com`.
+- Mizan uses the plan changed most recently, and tells you when you have more than one.
 - YNAB has no balance history, so month-end balances are rebuilt from today's balance and the transactions after each month's end.
 - Checking, savings and cash count. Credit cards are deducted. Loans are listed but not selected. Mortgages go to the mortgage setting. Tracking accounts count when the name looks like an investment, such as "TFSA" or "Brokerage".
-- YNAB tokens can change data and don't expire. Revoke the token in Developer Settings when you finish.
+- The OAuth client ID is `YNAB_CLIENT_ID` in `index.html`. It is public; the page has no client secret. The app's redirect URI is the site root.
 
-Mizan is not made or supported by YNAB.
+The [privacy policy](privacy.html) covers both services. Mizan is not made or supported by YNAB.
 
 ## How to use it
 
 1. Follow the [Token guide](token-guide.html) to create a separate access token in Lunch Money.
-2. Open https://lunchmoney-zakat.netlify.app, paste the token, and click **Connect my accounts**.
+2. Open https://zakat.mazinkanuga.ca, paste the token, and click **Connect my accounts**.
 3. Review your accounts. Open **Add other assets** or **Review debts** as needed.
 4. Click **See my estimate**. Choose your nisab and any mortgage deduction. Trace the total through the ledger, compare methods, and explore monthly history as needed.
 

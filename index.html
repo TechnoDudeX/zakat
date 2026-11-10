@@ -172,7 +172,7 @@
         <div>
           <h2 id="privacyTitle">Your token stays with you.</h2>
           <p>Mizan does the maths in your browser. It sends your token only to Lunch Money or YNAB, makes read-only requests, and never saves your token or balances. Only your method choices are remembered on this device.</p>
-          <a href="how-it-works.html">How your data is handled <span aria-hidden="true">→</span></a>
+          <a href="privacy.html">Read the privacy policy <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -189,7 +189,7 @@
   <section id="connectView" class="connect-view" aria-labelledby="connectHead" hidden>
     <div class="connected"><a href="./" id="backHome">← Back to home</a></div>
     <nav class="progress" aria-label="Calculation steps"><span class="step-now" aria-current="step">01 Connect your account</span><span class="divider" aria-hidden="true">/</span><span>02 Review balances</span><span class="divider" aria-hidden="true">/</span><span>03 Your estimate</span></nav>
-    <div class="view-head"><h1 id="connectHead" tabindex="-1">Connect your budget.</h1><p class="note">An access token lets Mizan read your balances. It takes about a minute to make one.</p></div>
+    <div class="view-head"><h1 id="connectHead" tabindex="-1">Connect your budget.</h1><p class="note">Use a Lunch Money access token, or sign in with YNAB. Either way, Mizan can only read.</p></div>
     <div class="connect-layout">
       <div class="connect-panel">
         <fieldset class="service-choice"><legend>Where are your balances?</legend>
@@ -198,24 +198,29 @@
             <label class="service-opt"><input type="radio" name="service" value="ynab"><span>YNAB</span></label>
           </div>
         </fieldset>
-        <ol class="connect-steps">
-          <li><span>1</span><div>
-            <div data-service="lunchmoney"><strong>Make a token in Lunch Money</strong><p>Go to Settings → Developers and request a new access token. Name it “Mizan” so it’s easy to revoke later. <a href="token-guide.html" target="_blank" rel="noopener">Step-by-step guide</a></p></div>
-            <div data-service="ynab" hidden><strong>Make a token in YNAB</strong><p>In YNAB, open Account Settings → Developer Settings and choose New Token. Enter your password, then copy the token while it’s shown. <a href="https://api.ynab.com/#personal-access-tokens" target="_blank" rel="noopener noreferrer">YNAB’s instructions</a></p></div>
-          </div></li>
+        <ol class="connect-steps" data-service="lunchmoney">
+          <li><span>1</span><div><strong>Make a token in Lunch Money</strong><p>Go to Settings → Developers and request a new access token. Name it “Mizan” so it’s easy to revoke later. <a href="token-guide.html" target="_blank" rel="noopener">Step-by-step guide</a></p></div></li>
           <li><span>2</span><div><strong>Paste it here</strong>
-            <div class="connect-form"><label for="token"><span data-service="lunchmoney">Lunch Money access token</span><span data-service="ynab" hidden>YNAB personal access token</span></label><input type="password" id="token" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-1p-ignore data-lpignore="true" data-bwignore placeholder="Paste your access token" aria-describedby="tokenNotice"><button type="button" class="primary" id="connectBtn">Connect my accounts</button><p id="connectStatus" role="status"></p></div>
+            <div class="connect-form"><label for="token">Lunch Money access token</label><input type="password" id="token" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-1p-ignore data-lpignore="true" data-bwignore placeholder="Paste your access token" aria-describedby="tokenNotice"><button type="button" class="primary" id="connectBtn">Connect my accounts</button><p id="connectStatus" role="status"></p></div>
           </div></li>
-          <li><span>3</span><div><strong>Revoke it when you’re done</strong>
-            <p data-service="lunchmoney">Lunch Money tokens can change data. Mizan never does, but deleting the token afterwards keeps things tidy.</p>
-            <p data-service="ynab" hidden>YNAB tokens can change data and don’t expire. Mizan never changes anything, but revoke the token in Developer Settings afterwards.</p>
-          </div></li>
+          <li><span>3</span><div><strong>Revoke it when you’re done</strong><p>Lunch Money tokens can change data. Mizan never does, but deleting the token afterwards keeps things tidy.</p></div></li>
         </ol>
+        <div class="ynab-connect" data-service="ynab" hidden>
+          <p class="ynab-lead">Sign in on YNAB’s own site and allow read-only access. There’s no token to make or revoke.</p>
+          <button type="button" class="primary" id="ynabConnectBtn">Connect with YNAB <span aria-hidden="true">→</span></button>
+          <p id="ynabStatus" class="hero-status" role="status"></p>
+          <ul class="ynab-facts">
+            <li><strong>Read-only.</strong> YNAB refuses any change, so Mizan can only look.</li>
+            <li><strong>Short-lived.</strong> YNAB ends the access by itself after 2 hours.</li>
+            <li><strong>One plan.</strong> If you have several, Mizan uses the one you changed most recently.</li>
+          </ul>
+        </div>
       </div>
       <aside class="connect-aside" aria-label="About your data">
         <h2>What happens to your token</h2>
-        <ul><li>It goes only to <span data-service="lunchmoney">the Lunch Money API</span><span data-service="ynab" hidden>the YNAB API</span>.</li><li>Mizan only makes read requests.</li><li id="tokenNotice">It’s cleared from the page once your balances arrive, and never saved.</li></ul>
-        <a href="how-it-works.html" target="_blank" rel="noopener">How your data is handled</a>
+        <ul data-service="lunchmoney"><li>It goes only to the Lunch Money API.</li><li>Mizan only makes read requests.</li><li id="tokenNotice">It’s cleared from the page once your balances arrive, and never saved.</li></ul>
+        <ul data-service="ynab" hidden><li>You sign in on YNAB’s site. Mizan never sees your password.</li><li>The access token is removed from the address bar at once and kept only in memory.</li><li>Your balances and transactions are never saved or shared.</li></ul>
+        <p class="aside-links"><a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> · <a href="how-it-works.html" target="_blank" rel="noopener">How it works</a></p>
         <div class="aside-sample"><p>Just looking?</p><button type="button" class="sample-start">Use fictional sample balances</button><p id="connectSampleStatus" class="hero-status" role="status"></p></div>
       </aside>
     </div>
@@ -302,7 +307,7 @@
 </main>
 <footer class="foot"><div class="wrap foot-inner">
   <div><p>Made by Mazin Kanuga.</p><p>A community project for <a href="https://lunchmoney.app" rel="noreferrer">Lunch Money</a> and <a href="https://www.ynab.com" rel="noreferrer">YNAB</a> users.</p></div>
-  <nav aria-label="Footer"><a href="zakat-guide.html">Zakat guide</a><a href="how-it-works.html">How it works &amp; privacy</a><a href="https://github.com/TechnoDudeX/lunchmoney-zakat" rel="noreferrer">Source code</a><a href="https://gold-api.com" rel="noreferrer">Metal prices</a></nav>
+  <nav aria-label="Footer"><a href="zakat-guide.html">Zakat guide</a><a href="how-it-works.html">How it works</a><a href="privacy.html">Privacy policy</a><a href="https://github.com/TechnoDudeX/zakat" rel="noreferrer">Source code</a><a href="https://gold-api.com" rel="noreferrer">Metal prices</a></nav>
 </div></footer>
 <script>(function () {
   "use strict";
@@ -352,7 +357,10 @@
       method: "GET", credentials: "omit", cache: "no-store", redirect: "error", referrerPolicy: "no-referrer",
       headers: { "Authorization": "Bearer " + token, "Accept": "application/json" }
     }).then(function (r) {
-      if (r.status === 401 || r.status === 403) throw new Error("The token does not work. Copy all of it again, or make a new token.");
+      if (r.status === 401 || r.status === 403) {
+        throw new Error(service === "ynab" ? "YNAB did not accept the sign-in. It may have expired: choose Connect with YNAB again."
+          : "The token does not work. Copy all of it again, or make a new token.");
+      }
       if (r.status === 429) throw new Error(s.name + " received too many requests. Wait a few minutes, then try again.");
       if (!r.ok) throw new Error(s.name + " sent error " + r.status + " for " + path.split("?")[0] + ".");
       return r.json();
@@ -610,21 +618,21 @@
 
   function loadFromYnab(token) {
     var months = lastMonths(13), warnings = [];
-    return apiGet("ynab", token, "/budgets?include_accounts=true").then(function (r) {
-      var budgets = ((r.data && r.data.budgets) || []).slice();
-      if (!budgets.length) throw new Error("No budgets were found in this YNAB account.");
-      // The budget changed most recently is the one in use.
-      budgets.sort(function (a, b) { return String(b.last_modified_on || "").localeCompare(String(a.last_modified_on || "")); });
-      var budget = budgets[0], id = encodeURIComponent(budget.id);
-      if (budgets.length > 1) {
-        warnings.push("You have " + budgets.length + " budgets in YNAB. Mizan used “" + budget.name + "”, the one changed most recently.");
+    return apiGet("ynab", token, "/plans?include_accounts=true").then(function (r) {
+      var plans = ((r.data && r.data.plans) || []).slice();
+      if (!plans.length) throw new Error("No plans were found in this YNAB account.");
+      // The plan changed most recently is the one in use.
+      plans.sort(function (a, b) { return String(b.last_modified_on || "").localeCompare(String(a.last_modified_on || "")); });
+      var budget = plans[0], id = encodeURIComponent(budget.id);
+      if (plans.length > 1) {
+        warnings.push("You have " + plans.length + " plans in YNAB. Mizan used “" + budget.name + "”, the one changed most recently.");
       }
       var currency = ((budget.currency_format && budget.currency_format.iso_code) || "usd").toLowerCase();
       var accounts = budget.accounts ? Promise.resolve(budget.accounts)
-        : apiGet("ynab", token, "/budgets/" + id + "/accounts").then(function (a) { return (a.data && a.data.accounts) || []; });
+        : apiGet("ynab", token, "/plans/" + id + "/accounts").then(function (a) { return (a.data && a.data.accounts) || []; });
       return Promise.all([
         accounts,
-        apiGet("ynab", token, "/budgets/" + id + "/transactions?since_date=" + months[0] + "-01").then(
+        apiGet("ynab", token, "/plans/" + id + "/transactions?since_date=" + months[0] + "-01").then(
           function (t) { return (t.data && t.data.transactions) || []; },
           function () { warnings.push("The page could not read your YNAB transactions, so the hawl table is not complete."); return null; }),
         metalPrices(currency)
@@ -1074,6 +1082,48 @@
   }
 
   // ---------------------------------------------------------------------------
+  // YNAB sign-in: OAuth implicit grant with read-only scope. YNAB returns a short-lived
+  // token in the address fragment. The client ID is public; this page has no secret.
+  // ---------------------------------------------------------------------------
+
+  var YNAB_CLIENT_ID = "y17fpson1WJJbfm5oZXmN_hbB5f6vRpaHrPvKRUzhq4";
+  var OAUTH_STATE_KEY = "mizan-ynab-oauth-state";
+
+  function ynabRedirectUri() { return location.origin + location.pathname.replace(/index\.html$/, ""); }
+
+  function startYnabSignIn() {
+    if (!YNAB_CLIENT_ID) { busy(false, "YNAB sign-in is not set up yet.", true, "ynabStatus"); return; }
+    var bytes = new Uint8Array(16);
+    crypto.getRandomValues(bytes);
+    var state = Array.prototype.map.call(bytes, function (b) { return pad(b.toString(16)); }).join("");
+    try { sessionStorage.setItem(OAUTH_STATE_KEY, state); } catch (e) {
+      busy(false, "Your browser blocked the site storage that YNAB sign-in needs. Allow site data for this page, then try again.", true, "ynabStatus");
+      return;
+    }
+    location.assign("https://app.ynab.com/oauth/authorize?" + new URLSearchParams({
+      client_id: YNAB_CLIENT_ID, redirect_uri: ynabRedirectUri(), response_type: "token", scope: "read-only", state: state
+    }).toString());
+  }
+
+  // Back from YNAB: read the fragment, then remove it from the address bar and history at once.
+  function ynabReturn() {
+    if (!/^#(.*&)?(access_token|error)=/.test(location.hash)) return null;
+    var params = new URLSearchParams(location.hash.slice(1));
+    history.replaceState(null, "", location.pathname + location.search + "#connect-ynab");
+    var expected = null;
+    try { expected = sessionStorage.getItem(OAUTH_STATE_KEY); sessionStorage.removeItem(OAUTH_STATE_KEY); } catch (e) { /* no storage */ }
+    var error = params.get("error");
+    if (error) {
+      return { error: error === "access_denied" ? "You didn't allow access in YNAB. Choose Connect with YNAB to try again."
+        : "YNAB could not sign you in (" + error + "). Try again." };
+    }
+    if (!expected || params.get("state") !== expected) {
+      return { error: "Mizan could not verify the YNAB sign-in. Choose Connect with YNAB to try again." };
+    }
+    return { token: params.get("access_token") };
+  }
+
+  // ---------------------------------------------------------------------------
   // Start
   // ---------------------------------------------------------------------------
 
@@ -1081,12 +1131,13 @@
     metalPrices("CAD").then(function (prices) { renderHomePrices(prices, new Date()); });
   }
 
-  var STATUS_IDS = ["status", "finalStatus", "connectStatus", "connectSampleStatus"];
+  var STATUS_IDS = ["status", "finalStatus", "connectStatus", "connectSampleStatus", "ynabStatus"];
   var sampleButtons = document.querySelectorAll(".sample-start");
 
   // statusId: which status line, next to the button that was used, shows the message.
   function busy(on, text, isError, statusId) {
     $("connectBtn").disabled = on;
+    $("ynabConnectBtn").disabled = on;
     sampleButtons.forEach(function (b) { b.disabled = on; });
     STATUS_IDS.forEach(function (id) { $(id).textContent = ""; });
     var status = $(statusId || "status");
@@ -1113,17 +1164,34 @@
     $("connectStatus").textContent = "";
   }
   document.querySelectorAll("input[name=service]").forEach(function (el) { el.addEventListener("change", showService); });
-  window.addEventListener("hashchange", route);
-  route();
+  // Runs on load and on hashchange: a return from YNAB is handled first, then the screen is chosen.
+  function arrive() {
+    var signIn = D ? null : ynabReturn();  // before route(), which reads the cleaned address
+    route();
+    if (!signIn) return;
+    if (signIn.error) { busy(false, signIn.error, true, "ynabStatus"); return; }
+    var ynabToken = signIn.token;
+    signIn = null;
+    busy(true, "The page reads your balances from YNAB...", false, "ynabStatus");
+    loadFromYnab(ynabToken).then(function (data) {
+      ynabToken = null;
+      busy(false, "");
+      show(data);
+    }, function (e) {
+      ynabToken = null;
+      busy(false, e.message, true, "ynabStatus");
+    });
+  }
+  window.addEventListener("hashchange", arrive);
+  arrive();
+  $("ynabConnectBtn").addEventListener("click", startYnabSignIn);
 
   $("connectBtn").addEventListener("click", function () {
     var token = $("token").value.trim();
     $("token").value = "";  // the token is not kept in the page
-    var service = radio("service");
-    var name = SERVICES[service].name;
-    if (!token) { busy(false, "Paste your " + name + " access token first.", true, "connectStatus"); return; }
-    busy(true, "The page reads your balances from " + name + "...", false, "connectStatus");
-    (service === "ynab" ? loadFromYnab(token) : loadFromLunchMoney(token)).then(function (data) {
+    if (!token) { busy(false, "Paste your Lunch Money access token first.", true, "connectStatus"); return; }
+    busy(true, "The page reads your balances from Lunch Money...", false, "connectStatus");
+    loadFromLunchMoney(token).then(function (data) {
       token = null;
       busy(false, "");
       show(data);
