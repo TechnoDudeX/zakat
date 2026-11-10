@@ -2,29 +2,37 @@
 name: Mizan
 description: A clear, traceable zakat estimate for Lunch Money users.
 colors:
-  bg: "#f5f5f2"
-  card: "#ffffff"
-  panel: "#eaeae7"
-  ink: "#191919"
-  text: "#424242"
-  muted: "#62625e"
-  line: "#d8d8d3"
-  deep: "#191919"
-  hover: "#424242"
-  on-deep: "#ffffff"
-  accent: "#a1793d"
-  warn-bg: "#fbf5e7"
-  warn-ink: "#795b24"
+  bg: "#f3eee3"
+  card: "#fffcf5"
+  panel: "#e9e2d3"
+  ink: "#1d1a16"
+  text: "#46413a"
+  muted: "#6b6456"
+  line: "#d8cfbc"
+  deep: "#1d1a16"
+  hover: "#46413a"
+  on-deep: "#fffcf5"
+  accent: "#835d1c"
+  warn-bg: "#f8efd8"
+  warn-ink: "#6f5215"
   bad: "#a33930"
   good: "#3e739c"
   chart-blue: "#4e6c89"
   chart-teal: "#6a8379"
   chart-debt: "#a37d58"
   chart-fill: "rgba(78,108,137,.1)"
-  workspace: "#ededeb"
-  workspace-ink: "#191919"
-  workspace-action: "#1b1d20"
-  workspace-light: "#ffffff"
+  workspace: "#fbf6e9"
+  workspace-ink: "#1d1a16"
+  workspace-action: "#1e1b17"
+  workspace-light: "#fbf7ee"
+  gold: "#e3c178"
+  silver: "#c5ccd3"
+  gold-fill: "#c79a3e"
+  silver-fill: "#aab3bc"
+  inkwell-2: "#2a2621"
+  inkwell-line: "#4a443b"
+  paper-line: "#dcd2bc"
+  paper-soft: "#5a5448"
 typography:
   display:
     fontFamily: "Mizan, 'Avenir Next', system-ui, sans-serif"
@@ -83,6 +91,8 @@ components:
 Mizan is a quiet, calculation-first workspace for reviewing wealth and understanding a zakat estimate. Neutral surfaces, bold typography, rounded controls and aligned figures make the calculation approachable while keeping its sources, choices and limitations visible.
 
 ## Colors
+
+**Warm ledger (November 2026).** The ground is ledger paper (#f3eee3) with cream cards (#fffcf5), warm near-black ink (#1d1a16) and gold (#835d1c as text, #c79a3e as a fill) paired with silver (#aab3bc) as the two nisab metals. Dark surfaces share one warm charcoal, "inkwell" (#1e1b17), with gold (#e3c178) for figures and the ayah. Dark mode uses ground #191714, card #24211d, panel #312d27, text #e1dcd1, muted #beb7a9 and borders #4d483f. The hero example is a paper ledger page (#fbf6e9) in both themes, with a double rule above its total. Arabic (the ميزان wordmark and the ayah) is set in a self-hosted subset of Amiri, "Mizan Arabic". The older neutral-grey values described below are superseded by the last block of `styles.css`.
 
 The light theme uses an off-white ground, white cards, soft gray panels and near-black text and actions. Dark mode uses a charcoal ground (#17191d), card (#22252a) and panel (#30343a), with light text (#f7f7f5), muted text (#bcbcb8) and borders (#4c4e50). Semantic actions invert to light on dark. Chart colors distinguish accounts, additions, deductions and net wealth, supported by labels and text.
 

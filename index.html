@@ -9,8 +9,8 @@
 <meta name="author" content="Mazin Kanuga">
 <meta name="description" content="Mizan is a zakat calculator for Lunch Money and YNAB users. It reads your balances and gets today's gold and silver prices. Read only. Your token goes only to the Lunch Money or YNAB API.">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#f5f5f2" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#17191d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f3eee3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#191714" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2044%2044%22%3E%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%2242%22%20height%3D%2242%22%20rx%3D%2212%22%20fill%3D%22%23191919%22%2F%3E%3Cpath%20d%3D%22M11%2029V15L22%2025L33%2015V29M15%2034H29%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2222%22%20cy%3D%2211%22%20r%3D%222%22%20fill%3D%22%23e9c879%22%2F%3E%3C%2Fsvg%3E">
 <title>Mizan: zakat calculator for Lunch Money and YNAB</title>
 <link rel="stylesheet" href="styles.css">
@@ -20,7 +20,7 @@
 <header class="top"><div class="wrap top-inner">
   <a class="brand" href="./" aria-label="Mizan home">
     <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false" fill="none"><rect x="1" y="1" width="42" height="42" rx="12" fill="currentColor"/><path d="M11 29V15L22 25L33 15V29" stroke="var(--on-deep)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 34H29" stroke="var(--on-deep)" stroke-width="2" stroke-linecap="round"/><circle cx="22" cy="11" r="2" fill="var(--accent)"/></svg>
-    <span class="brand-name">Mizan<span class="brand-sub">Made by Mazin</span></span>
+    <span class="brand-name">Mizan <span class="brand-ar" lang="ar">ميزان</span><span class="brand-sub">Made by Mazin</span></span>
   </a>
   <nav class="nav" aria-label="Main"><a href="index.html" aria-current="page">Calculator</a><a href="about.html">The project</a><a href="token-guide.html">Token guide</a></nav>
 </div></header>
@@ -28,23 +28,22 @@
   <section id="home" class="home" aria-labelledby="heroHead">
     <div class="hero">
       <div class="hero-copy">
-        <p class="kicker"><span class="kicker-dot" aria-hidden="true"></span>A zakat calculator for Lunch Money &amp; YNAB</p>
-        <h1 id="heroHead">Your zakat.<br>Made clear.</h1>
-        <p class="hero-lead">Your accounts are already in Lunch Money or YNAB. Use those same balances to calculate your zakat, with every amount in view.</p>
+        <h1 id="heroHead">Your zakat is already half counted.</h1>
+        <p class="hero-lead">Your accounts live in Lunch Money or YNAB. Mizan takes those balances and works out your zakat, with every amount in view. It can’t check your coat pockets, so that bit is still on you.</p>
         <div class="hero-actions">
           <a class="button primary cta-connect" href="#connect">Connect your account <span aria-hidden="true">→</span></a>
           <button type="button" id="sampleBtn" class="sample-start">Try the sample</button>
         </div>
         <p id="status" class="hero-status" role="status"></p>
         <ul class="trust-list" aria-label="How Mizan handles your data">
-          <li>Read-only</li><li>Runs in your browser</li><li>Nothing saved</li><li>Free &amp; open source</li>
+          <li>Only reads</li><li>Runs in your browser</li><li>Nothing saved</li><li>Free &amp; open source</li>
         </ul>
       </div>
       <div class="workspace" aria-label="Example zakat calculation">
         <div class="workspace-main">
           <div class="workspace-heading"><h2>From balances to zakat</h2><span>Fictional example · CAD</span></div>
           <div class="workspace-equation">
-            <div class="equation-line"><span>Lunch Money accounts <small>Chequing $4,200 + savings $8,500 + investments $18,300 + crypto $2,100</small></span><strong>$33,100<span>.00</span></strong></div>
+            <div class="equation-line"><span>Your accounts <small>Chequing $4,200 + savings $8,500 + investments $18,300 + crypto $2,100</small></span><strong>$33,100<span>.00</span></strong></div>
             <div class="equation-line"><span>Eligible debts <small>Credit card due now $650</small></span><strong>− $650<span>.00</span></strong></div>
             <div class="equation-line"><span>Total after debts</span><strong>$32,450<span>.00</span></strong></div>
             <div class="equation-line equation-total"><span>Estimated zakat <small>2.5% of $32,450</small></span><strong>$811<span>.25</span></strong></div>
@@ -56,7 +55,6 @@
 
     <section class="home-band accounts-band" aria-labelledby="accountsTitle">
       <div class="band-head">
-        <p class="band-kicker">Why Mizan</p>
         <h2 id="accountsTitle">Your money is already accounted for.</h2>
         <p>Chequing, savings, investments, crypto and credit cards tend to live in different places. Pulling them all back together at zakat time takes work. Your budgeting app already gives you one view, so Mizan starts there.</p>
       </div>
@@ -81,8 +79,7 @@
 
     <section class="home-band steps-band" aria-labelledby="stepsTitle">
       <div class="band-head">
-        <p class="band-kicker">How it works</p>
-        <h2 id="stepsTitle">Three steps. A few minutes.</h2>
+        <h2 id="stepsTitle">Connect, check, count.</h2>
       </div>
       <ol class="step-cards">
         <li>
@@ -93,7 +90,7 @@
           </div>
           <span class="step-num">01</span>
           <h3>Connect your account</h3>
-          <p>Paste a Lunch Money or YNAB access token. Mizan only reads your balances, and forgets the token as soon as they arrive.</p>
+          <p>Paste a Lunch Money access token, or sign in with YNAB. Mizan only reads your balances, and forgets the token as soon as they arrive.</p>
         </li>
         <li>
           <div class="step-illo illo-review" aria-hidden="true">
@@ -123,8 +120,7 @@
     <section class="home-band why-band" aria-labelledby="whyTitle">
       <div class="why-inner">
         <div class="band-head">
-          <p class="band-kicker">Why zakat</p>
-          <h2 id="whyTitle">An obligation, not a nice-to-have.</h2>
+            <h2 id="whyTitle">One of the five pillars.</h2>
           <p>Zakat is one of the five pillars of Islam. For Muslims whose wealth reaches the nisab and is held for a lunar year, giving 2.5% of it is a duty, owed to the people Allah names in the Quran.</p>
         </div>
         <figure class="ayah">
@@ -154,13 +150,21 @@
 
     <section class="home-band basics-band" aria-labelledby="basicsTitle">
       <div class="band-head">
-        <p class="band-kicker">The basics</p>
-        <h2 id="basicsTitle">Three ideas behind every calculation.</h2>
+        <h2 id="basicsTitle">A fortieth, a threshold and a year.</h2>
       </div>
-      <div class="basics-grid">
-        <div class="basic"><span class="basic-figure">2.5%</span><h3>The rate</h3><p>Of your whole eligible wealth after debts, not just the part above the threshold.</p></div>
-        <div class="basic"><span class="basic-figure">Nisab</span><h3>The threshold</h3><p>The value of 85 g of gold or 595 g of silver. Below it, no zakat is due. Scholars differ on which metal to use.</p></div>
-        <div class="basic"><span class="basic-figure">Hawl</span><h3>The year</h3><p>Your wealth has to be held for one lunar year (354 days) before zakat on it is due.</p></div>
+      <div class="basics-ledger">
+        <div class="basic">
+          <svg class="basic-art" viewBox="0 0 156 96" aria-hidden="true" focusable="false"><rect class="cell on" x="0" y="0" width="16" height="16" rx="3"/><rect class="cell" x="20" y="0" width="16" height="16" rx="3"/><rect class="cell" x="40" y="0" width="16" height="16" rx="3"/><rect class="cell" x="60" y="0" width="16" height="16" rx="3"/><rect class="cell" x="80" y="0" width="16" height="16" rx="3"/><rect class="cell" x="100" y="0" width="16" height="16" rx="3"/><rect class="cell" x="120" y="0" width="16" height="16" rx="3"/><rect class="cell" x="140" y="0" width="16" height="16" rx="3"/><rect class="cell" x="0" y="20" width="16" height="16" rx="3"/><rect class="cell" x="20" y="20" width="16" height="16" rx="3"/><rect class="cell" x="40" y="20" width="16" height="16" rx="3"/><rect class="cell" x="60" y="20" width="16" height="16" rx="3"/><rect class="cell" x="80" y="20" width="16" height="16" rx="3"/><rect class="cell" x="100" y="20" width="16" height="16" rx="3"/><rect class="cell" x="120" y="20" width="16" height="16" rx="3"/><rect class="cell" x="140" y="20" width="16" height="16" rx="3"/><rect class="cell" x="0" y="40" width="16" height="16" rx="3"/><rect class="cell" x="20" y="40" width="16" height="16" rx="3"/><rect class="cell" x="40" y="40" width="16" height="16" rx="3"/><rect class="cell" x="60" y="40" width="16" height="16" rx="3"/><rect class="cell" x="80" y="40" width="16" height="16" rx="3"/><rect class="cell" x="100" y="40" width="16" height="16" rx="3"/><rect class="cell" x="120" y="40" width="16" height="16" rx="3"/><rect class="cell" x="140" y="40" width="16" height="16" rx="3"/><rect class="cell" x="0" y="60" width="16" height="16" rx="3"/><rect class="cell" x="20" y="60" width="16" height="16" rx="3"/><rect class="cell" x="40" y="60" width="16" height="16" rx="3"/><rect class="cell" x="60" y="60" width="16" height="16" rx="3"/><rect class="cell" x="80" y="60" width="16" height="16" rx="3"/><rect class="cell" x="100" y="60" width="16" height="16" rx="3"/><rect class="cell" x="120" y="60" width="16" height="16" rx="3"/><rect class="cell" x="140" y="60" width="16" height="16" rx="3"/><rect class="cell" x="0" y="80" width="16" height="16" rx="3"/><rect class="cell" x="20" y="80" width="16" height="16" rx="3"/><rect class="cell" x="40" y="80" width="16" height="16" rx="3"/><rect class="cell" x="60" y="80" width="16" height="16" rx="3"/><rect class="cell" x="80" y="80" width="16" height="16" rx="3"/><rect class="cell" x="100" y="80" width="16" height="16" rx="3"/><rect class="cell" x="120" y="80" width="16" height="16" rx="3"/><rect class="cell" x="140" y="80" width="16" height="16" rx="3"/></svg>
+          <h3>The rate: one fortieth</h3><p>2.5% of your whole eligible wealth after debts, not just the part above the threshold.</p>
+        </div>
+        <div class="basic">
+          <svg class="basic-art" viewBox="0 0 156 96" aria-hidden="true" focusable="false"><circle class="disc-gold" cx="22" cy="82" r="14"/><text class="disc-label" x="22" y="60" text-anchor="middle">85 g</text><circle class="disc-silver" cx="104" cy="59" r="37"/><text class="disc-on" x="104" y="63" text-anchor="middle">595 g</text></svg>
+          <h3>The nisab: a threshold in metal</h3><p>The value of 85 g of gold or 595 g of silver. Below it, no zakat is due. Scholars differ on which metal to use.</p><p class="basic-today" id="homeNisab"></p>
+        </div>
+        <div class="basic">
+          <svg class="basic-art" viewBox="0 0 156 96" aria-hidden="true" focusable="false"><defs><mask id="crescentCut"><rect width="22" height="22" fill="#fff"/><circle cx="15" cy="8.5" r="9" fill="#000"/></mask><symbol id="crescent" viewBox="0 0 22 22" width="22" height="22"><circle class="moon" cx="11" cy="11" r="11" fill="currentColor" mask="url(#crescentCut)"/></symbol></defs><use href="#crescent" x="0" y="18"/><use href="#crescent" x="27" y="18"/><use href="#crescent" x="54" y="18"/><use href="#crescent" x="81" y="18"/><use href="#crescent" x="108" y="18"/><use href="#crescent" x="135" y="18"/><use href="#crescent" x="0" y="48"/><use href="#crescent" x="27" y="48"/><use href="#crescent" x="54" y="48"/><use href="#crescent" x="81" y="48"/><use href="#crescent" x="108" y="48"/><use href="#crescent" x="135" y="48"/></svg>
+          <h3>The hawl: a lunar year</h3><p>Your wealth has to be held for twelve lunar months (354 days) before zakat on it is due.</p>
+        </div>
       </div>
       <div class="price-preview" aria-live="polite"><div><strong>Today’s nisab prices</strong><span>Latest available rates · CAD per gram</span></div><p id="homeMetalPrices">Loading prices…</p></div>
       <p class="band-link"><a href="zakat-guide.html">Read the full zakat guide <span aria-hidden="true">→</span></a></p>
@@ -178,7 +182,7 @@
     </section>
 
     <section class="final-cta" aria-labelledby="finalTitle">
-      <h2 id="finalTitle">Ready to see your zakat?</h2>
+      <h2 id="finalTitle">Your balances are already there.</h2>
       <p>Connect Lunch Money or YNAB, or look around with fictional balances first.</p>
       <div class="hero-actions"><a class="button primary cta-connect" href="#connect">Connect your account <span aria-hidden="true">→</span></a><button type="button" class="sample-start">Try the sample</button></div>
       <p id="finalStatus" class="hero-status" role="status"></p>
@@ -230,7 +234,7 @@
     <nav class="progress" aria-label="Calculation steps"><span>✓ 01 Connected</span><span class="divider" aria-hidden="true">/</span><button type="button" id="reviewStep" aria-controls="reviewView" aria-current="step">02 Review balances</button><span class="divider" aria-hidden="true">/</span><button type="button" id="estimateStep" aria-controls="estimateView">03 Your estimate</button></nav>
     <div class="warn" id="dataWarn" hidden></div>
     <section id="reviewView" class="flow-view" aria-labelledby="reviewHead">
-      <div class="view-head"><h1 id="reviewHead" tabindex="-1">Check your balances.</h1><p class="note">These came from <span class="provider-name">Lunch Money</span>. Uncheck anything that doesn't belong in your zakat, and update any balance that's out of date.</p></div>
+      <div class="view-head"><h1 id="reviewHead" tabindex="-1">Check your balances.</h1><p class="note">These are your <span class="provider-name">Lunch Money</span> balances. Uncheck anything that doesn't belong in your zakat, and update any balance that's out of date.</p></div>
       <div class="review-layout">
         <div class="review-main">
           <div class="review-warnings"><div class="warn" id="staleWarn" hidden></div></div>
@@ -284,6 +288,7 @@
             <div class="warn" id="priceWarn" hidden></div><p class="note">Prices in <span class="cur"></span> per gram of pure metal.</p>
             <div class="fields"><div class="field"><label for="goldPrice">Gold price per gram</label><input type="number" id="goldPrice" step="0.001" min="0"></div><div class="field"><label for="silverPrice">Silver price per gram</label><input type="number" id="silverPrice" step="0.0001" min="0"></div><div class="field"><label for="silverGramsNisab">Silver nisab (grams)</label><input type="number" id="silverGramsNisab" value="595" step="0.01" min="0" data-save></div><div class="field"><label for="goldGramsNisab">Gold nisab (grams)</label><input type="number" id="goldGramsNisab" value="85" step="0.01" min="0" data-save></div></div><p class="note price-info" id="priceInfo"></p>
           </details>
+          <div class="reset-row"><button type="button" class="link-button small" id="reset">Reset my method choices</button><p class="note">Only your method preferences are saved. Your balances and token are not.</p></div>
           </div></details>
           <details class="disclosure" id="comparison"><summary><span>How other methods compare<span class="note">See the amounts for each method</span></span></summary><div id="methodChart" class="method-chart" aria-label="Select a calculation method"></div><details class="ledger-detail"><summary>View the comparison table</summary><div class="scroll" tabindex="0" role="region" aria-label="Method comparison"><table><thead><tr><th>Nisab</th><th>Mortgage</th><th class="num">Threshold</th><th class="num">Net wealth</th><th class="num">Zakat</th></tr></thead><tbody id="methodRows"></tbody></table></div></details></details>
           <div class="view-actions"><button type="button" id="backToReview" class="link-button">Edit my balances</button></div>
@@ -301,7 +306,12 @@
         <div class="chart-legend"><span><i class="complete-dot"></i>Complete total</span><span><i class="partial-dot"></i>Partial subtotal</span><span id="thresholdLegend"></span></div>
         <details class="ledger-detail"><summary>View monthly amounts &amp; coverage</summary><p id="hawlSummary"></p><div class="scroll" tabindex="0" role="region" aria-label="Monthly balance history"><table><thead><tr><th>Month</th><th class="num">Known total</th><th class="barcell"><span class="sr">Compared with the nisab</span></th></tr></thead><tbody id="hawlRows"></tbody></table></div><p class="note">Partial rows are not classified against the nisab. <a href="zakat-guide.html#hawl" target="_blank" rel="noopener">Read about the hawl</a></p></details>
       </section>
-      <div class="reset-row"><button type="button" class="link-button small" id="reset">Reset my method choices</button><p class="note">Only your method preferences are saved. Your balances and token are not.</p></div>
+      <section class="estimate-close" aria-labelledby="closeTitle">
+        <h2 id="closeTitle">That’s your estimate.</h2>
+        <p>May Allah accept it from you. Before you pay, confirm that your hawl is complete and that the method fits the one you follow.</p>
+        <div class="close-actions"><button type="button" id="copySummary" class="primary">Copy summary</button><button type="button" id="printSummary">Print</button><a href="zakat-guide.html#who" target="_blank" rel="noopener">Who receives zakat <span aria-hidden="true">→</span></a></div>
+        <p id="copyStatus" class="note" role="status"></p>
+      </section>
     </section>
   </div>
 </main>
@@ -399,6 +409,8 @@
       var date = value ? new Date(value) : null;
       return date && !isNaN(date.getTime()) ? "updated " + date.toLocaleString() : "quote time unavailable";
     };
+    var whole = new Intl.NumberFormat(undefined, { style: "currency", currency: "CAD", maximumFractionDigits: 0 });
+    $("homeNisab").textContent = "Today that is about " + whole.format(prices.gold * 85) + " in gold, or " + whole.format(prices.silver * 595) + " in silver.";
     el.textContent = "Gold " + format(prices.gold, 3) + " (" + quoteTime(prices.goldUpdatedAt) + ") · Silver " + format(prices.silver, 4) + " (" + quoteTime(prices.silverUpdatedAt) + ") per gram · Fetched " + fetchedAt.toLocaleString() + " · gold-api.com";
   }
 
@@ -651,7 +663,7 @@
     };
     return metalPrices("cad").then(function (prices) {
       return {
-        generated: todayIso(), budget: "Sample budget", currency: "cad", months: months, sample: true, provider: "Lunch Money", prices: prices, warnings: [],
+        generated: todayIso(), budget: "Sample budget", currency: "cad", months: months, sample: true, provider: "sample", prices: prices, warnings: [],
         accounts: [
           { key: "s1", name: "Sample Bank Chequing", amount: 4200, status: "active", updated: todayIso(), note: "", include: true, history: grow(2500, 150, 4200) },
           { key: "s2", name: "Sample Bank Savings", amount: 8500, status: "active", updated: todayIso(), note: "", include: true, history: grow(5000, 300, 8500) },
@@ -673,7 +685,7 @@
   // The calculator
   // ---------------------------------------------------------------------------
 
-  var D, money, price, accountRows, debtRows;
+  var D, money, price, accountRows, debtRows, summaryText = "";
   var METAL = { silver: "Silver", gold: "Gold" };
   var MORTGAGE = { none: "Not deducted", next: "Next payment", year: "Next 12 months" };
 
@@ -706,7 +718,7 @@
     accountRows = buildRows(D.accounts, "accountRows");
     debtRows = buildRows(D.debts, "debtRows");
     $("noDebts").hidden = D.debts.length > 0;
-    $("mortgageInfo").textContent = D.mortgages.length ? "A mortgage was found in " + D.provider + ". Enter only the amount you can deduct; the full balance is not deducted automatically." : "";
+    $("mortgageInfo").textContent = D.mortgages.length ? "A mortgage was found in " + (D.sample ? "the sample data" : D.provider) + ". Enter only the amount you can deduct; the full balance is not deducted automatically." : "";
     var stale = accountRows.concat(debtRows).filter(function (r) { return r.stale && r.data.include && r.data.amount; })
       .map(function (r) { return r.data.name; });
     $("staleWarn").hidden = !stale.length;
@@ -1036,6 +1048,20 @@
     $("metalValue").textContent = !t.assetsReady ? "Add the missing metal prices on Your estimate to value your gold and silver." : (t.goldValue || t.silverValue)
       ? "Value of your gold: " + money.format(t.goldValue) + ". Value of your silver: " + money.format(t.silverValue) + "." : "";
 
+    var methodText = METAL[metal] + " nisab, " + (mode === "none" ? "no mortgage deduction" : "mortgage: " + MORTGAGE[mode].toLowerCase());
+    summaryText = !t.ready ? "" : [
+      "Zakat estimate from Mizan, " + fdate(todayIso()),
+      "Estimated zakat: " + money.format(t.due),
+      "Zakat assets: " + money.format(t.assets),
+      "Less debts due now: " + money.format(t.debts) + (t.mortgage ? ", and the mortgage: " + money.format(t.mortgage) : ""),
+      "Total after debts: " + money.format(t.net),
+      METAL[metal] + " nisab: " + money.format(t.nisab) + " (" + t.grams + " g at " + price.format(t.unit) + " a gram)",
+      "Method: " + methodText,
+      "This is an estimate. It assumes the hawl is complete."
+    ].join("\n");
+    $("copySummary").disabled = !t.ready;
+    $("copyStatus").textContent = "";
+
     renderCalculation(t);
     var rows = "", methods = [];
     ["silver", "gold"].forEach(function (m) {
@@ -1223,6 +1249,30 @@
     document.querySelector("input[name=nisab][value=silver]").checked = true;
     document.querySelector("input[name=mortgage][value=none]").checked = true;
     render();
+  });
+  // The summary is plain text built from the same totals as the page. Nothing is sent anywhere.
+  $("copySummary").addEventListener("click", function () {
+    var done = function (text) { $("copyStatus").textContent = text; };
+    if (!summaryText) return;
+    // Older way, for browsers that refuse the clipboard API: select the text in a field, then copy it.
+    var fallback = function () {
+      var field = document.createElement("textarea"), ok = false;
+      field.value = summaryText;
+      field.setAttribute("readonly", "");
+      field.className = "sr";
+      document.body.appendChild(field);
+      field.select();
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(field);
+      $("copySummary").focus({ preventScroll: true });
+      done(ok ? "Summary copied." : "The browser blocked copying. Use Print instead.");
+    };
+    if (!navigator.clipboard || !navigator.clipboard.writeText) { fallback(); return; }
+    navigator.clipboard.writeText(summaryText).then(function () { done("Summary copied."); }, fallback);
+  });
+  $("printSummary").addEventListener("click", function () {
+    $("resultBreakdown").open = true;
+    window.print();
   });
   $("historyCursor").addEventListener("input", function () {
     historySelection = num($("historyCursor"));

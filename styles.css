@@ -2358,3 +2358,121 @@ input[type=text],input[type=password],input[type=number],select { border-radius:
 .ynab-connect .hero-status:empty { display:none; }
 .ynab-facts { justify-self:stretch; list-style:none; margin:10px 0 0; padding:18px 0 0; border-top:1px solid var(--line); display:grid; gap:8px; font-size:14px; }
 .aside-links { margin:0; font-size:14px; font-weight:700; }
+
+/* ---------------------------------------------------------------------------
+   Warm ledger: a paper ground, gold and silver as the two metals, ruled figures.
+   This block is last, so its tokens replace the neutral greys above.
+   --------------------------------------------------------------------------- */
+@font-face {
+  font-family:'Mizan Arabic';
+  src:url('fonts/arabic.woff2') format('woff2');
+  font-display:swap;
+  unicode-range:U+0600-06FF
+}
+:root {
+  --bg:#f3eee3; --card:#fffcf5; --panel:#e9e2d3; --ink:#1d1a16; --text:#46413a; --muted:#6b6456; --line:#d8cfbc;
+  --deep:#1d1a16; --hover:#46413a; --on-deep:#fffcf5; --accent:#835d1c; --warn-bg:#f8efd8; --warn-ink:#6f5215;
+  --inkwell:#1e1b17; --inkwell-2:#2a2621; --inkwell-line:#4a443b; --on-inkwell:#fbf7ee; --on-inkwell-soft:#d8d1c3;
+  --gold:#e3c178; --silver:#c5ccd3; --gold-fill:#c79a3e; --silver-fill:#aab3bc;
+  --paper:#fbf6e9; --paper-line:#dcd2bc; --paper-ink:#1d1a16; --paper-soft:#5a5448;
+}
+@media(prefers-color-scheme:dark) {
+  :root {
+    --bg:#191714; --card:#24211d; --panel:#312d27; --ink:#f8f4eb; --text:#e1dcd1; --muted:#beb7a9; --line:#4d483f;
+    --deep:#f5f0e6; --hover:#d6d0c3; --on-deep:#1c1a17; --accent:#dcc391; --warn-bg:#352e1e; --warn-ink:#ead7a6;
+    --gold-fill:#e3c178; --silver-fill:#c5ccd3;
+  }
+}
+::selection { background:color-mix(in srgb,var(--gold-fill) 38%,transparent); color:var(--ink); }
+input,textarea { caret-color:var(--accent); }
+a { text-underline-offset:.18em; }
+table,.num,.equation-line strong,.account-tiles strong { font-variant-numeric:tabular-nums; }
+
+/* Wordmark: the name in both scripts */
+.brand-ar { margin-left:.24em; color:var(--accent); font:400 1em/1 'Mizan Arabic',serif; letter-spacing:0; }
+
+/* Hero: the example is a page from a ledger */
+.hero-copy h1 { max-width:11ch; font-size:clamp(44px,5.6vw,76px); text-wrap:balance; }
+.hero-lead { max-width:42ch; }
+.band-head h2,.final-cta h2,.privacy-card h2 { text-wrap:balance; }
+.workspace,.hero .workspace { background:var(--paper); color:var(--paper-ink); border:1px solid var(--paper-line); box-shadow:0 34px 60px -40px rgba(70,50,15,.45); }
+.workspace-heading { border-bottom:2px solid var(--paper-ink); padding-bottom:18px; }
+.workspace-heading h2,.equation-total,.equation-line strong { color:var(--paper-ink); }
+.workspace-heading span,.workspace-note,.equation-total small,.equation-line>span small { color:var(--paper-soft); }
+.equation-line { color:var(--paper-ink); border-color:var(--paper-line); }
+.equation-line:nth-last-child(2) { border-bottom:0; }
+.equation-total { margin-top:4px; padding-top:20px; border-top:3px double var(--paper-ink); }
+
+/* Dark surfaces share one warm charcoal */
+.flow-result,.illo-estimate,.why-inner,.calculator-page .estimate-layout>.result { background:var(--inkwell); }
+.flow-result { color:var(--on-inkwell-soft); border-radius:20px; }
+.flow-illo { border-radius:24px; }
+.result-mark,.why-inner .proof-tag { color:var(--gold); }
+.flow-result strong { color:var(--on-inkwell); }
+.flow-result-zakat { border-color:var(--inkwell-line); }
+.flow-result-zakat b { color:var(--gold); font:800 1em var(--font); font-variant-numeric:tabular-nums; }
+.mini-bars i.tot { background:var(--gold); }
+.why-inner { color:var(--on-inkwell-soft); border-radius:24px; }
+.why-inner::before { background:radial-gradient(circle,color-mix(in srgb,var(--gold) 16%,transparent),transparent 65%); }
+.why-inner .band-head h2,.ayah blockquote p { color:var(--on-inkwell); }
+.why-inner .band-head p { color:var(--on-inkwell-soft); }
+.ayah { border-color:var(--inkwell-line); }
+.ayah-ar { color:var(--gold); font-family:'Mizan Arabic',"Geeza Pro","Noto Naskh Arabic",serif; line-height:1.9; }
+.proof-grid { gap:clamp(20px,3vw,40px); }
+.proof { padding:20px 0 0; background:none; border-top:1px solid var(--inkwell-line); border-radius:0; }
+.proof-tag { margin-bottom:12px; padding:0; background:none; font-size:13px; }
+.proof blockquote p { color:var(--on-inkwell); }
+.calculator-page .result-breakdown,.calculator-page .result-context { border-color:var(--inkwell-line); }
+@media(prefers-color-scheme:dark) {
+  .why-inner,.flow-result,.calculator-page .estimate-layout>.result { box-shadow:inset 0 0 0 1px var(--inkwell-line); }
+}
+
+/* The basics, drawn: one fortieth, the two weights to scale, twelve moons */
+.basics-ledger { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:2px solid var(--ink); border-bottom:1px solid var(--line); }
+.basics-ledger .basic { padding:30px clamp(18px,2.6vw,34px) 34px; background:none; border:0; border-left:1px solid var(--line); border-radius:0; }
+.basics-ledger .basic:first-child { padding-left:0; border-left:0; }
+.basic-art { display:block; width:208px; max-width:100%; height:128px; margin-bottom:28px; }
+.basics-ledger h3 { margin:0 0 8px; font-size:20px; letter-spacing:-.02em; }
+.basics-ledger p { margin:0; font-size:15px; line-height:1.65; }
+.basics-ledger .basic-today { margin-top:12px; color:var(--ink); font-weight:700; font-variant-numeric:tabular-nums; }
+.basic-today:empty { display:none; }
+.basic-art .cell { fill:var(--line); }
+.basic-art .cell.on,.basic-art .disc-gold { fill:var(--gold-fill); }
+.basic-art .disc-silver { fill:var(--silver-fill); }
+.basic-art { color:var(--ink); }
+.basic-art text { font:700 12px var(--font); }
+.basic-art .disc-label { fill:var(--ink); }
+.basic-art .disc-on { fill:#1d1a16; }
+
+/* The estimate: one figure, then a proper ending */
+.calculator-page .result .due { font:800 clamp(46px,6.4vw,80px)/1.02 var(--font); letter-spacing:-.04em; font-variant-numeric:tabular-nums; }
+.calculator-page .result .due.incomplete { font-size:clamp(32px,4vw,48px); }
+.method-content .reset-row { margin-top:22px; padding-top:20px; }
+.estimate-close { max-width:850px; margin-top:clamp(40px,6vw,72px); padding-top:clamp(28px,4vw,44px); border-top:3px double var(--ink); }
+.estimate-close h2 { margin:0 0 12px; font:800 clamp(28px,3vw,40px)/1.1 var(--font); letter-spacing:-.04em; }
+.estimate-close>p { max-width:58ch; margin:0; font-size:17px; }
+.close-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px; margin-top:24px; }
+.close-actions button { min-height:50px; padding:12px 24px; }
+.close-actions a { margin-left:6px; font-weight:800; }
+.estimate-close #copyStatus { min-height:1.6em; margin:12px 0 0; }
+
+@media(max-width:1000px) {
+  .basics-ledger { grid-template-columns:1fr; }
+  .basics-ledger .basic,.basics-ledger .basic:first-child { padding:26px 0 28px; border-left:0; border-top:1px solid var(--line); }
+  .basic-art { width:156px; height:96px; margin-bottom:20px; }
+  .basics-ledger .basic:first-child { border-top:0; }
+}
+@media(max-width:760px) {
+  .hero-copy h1 { max-width:none; font-size:clamp(40px,11vw,56px); }
+  .close-actions button { flex:1 1 auto; }
+  .close-actions a { flex:1 0 100%; margin:4px 0 0; }
+}
+
+/* Print: the estimate and its working, without the controls */
+@media print {
+  :root { --bg:#fff; --card:#fff; --panel:#fff; --ink:#000; --text:#111; --muted:#444; --line:#bbb; }
+  .top,.foot,.skip-link,.progress,.connected,.view-actions,.close-actions,.reset-row,#copyStatus,#historyCursor,.chart-help,.warn { display:none!important; }
+  .calculator-page .estimate-layout>.result { background:#fff; color:#000; box-shadow:none; border:2px solid #000; }
+  .calculator-page .result *,.calculator-page .result .due { color:#000!important; }
+  .estimate-close { break-inside:avoid; }
+}
