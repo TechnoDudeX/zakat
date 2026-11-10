@@ -2392,7 +2392,7 @@ table,.num,.equation-line strong,.account-tiles strong { font-variant-numeric:ta
 .brand-ar { margin-left:.24em; color:var(--accent); font:400 1em/1 'Mizan Arabic',serif; letter-spacing:0; }
 
 /* Hero: the example is a page from a ledger */
-.hero-copy h1 { max-width:11ch; font-size:clamp(44px,5.6vw,76px); text-wrap:balance; }
+.hero-copy h1 { max-width:13ch; font-size:clamp(44px,5.4vw,72px); text-wrap:balance; }
 .hero-lead { max-width:42ch; }
 .band-head h2,.final-cta h2,.privacy-card h2 { text-wrap:balance; }
 .workspace,.hero .workspace { background:var(--paper); color:var(--paper-ink); border:1px solid var(--paper-line); box-shadow:0 34px 60px -40px rgba(70,50,15,.45); }
