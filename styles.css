@@ -2418,6 +2418,9 @@ table,.num,.equation-line strong,.account-tiles strong { font-variant-numeric:ta
 .why-inner .band-head p { color:var(--on-inkwell-soft); }
 .ayah { border-color:var(--inkwell-line); }
 .ayah-ar { color:var(--gold); font-family:'Mizan Arabic',"Geeza Pro","Noto Naskh Arabic",serif; line-height:1.9; }
+/* The verse, its translation and its reference sit centred as one block. */
+.ayah,.ayah-ar { text-align:center; }
+.ayah blockquote p { margin-inline:auto; }
 .proof-grid { gap:clamp(20px,3vw,40px); }
 .proof { padding:20px 0 0; background:none; border-top:1px solid var(--inkwell-line); border-radius:0; }
 .proof-tag { margin-bottom:12px; padding:0; background:none; font-size:13px; }
