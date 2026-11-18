@@ -33,6 +33,18 @@ Users connect with a Lunch Money or YNAB access token or explore fictional sampl
 
 Mizan means balance. The user has requested a calm, trustworthy, modern Islamic technology feel.
 
+## Messaging
+
+Agreed with the owner in November 2026.
+
+- **Reader:** someone new to working out zakat comes first. Keep it short enough that people who already know the rules are not slowed down.
+- **Main message:** your zakat is worked out from your real balances, not a guess.
+- **Voice:** first person from the maker ("I built this") on the home page and the guide pages. The calculator steps (connect, review, estimate) stay short and neutral, speaking to "you" with no "I".
+- **Islamic terms:** nisab and hawl stay as the main words. Give each a one-line plain meaning the first time it appears on a page. The Quran and hadith quotes stay where they are.
+- **Certainty:** be confident about the figure and show its working. Say once, clearly, that it is an estimate and that scholars differ; do not repeat the caveat at every step.
+- **After the result:** a short warm closing line and a way to copy or print the summary. No advice on where to give.
+- **Names:** "access token" (not API token or key), "balances" for imported figures, "estimate" for the result, "untick" for checkboxes, "Mizan" as the actor (not "the page").
+
 ## Evidence on Hand
 
 The calculator, fictional sample data, product explanations and source references are in `index.html`, the guide pages and `README.md`.

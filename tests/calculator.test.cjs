@@ -57,7 +57,7 @@ test('an empty history leaves the estimate usable and explains the missing compa
   const { app, field } = calculator();
   app.configure([], [], []);
   assert.doesNotThrow(() => app.render());
-  assert.match(field('hawlSummary').textContent, /No complete balance history/);
+  assert.match(field('hawlSummary').innerHTML, /No complete balance history/);
   assert.equal(field('historyCursor').disabled, true);
   assert.match(field('historyChart').innerHTML, /No balance history/);
 });
@@ -147,9 +147,9 @@ test('partial history cannot classify a month, including missing debt balances',
   assert.equal(result[3].complete, true);
   app.configure(accounts, debts, months);
   app.render();
-  assert.equal((field('hawlRows').innerHTML.match(/Partial: 1 missing/g) || []).length, 2);
-  assert.match(field('hawlSummary').textContent, /2 rows are missing selected account balances/);
-  assert.match(field('hawlSummary').textContent, /2 complete rows\./);
+  assert.equal((field('hawlRows').innerHTML.match(/>1 missing</g) || []).length, 2);
+  assert.match(field('hawlSummary').innerHTML, /2 months are missing some balances/);
+  assert.match(field('hawlSummary').innerHTML, /all 2 months Mizan could check\./);
 });
 
 test('zero history is data; no history stays unknown; credits do not increase historical wealth', () => {
@@ -191,8 +191,8 @@ test('accounts count only in the months when they were open', () => {
   closed.data.history = [3000, 3000, null, null];
   app.configure(accounts, [], months);
   app.render();
-  assert.match(field('hawlSummary').textContent, /2 selected balances start after the first month/);
-  assert.doesNotMatch(field('hawlSummary').textContent, /Partial history/);
+  assert.match(field('hawlSummary').innerHTML, /2 balances only appear in Lunch Money part-way through the year/);
+  assert.doesNotMatch(field('hawlSummary').innerHTML, /missing some balances/);
 });
 
 test('when no balance history loaded, every earlier month stays unknown', () => {

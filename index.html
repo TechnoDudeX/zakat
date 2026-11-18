@@ -22,21 +22,21 @@
     <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false" fill="none"><rect x="1" y="1" width="42" height="42" rx="12" fill="currentColor"/><path d="M11 29V15L22 25L33 15V29" stroke="var(--on-deep)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 34H29" stroke="var(--on-deep)" stroke-width="2" stroke-linecap="round"/><circle cx="22" cy="11" r="2" fill="var(--accent)"/></svg>
     <span class="brand-name">Mizan <span class="brand-ar" lang="ar">ميزان</span><span class="brand-sub">Made by Mazin</span></span>
   </a>
-  <nav class="nav" aria-label="Main"><a href="index.html" aria-current="page">Calculator</a><a href="about.html">The project</a><a href="token-guide.html">Token guide</a></nav>
+  <nav class="nav" aria-label="Main"><a href="index.html" aria-current="page">Calculator</a><a href="zakat-guide.html">Zakat guide</a><a href="how-it-works.html">How it works</a><a href="about.html">About</a></nav>
 </div></header>
 <main id="main" class="wrap">
   <section id="home" class="home" aria-labelledby="heroHead">
     <div class="hero">
       <div class="hero-copy">
         <h1 id="heroHead">Do you know how much zakat you owe?</h1>
-        <p class="hero-lead">Your accounts live in Lunch Money or YNAB. Mizan takes those balances and works out your zakat, with every amount in view.</p>
+        <p class="hero-lead">Mizan is a free zakat calculator for people who budget in Lunch Money or YNAB. It works out your zakat from your real balances, not a guess, and shows how every amount adds up.</p>
         <div class="hero-actions">
           <a class="button primary cta-connect" href="#connect">Connect your account <span aria-hidden="true">→</span></a>
-          <button type="button" id="sampleBtn" class="sample-start">Try the sample</button>
+          <button type="button" id="sampleBtn" class="sample-start">Try sample numbers</button>
         </div>
         <p id="status" class="hero-status" role="status"></p>
         <ul class="trust-list" aria-label="How Mizan handles your data">
-          <li>Only reads</li><li>Runs in your browser</li><li>Nothing saved</li><li>Free &amp; open source</li>
+          <li>Only reads, never changes anything</li><li>Runs in your browser</li><li>Never saves your token or balances</li><li>Free and open source</li>
         </ul>
       </div>
       <div class="workspace" aria-label="Example zakat calculation">
@@ -48,15 +48,15 @@
             <div class="equation-line"><span>Total after debts</span><strong>$32,450<span>.00</span></strong></div>
             <div class="equation-line equation-total"><span>Estimated zakat <small>2.5% of $32,450</small></span><strong>$811<span>.25</span></strong></div>
           </div>
-          <p class="workspace-note">This example assumes the total meets the nisab and the hawl is complete. Your estimate depends on your balances and the method you follow.</p>
+          <p class="workspace-note">This example assumes the total reaches the nisab (the minimum you must own before zakat is due) and the hawl is complete (you have held it for a full lunar year). Your estimate depends on your balances and the method you follow.</p>
         </div>
       </div>
     </div>
 
     <section class="home-band accounts-band" aria-labelledby="accountsTitle">
       <div class="band-head">
-        <h2 id="accountsTitle">Your money is already accounted for.</h2>
-        <p>Chequing, savings, investments, crypto and credit cards tend to live in different places. Pulling them all back together at zakat time takes work. Your budgeting app already gives you one view, so Mizan starts there.</p>
+        <h2 id="accountsTitle">Your budgeting app has already gathered your accounts.</h2>
+        <p>Chequing, savings, investments, crypto and credit cards live in different places, but your budgeting app already shows them together. So I built Mizan to start there.</p>
       </div>
       <div class="flow-illo">
         <ul class="account-tiles" aria-label="Example accounts">
@@ -74,23 +74,22 @@
           <span class="flow-result-zakat">Estimated zakat <b>$811.25</b></span>
         </div>
       </div>
-      <p class="band-foot">Review what counts, add what isn’t in your budget (like cash at home or gold), and watch your estimate take shape. The method stays in your hands.</p>
     </section>
 
     <section class="home-band steps-band" aria-labelledby="stepsTitle">
       <div class="band-head">
-        <h2 id="stepsTitle">Connect, check, count.</h2>
+        <h2 id="stepsTitle">How it works: connect, check, count.</h2>
       </div>
       <ol class="step-cards">
         <li>
           <div class="step-illo illo-connect" aria-hidden="true">
-            <span class="mini-label">Access token</span>
-            <span class="mini-field">••••••••••••••••</span>
+            <span class="mini-row">Lunch Money</span>
+            <span class="mini-row">YNAB</span>
             <span class="mini-button">Connect</span>
           </div>
           <span class="step-num">01</span>
           <h3>Connect your account</h3>
-          <p>Paste a Lunch Money access token, or sign in with YNAB. Mizan only reads your balances, and forgets the token as soon as they arrive.</p>
+          <p>Sign in on YNAB’s own site, or paste a Lunch Money access token: a private code you create in Lunch Money’s settings (<a href="token-guide.html">the guide shows how</a>). Mizan only reads your balances, and forgets the token as soon as they arrive.</p>
         </li>
         <li>
           <div class="step-illo illo-review" aria-hidden="true">
@@ -101,7 +100,7 @@
           </div>
           <span class="step-num">02</span>
           <h3>Review balances</h3>
-          <p>Untick anything that isn’t yours, update stale balances, and add what your budget doesn’t track.</p>
+          <p>Untick anything that isn’t yours, update stale balances, and add what your budget doesn’t track, like cash at home or gold.</p>
         </li>
         <li>
           <div class="step-illo illo-estimate" aria-hidden="true">
@@ -114,14 +113,25 @@
           <p>Get a traceable breakdown, choose a gold or silver nisab, and compare how other methods change the amount.</p>
         </li>
       </ol>
-      <div class="band-actions"><a class="button primary cta-connect" href="#connect">Connect your account <span aria-hidden="true">→</span></a></div>
+      <div class="band-actions"><a class="button primary cta-connect" href="#connect">Connect Lunch Money or YNAB <span aria-hidden="true">→</span></a></div>
+    </section>
+
+    <section class="home-band privacy-band" aria-labelledby="privacyTitle">
+      <div class="privacy-card">
+        <span class="privacy-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="10" y="21" width="28" height="20" rx="5"/><path d="M16 21v-6a8 8 0 0 1 16 0v6"/><circle cx="24" cy="30" r="2.5"/><path d="M24 32.5V36"/></svg></span>
+        <div>
+          <h2 id="privacyTitle">What happens to your data.</h2>
+          <p>Mizan does the maths in your browser. It sends your token only to Lunch Money or YNAB, makes read-only requests, and never saves your token or balances. Only your method choices are remembered on this device.</p>
+          <a href="privacy.html">Read the privacy policy <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
     </section>
 
     <section class="home-band why-band" aria-labelledby="whyTitle">
       <div class="why-inner">
         <div class="band-head">
-            <h2 id="whyTitle">One of the five pillars.</h2>
-          <p>Zakat is one of the five pillars of Islam. For Muslims whose wealth reaches the nisab and is held for a lunar year, giving 2.5% of it is a duty, owed to the people Allah names in the Quran.</p>
+            <h2 id="whyTitle">Why zakat matters.</h2>
+          <p>For Muslims whose wealth reaches the nisab and is held for a lunar year, giving 2.5% of it is a duty, owed to the people Allah names in the Quran.</p>
         </div>
         <figure class="ayah">
           <p class="ayah-ar" lang="ar" dir="rtl">خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِم بِهَا</p>
@@ -141,8 +151,8 @@
           </figure>
           <figure class="proof">
             <span class="proof-tag">A right of those in need</span>
-            <blockquote><p>Zakat goes to eight groups, including the poor, the needy, people in debt and the stranded traveller.</p></blockquote>
-            <figcaption><a href="https://quran.com/9/60" rel="noreferrer">Quran 9:60</a></figcaption>
+            <p class="proof-summary">Zakat goes to eight groups, including the poor, the needy, people in debt and the stranded traveller.</p>
+            <figcaption>Summarised from <a href="https://quran.com/9/60" rel="noreferrer">Quran 9:60</a></figcaption>
           </figure>
         </div>
       </div>
@@ -150,41 +160,30 @@
 
     <section class="home-band basics-band" aria-labelledby="basicsTitle">
       <div class="band-head">
-        <h2 id="basicsTitle">A fortieth, a threshold and a year.</h2>
+        <h2 id="basicsTitle">The three rules behind the number.</h2>
       </div>
       <div class="basics-ledger">
         <div class="basic">
           <svg class="basic-art" viewBox="0 0 156 96" aria-hidden="true" focusable="false"><rect class="cell on" x="0" y="0" width="16" height="16" rx="3"/><rect class="cell" x="20" y="0" width="16" height="16" rx="3"/><rect class="cell" x="40" y="0" width="16" height="16" rx="3"/><rect class="cell" x="60" y="0" width="16" height="16" rx="3"/><rect class="cell" x="80" y="0" width="16" height="16" rx="3"/><rect class="cell" x="100" y="0" width="16" height="16" rx="3"/><rect class="cell" x="120" y="0" width="16" height="16" rx="3"/><rect class="cell" x="140" y="0" width="16" height="16" rx="3"/><rect class="cell" x="0" y="20" width="16" height="16" rx="3"/><rect class="cell" x="20" y="20" width="16" height="16" rx="3"/><rect class="cell" x="40" y="20" width="16" height="16" rx="3"/><rect class="cell" x="60" y="20" width="16" height="16" rx="3"/><rect class="cell" x="80" y="20" width="16" height="16" rx="3"/><rect class="cell" x="100" y="20" width="16" height="16" rx="3"/><rect class="cell" x="120" y="20" width="16" height="16" rx="3"/><rect class="cell" x="140" y="20" width="16" height="16" rx="3"/><rect class="cell" x="0" y="40" width="16" height="16" rx="3"/><rect class="cell" x="20" y="40" width="16" height="16" rx="3"/><rect class="cell" x="40" y="40" width="16" height="16" rx="3"/><rect class="cell" x="60" y="40" width="16" height="16" rx="3"/><rect class="cell" x="80" y="40" width="16" height="16" rx="3"/><rect class="cell" x="100" y="40" width="16" height="16" rx="3"/><rect class="cell" x="120" y="40" width="16" height="16" rx="3"/><rect class="cell" x="140" y="40" width="16" height="16" rx="3"/><rect class="cell" x="0" y="60" width="16" height="16" rx="3"/><rect class="cell" x="20" y="60" width="16" height="16" rx="3"/><rect class="cell" x="40" y="60" width="16" height="16" rx="3"/><rect class="cell" x="60" y="60" width="16" height="16" rx="3"/><rect class="cell" x="80" y="60" width="16" height="16" rx="3"/><rect class="cell" x="100" y="60" width="16" height="16" rx="3"/><rect class="cell" x="120" y="60" width="16" height="16" rx="3"/><rect class="cell" x="140" y="60" width="16" height="16" rx="3"/><rect class="cell" x="0" y="80" width="16" height="16" rx="3"/><rect class="cell" x="20" y="80" width="16" height="16" rx="3"/><rect class="cell" x="40" y="80" width="16" height="16" rx="3"/><rect class="cell" x="60" y="80" width="16" height="16" rx="3"/><rect class="cell" x="80" y="80" width="16" height="16" rx="3"/><rect class="cell" x="100" y="80" width="16" height="16" rx="3"/><rect class="cell" x="120" y="80" width="16" height="16" rx="3"/><rect class="cell" x="140" y="80" width="16" height="16" rx="3"/></svg>
-          <h3>The rate: one fortieth</h3><p>2.5% of your whole eligible wealth after debts, not just the part above the threshold.</p>
+          <h3>The rate: 2.5%, one fortieth</h3><p>2.5% of your whole eligible wealth after debts, not just the part above the nisab.</p>
         </div>
         <div class="basic">
           <svg class="basic-art" viewBox="0 0 156 96" aria-hidden="true" focusable="false"><circle class="disc-gold" cx="22" cy="82" r="14"/><text class="disc-label" x="22" y="60" text-anchor="middle">85 g</text><circle class="disc-silver" cx="104" cy="59" r="37"/><text class="disc-on" x="104" y="63" text-anchor="middle">595 g</text></svg>
-          <h3>The nisab: a threshold in metal</h3><p>The value of 85 g of gold or 595 g of silver. Below it, no zakat is due. Scholars differ on which metal to use.</p><p class="basic-today" id="homeNisab"></p>
+          <h3>The nisab: the minimum you must own</h3><p>The value of 85 g of gold or 595 g of silver. Below it, no zakat is due. Scholars differ on which metal to use.</p><p class="basic-today" id="homeNisab"></p>
         </div>
         <div class="basic">
           <svg class="basic-art" viewBox="0 0 156 96" aria-hidden="true" focusable="false"><defs><mask id="crescentCut"><rect width="22" height="22" fill="#fff"/><circle cx="15" cy="8.5" r="9" fill="#000"/></mask><symbol id="crescent" viewBox="0 0 22 22" width="22" height="22"><circle class="moon" cx="11" cy="11" r="11" fill="currentColor" mask="url(#crescentCut)"/></symbol></defs><use href="#crescent" x="0" y="18"/><use href="#crescent" x="27" y="18"/><use href="#crescent" x="54" y="18"/><use href="#crescent" x="81" y="18"/><use href="#crescent" x="108" y="18"/><use href="#crescent" x="135" y="18"/><use href="#crescent" x="0" y="48"/><use href="#crescent" x="27" y="48"/><use href="#crescent" x="54" y="48"/><use href="#crescent" x="81" y="48"/><use href="#crescent" x="108" y="48"/><use href="#crescent" x="135" y="48"/></svg>
-          <h3>The hawl: a lunar year</h3><p>Your wealth has to be held for twelve lunar months (354 days) before zakat on it is due.</p>
+          <h3>The hawl: a full lunar year</h3><p>Your wealth has to be held for twelve lunar months (354 days) before zakat on it is due.</p>
         </div>
       </div>
-      <div class="price-preview" aria-live="polite"><div><strong>Today’s nisab prices</strong><span>Latest available rates · CAD per gram</span></div><p id="homeMetalPrices">Loading prices…</p></div>
+      <div class="price-preview" aria-live="polite"><div><strong>Gold and silver prices</strong><span>Latest available rates · CAD per gram</span></div><p id="homeMetalPrices">Loading prices…</p></div>
       <p class="band-link"><a href="zakat-guide.html">Read the full zakat guide <span aria-hidden="true">→</span></a></p>
     </section>
 
-    <section class="home-band privacy-band" aria-labelledby="privacyTitle">
-      <div class="privacy-card">
-        <span class="privacy-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="10" y="21" width="28" height="20" rx="5"/><path d="M16 21v-6a8 8 0 0 1 16 0v6"/><circle cx="24" cy="30" r="2.5"/><path d="M24 32.5V36"/></svg></span>
-        <div>
-          <h2 id="privacyTitle">Your token stays with you.</h2>
-          <p>Mizan does the maths in your browser. It sends your token only to Lunch Money or YNAB, makes read-only requests, and never saves your token or balances. Only your method choices are remembered on this device.</p>
-          <a href="privacy.html">Read the privacy policy <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-
     <section class="final-cta" aria-labelledby="finalTitle">
-      <h2 id="finalTitle">Your balances are already there.</h2>
-      <p>Connect Lunch Money or YNAB, or look around with fictional balances first.</p>
-      <div class="hero-actions"><a class="button primary cta-connect" href="#connect">Connect your account <span aria-hidden="true">→</span></a><button type="button" class="sample-start">Try the sample</button></div>
+      <h2 id="finalTitle">Ready to work out your zakat?</h2>
+      <p>It’s free, it runs in your browser, and your token and balances are never saved. Connect Lunch Money or YNAB, or look around with sample numbers first.</p>
+      <div class="hero-actions"><a class="button primary cta-connect" href="#connect">Connect Lunch Money or YNAB <span aria-hidden="true">→</span></a><button type="button" class="sample-start">Try sample numbers</button></div>
       <p id="finalStatus" class="hero-status" role="status"></p>
     </section>
     <p class="independent-note">An independent community project by Mazin Kanuga. Not made or supported by Lunch Money or YNAB.</p>
@@ -193,7 +192,7 @@
   <section id="connectView" class="connect-view" aria-labelledby="connectHead" hidden>
     <div class="connected"><a href="./" id="backHome">← Back to home</a></div>
     <nav class="progress" aria-label="Calculation steps"><span class="step-now" aria-current="step">01 Connect your account</span><span class="divider" aria-hidden="true">/</span><span>02 Review balances</span><span class="divider" aria-hidden="true">/</span><span>03 Your estimate</span></nav>
-    <div class="view-head"><h1 id="connectHead" tabindex="-1">Connect your budget.</h1><p class="note">Use a Lunch Money access token, or sign in with YNAB. Either way, Mizan can only read.</p></div>
+    <div class="view-head"><h1 id="connectHead" tabindex="-1">Connect your account.</h1><p class="note">Use a Lunch Money access token (a private code you create in its settings) or YNAB’s own sign-in. Either way, Mizan only reads and never changes anything.</p><p class="note connect-try">Not ready to connect? <button type="button" class="sample-start link-button">Try sample numbers</button> first. They are made up.</p><p id="connectSampleStatus" class="hero-status" role="status"></p></div>
     <div class="connect-layout">
       <div class="connect-panel">
         <fieldset class="service-choice"><legend>Where are your balances?</legend>
@@ -203,121 +202,133 @@
           </div>
         </fieldset>
         <ol class="connect-steps" data-service="lunchmoney">
-          <li><span>1</span><div><strong>Make a token in Lunch Money</strong><p>Go to Settings → Developers and request a new access token. Name it “Mizan” so it’s easy to revoke later. <a href="token-guide.html" target="_blank" rel="noopener">Step-by-step guide</a></p></div></li>
+          <li><span>1</span><div><strong>Create an access token in Lunch Money</strong><p>In Lunch Money, go to Settings → Developers and request a new access token. Name it “Mizan”. <a href="token-guide.html" target="_blank" rel="noopener">Step-by-step guide<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></p></div></li>
           <li><span>2</span><div><strong>Paste it here</strong>
-            <div class="connect-form"><label for="token">Lunch Money access token</label><input type="password" id="token" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-1p-ignore data-lpignore="true" data-bwignore placeholder="Paste your access token" aria-describedby="tokenNotice"><button type="button" class="primary" id="connectBtn">Connect my accounts</button><p id="connectStatus" role="status"></p></div>
+            <div class="connect-form"><label for="token">Lunch Money access token</label><input type="password" id="token" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-1p-ignore data-lpignore="true" data-bwignore placeholder="Paste your access token" aria-describedby="connectStatus tokenNotice"><button type="button" class="primary" id="connectBtn">Connect my accounts</button><p id="connectStatus" role="status"></p><p class="connect-next">Next you’ll see your accounts and choose which ones to count.</p></div>
           </div></li>
-          <li><span>3</span><div><strong>Revoke it when you’re done</strong><p>Lunch Money tokens can change data. Mizan never does, but deleting the token afterwards keeps things tidy.</p></div></li>
+          <li><span>3</span><div><strong>Switch the token off when you’re done</strong><p>A Lunch Money token can change data as well as read it. Mizan only ever reads, but once you have your estimate, go back to Settings → Developers and choose <b>Revoke</b> for the “Mizan” token.</p></div></li>
         </ol>
         <div class="ynab-connect" data-service="ynab" hidden>
-          <p class="ynab-lead">Sign in on YNAB’s own site and allow read-only access. There’s no token to make or revoke.</p>
+          <p class="ynab-lead">Sign in on YNAB’s own site and allow read-only access. There’s nothing to make or switch off afterwards.</p>
           <button type="button" class="primary" id="ynabConnectBtn">Connect with YNAB <span aria-hidden="true">→</span></button>
           <p id="ynabStatus" class="hero-status" role="status"></p>
+          <p class="connect-next">You’ll approve on YNAB’s site, then come straight back here to review your accounts.</p>
           <ul class="ynab-facts">
             <li><strong>Read-only.</strong> YNAB refuses any change, so Mizan can only look.</li>
             <li><strong>Short-lived.</strong> YNAB ends the access by itself after 2 hours.</li>
-            <li><strong>One plan.</strong> If you have several, Mizan uses the one you changed most recently.</li>
+            <li><strong>One plan.</strong> If you have several YNAB plans, Mizan reads the one you changed most recently.</li>
           </ul>
         </div>
       </div>
       <aside class="connect-aside" aria-label="About your data">
-        <h2>What happens to your token</h2>
-        <ul data-service="lunchmoney"><li>It goes only to the Lunch Money API.</li><li>Mizan only makes read requests.</li><li id="tokenNotice">It’s cleared from the page once your balances arrive, and never saved.</li></ul>
-        <ul data-service="ynab" hidden><li>You sign in on YNAB’s site. Mizan never sees your password.</li><li>The access token is removed from the address bar at once and kept only in memory.</li><li>Your balances and transactions are never saved or shared.</li></ul>
-        <p class="aside-links"><a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> · <a href="how-it-works.html" target="_blank" rel="noopener">How it works</a></p>
-        <div class="aside-sample"><p>Just looking?</p><button type="button" class="sample-start">Use fictional sample balances</button><p id="connectSampleStatus" class="hero-status" role="status"></p></div>
+        <h2>What happens to your data</h2>
+        <ul data-service="lunchmoney"><li>Your token goes straight from your browser to Lunch Money, and nowhere else. The person who made Mizan never sees it.</li><li>Mizan only looks up your accounts and balances. It never adds, edits or deletes anything.</li><li id="tokenNotice">The box is emptied as soon as you choose Connect my accounts, and the token is never saved.</li></ul>
+        <ul data-service="ynab" hidden><li>You sign in on YNAB’s site. Mizan never sees your password.</li><li>YNAB gives Mizan a temporary access token. It’s removed from the address bar at once, kept only in memory, and never saved.</li><li>Your balances and transactions are never saved or shared.</li></ul>
+        <p class="aside-links"><a href="privacy.html" target="_blank" rel="noopener">Privacy policy<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a> · <a href="how-it-works.html" target="_blank" rel="noopener">How it works<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></p>
       </aside>
     </div>
   </section>
   <div id="app" class="app" hidden>
     <div class="connected"><span id="sub"></span><button type="button" id="restart">Start again</button></div>
-    <nav class="progress" aria-label="Calculation steps"><span>✓ 01 Connected</span><span class="divider" aria-hidden="true">/</span><button type="button" id="reviewStep" aria-controls="reviewView" aria-current="step">02 Review balances</button><span class="divider" aria-hidden="true">/</span><button type="button" id="estimateStep" aria-controls="estimateView">03 Your estimate</button></nav>
-    <div class="warn" id="dataWarn" hidden></div>
+    <nav class="progress" aria-label="Calculation steps"><span id="connectedStep">✓ 01 Connected</span><span class="divider" aria-hidden="true">/</span><button type="button" id="reviewStep" aria-controls="reviewView" aria-current="step">02 Review balances</button><span class="divider" aria-hidden="true">/</span><button type="button" id="estimateStep" aria-controls="estimateView">03 Your estimate</button></nav>
+    <div class="warn" id="dataWarn" role="note" hidden></div>
     <section id="reviewView" class="flow-view" aria-labelledby="reviewHead">
-      <div class="view-head"><h1 id="reviewHead" tabindex="-1">Check your balances.</h1><p class="note">These are your <span class="provider-name">Lunch Money</span> balances. Uncheck anything that doesn't belong in your zakat, and update any balance that's out of date.</p></div>
+      <div class="view-head"><h1 id="reviewHead" tabindex="-1" aria-describedby="dataWarn">Check your balances.</h1><p class="note" id="reviewIntro">These are the accounts Mizan found in <span class="provider-name">Lunch Money</span>. Most start ticked. Untick any that shouldn't count towards your zakat, such as an account you hold for someone else, tick any that should, and correct any balance that looks wrong.</p></div>
       <div class="review-layout">
+        <aside class="review-guide" aria-label="Before you continue"><h2>A quick check</h2><ol><li>Untick accounts that aren't yours to pay zakat on.</li><li>Fix any balance marked &quot;May be out of date&quot;.</li><li>Add anything not listed, such as cash at home or gold.</li></ol><p class="inline-note">Not sure what counts? <a href="zakat-guide.html" target="_blank" rel="noopener">Read the zakat guide<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></p></aside>
         <div class="review-main">
           <div class="review-warnings"><div class="warn" id="staleWarn" hidden></div></div>
-          <section class="section" id="accounts"><p class="source-summary" id="accountSourceSummary"></p><h2>Your accounts <span class="note">· <span class="cur"></span></span></h2>
-            <div class="scroll"><table class="list"><thead><tr><th>Include</th><th>Account</th><th class="num">Balance</th></tr></thead><tbody id="accountRows"></tbody></table></div>
+          <section class="section" id="accounts"><h2>Your accounts</h2><p class="source-summary" id="accountSourceSummary"></p>
+            <div class="scroll"><table class="list"><thead><tr><th>Include</th><th>Account</th><th class="num">Balance (<span class="cur"></span>)</th></tr></thead><tbody id="accountRows"></tbody></table></div>
           </section>
-          <details class="disclosure" id="extraAssets"><summary><span>Add other assets<span class="note">Cash, gold, silver, crypto or money owed to you</span></span></summary>
-            <p class="note">Add anything that isn't already in the accounts above.</p>
+          <details class="disclosure" id="extraAssets"><summary><span>Add other assets (optional)<span class="note">Cash, gold, silver, crypto or money owed to you</span></span></summary>
+            <p class="note">Leave blank anything you don't have. Only add what isn't already in the accounts above. Amounts are in <span class="cur"></span>; gold and silver are in grams.</p>
             <div class="fields">
-              <div class="field"><label for="cashHome">Cash at home</label><input type="number" id="cashHome" step="0.01" min="0"></div>
-              <div class="field"><label for="crypto">Other crypto, market value</label><input type="number" id="crypto" step="0.01" min="0"></div>
-              <div class="field"><label for="owed">Money owed to you that you expect to receive</label><input type="number" id="owed" step="0.01" min="0"></div>
-              <div class="field"><label for="otherAssets">Other zakat assets, such as business stock</label><input type="number" id="otherAssets" step="0.01" min="0"></div>
-              <div class="field"><label for="goldGrams">Gold that you own (grams)</label><input type="number" id="goldGrams" step="0.01" min="0"></div>
-              <div class="field"><label for="goldKarat">Gold purity</label><select id="goldKarat" data-save><option value="24">24 karat</option><option value="22">22 karat</option><option value="21">21 karat</option><option value="18" selected>18 karat</option><option value="14">14 karat</option><option value="10">10 karat</option></select></div>
-              <div class="field"><label for="silverGrams">Silver that you own (grams)</label><input type="number" id="silverGrams" step="0.01" min="0"></div>
-              <div class="field"><label for="silverPurity">Silver purity</label><select id="silverPurity" data-save><option value="0.999">Fine (999)</option><option value="0.925" selected>Sterling (925)</option><option value="0.8">800</option></select></div>
+              <fieldset class="field-group"><legend>Money</legend>
+                <div class="field"><label for="cashHome">Cash at home</label><input type="number" id="cashHome" step="0.01" min="0" placeholder="0.00"></div>
+                <div class="field"><label for="crypto">Crypto not listed above, at today's value</label><input type="number" id="crypto" step="0.01" min="0" placeholder="0.00"></div>
+                <div class="field"><label for="owed">Money people owe you that you expect to get back</label><input type="number" id="owed" step="0.01" min="0" placeholder="0.00"></div>
+                <div class="field"><label for="otherAssets">Anything else that counts, such as goods your business sells</label><input type="number" id="otherAssets" step="0.01" min="0" placeholder="0.00"></div>
+              </fieldset>
+              <fieldset class="field-group"><legend>Gold and silver</legend>
+                <div class="field"><label for="goldGrams">Gold that you own (grams)</label><input type="number" id="goldGrams" step="0.01" min="0" placeholder="0"></div>
+                <div class="field"><label for="goldKarat">Gold purity</label><select id="goldKarat" data-save><option value="24">24 karat</option><option value="22">22 karat</option><option value="21">21 karat</option><option value="18" selected>18 karat</option><option value="14">14 karat</option><option value="10">10 karat</option></select></div>
+                <p class="note">Look for a stamp such as 18K or 750.</p>
+                <div class="field"><label for="silverGrams">Silver that you own (grams)</label><input type="number" id="silverGrams" step="0.01" min="0" placeholder="0"></div>
+                <div class="field"><label for="silverPurity">Silver purity</label><select id="silverPurity" data-save><option value="0.999">Fine (999)</option><option value="0.925" selected>Sterling (925)</option><option value="0.8">800</option></select></div>
+              </fieldset>
             </div><p class="inline-note" id="metalValue"></p>
           </details>
-          <details class="disclosure" id="debtSettings"><summary><span>Review debts<span class="note" id="debtSummary">Credit cards and other eligible deductions</span></span></summary>
-            <p class="note">Credit cards are included by default. Select only the debts your method allows, and edit the deductible amount. Avoid counting the same debt twice.</p>
-            <div class="scroll"><table class="list"><thead><tr><th>Include</th><th>Debt</th><th class="num">Amount</th></tr></thead><tbody id="debtRows"></tbody></table></div>
+          <details class="disclosure" id="debtSettings"><summary><span>Debts to subtract<span class="note" id="debtSummary">Credit cards and other debts</span></span></summary>
+            <p class="note">Ticked debts are subtracted from your total. Credit cards start ticked; loans start unticked. Tick or untick to match the method you follow, or change the amount. Don't count the same debt twice.</p>
+            <div class="scroll"><table class="list"><thead><tr><th>Subtract</th><th>Debt</th><th class="num">Amount (<span class="cur"></span>)</th></tr></thead><tbody id="debtRows"></tbody></table></div>
             <p class="note" id="noDebts" hidden>No credit card or loan balances were found.</p>
-            <div class="field"><label for="otherDebts">Other debts due now</label><input type="number" id="otherDebts" step="0.01" min="0"></div>
-            <p class="inline-note">Mortgage deductions are on the next screen.</p>
+            <div class="field"><label for="otherDebts">Other debts due now</label><input type="number" id="otherDebts" step="0.01" min="0" placeholder="0.00"></div>
+            <p class="inline-note">Have a mortgage? You choose how to treat it on the next step, Your estimate.</p>
           </details>
         </div>
-        <aside class="review-aside" aria-label="Before you continue"><h2>A quick check</h2><ol><li>Remove accounts that belong to someone else.</li><li>Check any balance marked &quot;not current&quot;.</li><li>Add missing assets and review debts.</li></ol><button type="button" id="continueEstimate" class="primary">See my estimate</button><p class="inline-note">You can come back and change any amount.</p></aside>
+        <div class="review-aside">
+          <div class="review-continue">
+            <dl class="review-total"><div><dt>Counted so far</dt><dd id="reviewAssets"></dd></div><div><dt>Debts subtracted</dt><dd id="reviewDebts"></dd></div><div class="sum"><dt>Total so far</dt><dd id="reviewNet"></dd></div></dl>
+            <p class="inline-note" id="reviewMortgageNote" hidden>Before the mortgage amount you chose on Your estimate.</p>
+            <button type="button" id="continueEstimate" class="primary">See my estimate</button><p class="inline-note review-back-note">You can come back and change any amount.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="estimateView" class="flow-view" aria-labelledby="estimateHead" hidden>
-      <div class="view-head"><h1 id="estimateHead" tabindex="-1">Your zakat estimate.</h1><p class="note">Check the breakdown to see where each amount came from. You can change your method below or go back to edit a balance.</p></div>
+      <div class="view-head"><h1 id="estimateHead" tabindex="-1" aria-describedby="dataWarn">Your zakat estimate.</h1><p class="note">Scholars differ on the nisab metal and on mortgages, so set your method below. Open the breakdown to see where each amount came from, or go back and edit a balance.</p></div>
       <div class="estimate-layout">
-        <aside class="result" aria-labelledby="resultHead"><div class="result-primary"><h2 class="due-label" id="resultHead" tabindex="-1">Estimated zakat</h2><div class="due" id="due" aria-live="polite" aria-atomic="true"></div><p class="estimate-summary" id="estimateSummary"></p></div><div class="result-context"><p id="resultMethod" class="result-method"></p><p class="due-hint">Assumes your hawl is complete. Confirm your method with your scholar.</p><details class="result-breakdown" id="resultBreakdown"><summary>How this is calculated</summary><div class="lines" id="lines"></div></details></div></aside>
+        <aside class="result" aria-labelledby="resultHead"><div class="result-primary"><h2 class="due-label" id="resultHead" tabindex="-1">Estimated zakat</h2><div class="due" id="due" aria-live="polite" aria-atomic="true"></div><p class="estimate-summary" id="estimateSummary"></p><p class="due-hint">This is an estimate. It assumes your hawl is complete (you have held this wealth for a full lunar year), which Mizan can’t check. <a href="zakat-guide.html#hawl" target="_blank" rel="noopener">What is the hawl?<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></p></div><div class="result-context"><p id="resultMethod" class="result-method"></p><details class="result-breakdown" id="resultBreakdown"><summary>How this is calculated</summary><div class="lines" id="lines"></div></details><p class="result-next" id="resultNext"><button type="button" class="link-button" id="toClose">Copy or print this estimate <span aria-hidden="true">↓</span></button></p></div></aside>
         <div class="estimate-main">
           <section class="calculation-card" id="calculation" aria-labelledby="calculationTitle">
             <div class="chart-heading"><h2 id="calculationTitle">How the total adds up.</h2><span class="chart-unit cur"></span></div>
-            <p class="note">Your selected accounts, plus anything you add, less eligible debts.</p>
+            <p class="note">Your selected accounts, plus anything you added on Review balances, less the debts you chose to subtract.</p>
             <div id="calculationChart" class="waterfall-chart"></div>
             <dl id="calculationSteps" class="calculation-steps"></dl>
             <details class="ledger-detail"><summary>See every amount in this total</summary><div class="scroll" tabindex="0" role="region" aria-label="Calculation line items"><table><thead><tr><th>Item</th><th>Source</th><th class="num">Amount</th></tr></thead><tbody id="calculationItems"></tbody><tfoot><tr><th colspan="2" scope="row">Total after debts</th><td class="num" id="ledgerTotal"></td></tr></tfoot></table></div></details>
           </section>
           <details class="disclosure" id="methodSettings" open><summary><span>Your method &amp; prices<span class="note" id="methodSummary"></span></span></summary><div class="method-content">
-          <div class="estimate-choice"><fieldset><legend>Your nisab</legend><p class="note">The minimum wealth threshold. Choose the metal your method uses.</p><div class="choice-options"><label class="opt"><input type="radio" name="nisab" value="silver" checked>Silver</label><label class="opt"><input type="radio" name="nisab" value="gold">Gold</label></div></fieldset><p class="inline-note"><a href="zakat-guide.html#which-nisab" target="_blank" rel="noopener">Help choosing a nisab</a></p></div>
+          <div class="estimate-choice"><fieldset><legend>Choose your nisab</legend><p class="note">The nisab: the minimum you must own before zakat is due. It is the value of a set weight of silver or of gold. Choose the metal your method uses.</p><div class="choice-options"><label class="opt"><input type="radio" name="nisab" value="silver" checked><span>Silver <span class="opt-note" id="silverNisabNote"></span></span></label><label class="opt"><input type="radio" name="nisab" value="gold"><span>Gold <span class="opt-note" id="goldNisabNote"></span></span></label></div></fieldset><p class="inline-note"><a href="zakat-guide.html#which-nisab" target="_blank" rel="noopener">Help choosing between silver and gold<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></p></div>
           <details class="disclosure" id="mortgageSettings"><summary><span>Mortgage deduction<span class="note" id="mortgageChoice">Not deducted</span></span></summary>
             <p class="note">Scholars differ about mortgage deductions. Use the approach you follow.</p><fieldset><legend class="sr">Mortgage method</legend><div class="stacked-options"><label class="opt"><input type="radio" name="mortgage" value="none" checked>Do not deduct</label><label class="opt"><input type="radio" name="mortgage" value="next">Deduct the next payment</label><label class="opt"><input type="radio" name="mortgage" value="year">Deduct the next 12 months</label></div></fieldset>
-            <div class="mortgage-fields fields" id="mortgageFields" hidden><div class="field"><label for="mortgagePayment">Deductible amount per payment</label><input type="number" id="mortgagePayment" step="0.01" min="0"></div><div class="field"><label for="mortgagePerYear">Payments a year</label><input type="number" id="mortgagePerYear" step="1" min="0" value="12"></div><p class="note">Enter only the part your method allows. For example, NZF UK excludes interest. For 12 months, use the average deductible amount per payment.</p></div><p class="inline-note" id="mortgageInfo"></p>
+            <div class="mortgage-fields fields" id="mortgageFields" hidden><div class="field"><label for="mortgagePayment">Deductible amount per payment</label><input type="number" id="mortgagePayment" step="0.01" min="0"></div><div class="field"><label for="mortgagePerYear">Payments a year</label><input type="number" id="mortgagePerYear" step="1" min="0" value="12"></div><p class="note">Enter only the part your method allows. For example, the National Zakat Foundation (NZF UK) excludes interest. For 12 months, use the average deductible amount per payment.</p></div><p class="inline-note" id="mortgageInfo"></p>
           </details>
-          <details class="disclosure" id="priceSettings"><summary><span>Prices &amp; nisab weights<span class="note">Review prices or change the standard weights</span></span></summary>
+          <details class="disclosure" id="priceSettings"><summary><span>Prices &amp; nisab weights<span class="note">Today’s prices and the standard nisab weights. You can usually leave these as they are.</span></span></summary>
             <div class="warn" id="priceWarn" hidden></div><p class="note">Prices in <span class="cur"></span> per gram of pure metal.</p>
-            <div class="fields"><div class="field"><label for="goldPrice">Gold price per gram</label><input type="number" id="goldPrice" step="0.001" min="0"></div><div class="field"><label for="silverPrice">Silver price per gram</label><input type="number" id="silverPrice" step="0.0001" min="0"></div><div class="field"><label for="silverGramsNisab">Silver nisab (grams)</label><input type="number" id="silverGramsNisab" value="595" step="0.01" min="0" data-save></div><div class="field"><label for="goldGramsNisab">Gold nisab (grams)</label><input type="number" id="goldGramsNisab" value="85" step="0.01" min="0" data-save></div></div><p class="note price-info" id="priceInfo"></p>
+            <div class="fields"><div class="field"><label for="goldPrice">Gold price per gram</label><input type="number" id="goldPrice" step="0.001" min="0"></div><div class="field"><label for="silverPrice">Silver price per gram</label><input type="number" id="silverPrice" step="0.0001" min="0"></div><div class="field"><label for="goldGramsNisab">Gold nisab (grams)</label><input type="number" id="goldGramsNisab" value="85" step="0.01" min="0" data-save></div><div class="field"><label for="silverGramsNisab">Silver nisab (grams)</label><input type="number" id="silverGramsNisab" value="595" step="0.01" min="0" data-save></div></div><p class="note price-info" id="priceInfo"></p>
           </details>
-          <div class="reset-row"><button type="button" class="link-button small" id="reset">Reset my method choices</button><p class="note">Only your method preferences are saved. Your balances and token are not.</p></div>
+          <div class="reset-row"><button type="button" class="link-button small" id="reset">Reset my method choices</button><p class="note">Only your method preferences are saved. Your balances and token are not.</p><p id="resetStatus" class="note" role="status"></p></div>
           </div></details>
-          <details class="disclosure" id="comparison"><summary><span>How other methods compare<span class="note">See the amounts for each method</span></span></summary><div id="methodChart" class="method-chart" aria-label="Select a calculation method"></div><details class="ledger-detail"><summary>View the comparison table</summary><div class="scroll" tabindex="0" role="region" aria-label="Method comparison"><table><thead><tr><th>Nisab</th><th>Mortgage</th><th class="num">Threshold</th><th class="num">Net wealth</th><th class="num">Zakat</th></tr></thead><tbody id="methodRows"></tbody></table></div></details></details>
-          <div class="view-actions"><button type="button" id="backToReview" class="link-button">Edit my balances</button></div>
+          <details class="disclosure" id="comparison"><summary><span>How other methods compare<span class="note">See what the estimate would be with a different nisab or mortgage choice</span></span></summary><p class="note">Choose a row to use that method. The one in use is marked.</p><div id="methodChart" class="method-chart" role="group" aria-label="Compare methods. Choosing one changes your estimate"></div><details class="ledger-detail"><summary>View the comparison table</summary><p class="note scroll-hint">Swipe sideways for the total and the zakat amount.</p><div class="scroll" tabindex="0" role="region" aria-label="Method comparison"><table><thead><tr><th>Metal</th><th>Mortgage</th><th class="num">Nisab</th><th class="num">Total after debts</th><th class="num">Zakat</th></tr></thead><tbody id="methodRows"></tbody></table></div></details></details>
         </div>
 
       </div>
       <section class="history-panel chart-card" id="history" aria-labelledby="historyTitle">
         <div class="chart-heading"><h2 id="historyTitle">Your balances over the past year.</h2><span class="chart-unit"><span class="provider-name">Lunch Money</span> history</span></div>
-        <p class="note">Selected <span class="provider-name">Lunch Money</span> accounts and debts only. Added assets, other debts and mortgage deductions are excluded. This history supports your hawl review; it cannot confirm a completed hawl.</p>
+        <p class="note">Your month-end totals against today’s nisab, to help you review your hawl. Only the <span class="provider-name">Lunch Money</span> accounts and debts you selected are included, not amounts you added by hand or mortgage deductions.</p>
         <div class="history-readout"><div><span id="historyDate" class="history-date"></span><strong id="historyAmount"></strong></div><span id="historyState" class="history-state"></span></div>
         <div id="historyChart" class="history-chart"></div>
         <div id="historyTicks" class="history-ticks" aria-hidden="true"></div>
         <label class="sr" for="historyCursor">Explore a month in your balance history</label><input type="range" id="historyCursor" min="0" max="12" step="1" value="12" aria-describedby="historyCursorHelp">
-        <p id="historyCursorHelp" class="chart-help">Drag to explore a month, or use the arrow keys. Only adjacent complete totals are connected.</p>
-        <div class="chart-legend"><span><i class="complete-dot"></i>Complete total</span><span><i class="partial-dot"></i>Partial subtotal</span><span id="thresholdLegend"></span></div>
-        <details class="ledger-detail"><summary>View monthly amounts &amp; coverage</summary><p id="hawlSummary"></p><div class="scroll" tabindex="0" role="region" aria-label="Monthly balance history"><table><thead><tr><th>Month</th><th class="num">Known total</th><th class="barcell"><span class="sr">Compared with the nisab</span></th></tr></thead><tbody id="hawlRows"></tbody></table></div><p class="note">Partial rows are not classified against the nisab. <a href="zakat-guide.html#hawl" target="_blank" rel="noopener">Read about the hawl</a></p></details>
+        <p id="historyCursorHelp" class="chart-help">Drag, or use the arrow keys, to see each month. The line only joins months where every selected balance is known.</p>
+        <div class="chart-legend"><span><i class="complete-dot"></i>All balances known</span><span><i class="partial-dot"></i>Some balances missing</span><span id="thresholdLegend"></span></div>
+        <details class="ledger-detail"><summary>View monthly amounts &amp; coverage</summary><div id="hawlSummary"></div><div class="scroll" tabindex="0" role="region" aria-label="Monthly balance history"><table><thead><tr><th>Month</th><th class="num">Known total</th><th class="barcell"><span class="sr">Compared with the nisab</span></th></tr></thead><tbody id="hawlRows"></tbody></table></div><p class="note">Months with missing balances aren’t compared with the nisab, because the real total is unknown. <a href="zakat-guide.html#hawl" target="_blank" rel="noopener">Read about the hawl<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></p></details>
       </section>
       <section class="estimate-close" aria-labelledby="closeTitle">
-        <h2 id="closeTitle">That’s your estimate.</h2>
-        <p>May Allah accept it from you. Before you pay, confirm that your hawl is complete and that the method fits the one you follow.</p>
-        <div class="close-actions"><button type="button" id="copySummary" class="primary">Copy summary</button><button type="button" id="printSummary">Print</button><a href="zakat-guide.html#who" target="_blank" rel="noopener">Who receives zakat <span aria-hidden="true">→</span></a></div>
+        <h2 id="closeTitle" tabindex="-1">That’s your estimate.</h2>
+        <p id="closeNote">May Allah accept it from you.</p>
+        <div class="close-actions"><button type="button" id="copySummary" class="primary">Copy summary</button><button type="button" id="printSummary">Print</button><button type="button" id="backToReview" class="link-button">Edit my balances</button></div>
         <p id="copyStatus" class="note" role="status"></p>
+        <p id="closeRecord" class="note">Mizan doesn’t keep your balances. Copy or print this summary if you want a record.</p>
       </section>
     </section>
   </div>
 </main>
 <footer class="foot"><div class="wrap foot-inner">
   <div><p>Made by Mazin Kanuga.</p><p>A community project for <a href="https://lunchmoney.app" rel="noreferrer">Lunch Money</a> and <a href="https://www.ynab.com" rel="noreferrer">YNAB</a> users.</p></div>
-  <nav aria-label="Footer"><a href="zakat-guide.html">Zakat guide</a><a href="how-it-works.html">How it works</a><a href="privacy.html">Privacy policy</a><a href="https://github.com/TechnoDudeX/zakat" rel="noreferrer">Source code</a><a href="https://gold-api.com" rel="noreferrer">Metal prices</a></nav>
+  <nav aria-label="Footer"><a href="zakat-guide.html">Zakat guide</a><a href="how-it-works.html">How it works</a><a href="token-guide.html">Token guide</a><a href="privacy.html">Privacy policy</a><a href="https://github.com/TechnoDudeX/zakat" rel="noreferrer">Source code</a><a href="https://gold-api.com" rel="noreferrer">Metal prices</a></nav>
 </div></footer>
 <script>(function () {
   "use strict";
@@ -368,14 +379,14 @@
       headers: { "Authorization": "Bearer " + token, "Accept": "application/json" }
     }).then(function (r) {
       if (r.status === 401 || r.status === 403) {
-        throw new Error(service === "ynab" ? "YNAB did not accept the sign-in. It may have expired: choose Connect with YNAB again."
-          : "The token does not work. Copy all of it again, or make a new token.");
+        throw new Error(service === "ynab" ? "YNAB didn’t accept the sign-in. It may have expired. Choose Connect with YNAB to sign in again."
+          : "Lunch Money didn’t accept that token. Mizan has cleared the box, so paste the whole token again. If you can no longer see it in Lunch Money, make a new one.");
       }
-      if (r.status === 429) throw new Error(s.name + " received too many requests. Wait a few minutes, then try again.");
-      if (!r.ok) throw new Error(s.name + " sent error " + r.status + " for " + path.split("?")[0] + ".");
+      if (r.status === 429) throw new Error(s.name + " is getting too many requests. Wait a few minutes, then try again.");
+      if (!r.ok) throw new Error(s.name + " is having trouble right now (error " + r.status + "). Nothing was changed. Try again in a few minutes.");
       return r.json();
     }, function () {
-      throw new Error("The page cannot connect to " + s.name + ". Check your internet connection.");
+      throw new Error("Mizan couldn’t reach " + s.name + ". Check your internet connection, or pause any ad or tracker blocker for this page, then try again.");
     });
   }
   function lmGet(token, path) { return apiGet("lunchmoney", token, path); }
@@ -405,13 +416,14 @@
     var format = function (value, digits) {
       return new Intl.NumberFormat(undefined, { style: "currency", currency: "CAD", minimumFractionDigits: 2, maximumFractionDigits: digits }).format(value);
     };
+    var stamp = { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" };
     var quoteTime = function (value) {
       var date = value ? new Date(value) : null;
-      return date && !isNaN(date.getTime()) ? "updated " + date.toLocaleString() : "quote time unavailable";
+      return date && !isNaN(date.getTime()) ? "updated " + date.toLocaleString(undefined, stamp) : "quote time unavailable";
     };
     var whole = new Intl.NumberFormat(undefined, { style: "currency", currency: "CAD", maximumFractionDigits: 0 });
     $("homeNisab").textContent = "Today that is about " + whole.format(prices.gold * 85) + " in gold, or " + whole.format(prices.silver * 595) + " in silver.";
-    el.textContent = "Gold " + format(prices.gold, 3) + " (" + quoteTime(prices.goldUpdatedAt) + ") · Silver " + format(prices.silver, 4) + " (" + quoteTime(prices.silverUpdatedAt) + ") per gram · Fetched " + fetchedAt.toLocaleString() + " · gold-api.com";
+    el.textContent = "Gold " + format(prices.gold, 3) + " (" + quoteTime(prices.goldUpdatedAt) + ") · Silver " + format(prices.silver, 4) + " (" + quoteTime(prices.silverUpdatedAt) + ") · Fetched " + fetchedAt.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" }) + " · gold-api.com";
   }
 
   function loadFromLunchMoney(token) {
@@ -425,13 +437,13 @@
         lmGet(token, "/plaid_accounts"),
         lmGet(token, "/manual_accounts"),
         lmGet(token, "/crypto/manual").catch(optional("crypto_manual",
-          "The page could not read your manual crypto from Lunch Money. Try again, or add its value under Add other assets on Review balances.")),
+          "Mizan couldn’t read your manual crypto from Lunch Money. Add its value under Add other assets, or choose Start again and connect again with a new token.")),
         lmGet(token, "/crypto/synced").catch(optional("crypto_synced",
-          "The page could not read your synced crypto from Lunch Money. Try again, or add its value under Add other assets on Review balances.")),
+          "Mizan couldn’t read your synced crypto from Lunch Money. Add its value under Add other assets, or choose Start again and connect again with a new token.")),
         // end_month is last month: the current month can be in the future for the server (time zones),
         // and the hawl uses the amounts on the page for today.
         lmGet(token, "/balance_history?start_month=" + months[0] + "&end_month=" + months[months.length - 2]).catch(
-          optional("balance_history", "The page could not read your balance history, so the hawl table is not complete.")),
+          optional("balance_history", "Mizan couldn’t read your balance history, so “Your balances over the past year” will be incomplete.")),
         metalPrices(me.primary_currency || "usd")
       ]).then(function (r) {
         var data = buildData(me, r[0].plaid_accounts || [], r[1].manual_accounts || [], r[2].crypto_manual || [],
@@ -480,7 +492,7 @@
       var row = { key: o.key, name: o.name, amount: o.amount, status: o.status || "", history: h,
                   updated: (o.updated || "").slice(0, 10), note: o.note || "", include: o.include !== false };
       if (o.currency && o.currency.toLowerCase() !== currency && o.status !== "closed") {
-        row.note = ("The account is in " + o.currency.toUpperCase() + ". The amount is at the Lunch Money exchange rate. " + row.note).trim();
+        row.note = ("This account is in " + o.currency.toUpperCase() + ". The amount shown was converted by Lunch Money. " + row.note).trim();
       }
       if (o.status === "closed" && (kind === "loan" || kind === "mortgage")) return;  // a closed loan is not due now
       if (kind === "mortgage") { if (o.amount) mortgages.push({ name: o.name, balance: o.amount }); return; }
@@ -493,16 +505,16 @@
         accounts.push(row);
       } else if (kind === "other") {
         row.include = false;
-        row.note = (row.note + " Include it if it is cash, savings, trade goods or investments.").trim();
+        row.note = (row.note + " Tick this if it’s cash, savings, goods you sell, or an investment.").trim();
         accounts.push(row);
       } else {
         row.amount = Math.max(o.amount, 0);  // a card paid in full stays, for its past month-end balances
         if (kind === "card" && o.status === "deactivated") {
           row.include = false;
-          row.note = (row.note + " This card is deactivated. Include it only if you still owe this balance.").trim();
+          row.note = (row.note + " This card is deactivated. Tick it only if you still owe this balance.").trim();
         } else if (kind === "loan") {
           row.include = false;
-          row.note = (row.note + " Include only the part that is due now.").trim();
+          row.note = (row.note + " Left unticked. If part of this is due now, tick it and enter just that part.").trim();
         }
         debts.push(row);
       }
@@ -527,7 +539,7 @@
             note: closed ? CLOSED_NOTE : "", updated: a.balance_as_of || a.updated_at });
     });
     var cryptoNote = "Crypto that you keep as an investment is usually subject to zakat at its market value.";
-    var noPrice = "Lunch Money has no price for this coin. Type its value, and select the box.";
+    var noPrice = "Lunch Money has no price for this coin. To count it, tick it and enter what it’s worth today.";
     cryptoManual.forEach(function (c) {
       var value = cryptoValue(c);
       add({ key: "crypto_manual:" + c.id, type: "cryptocurrency", status: "manual", include: value !== null, keep: value === null,
@@ -622,7 +634,7 @@
     data.provider = "YNAB";
     data.accounts.forEach(function (row) {
       if (tracking[row.key] && row.status !== "closed") {
-        row.note = ("YNAB tracking account. These balances are often updated by hand, so check that it is current. " + row.note).trim();
+        row.note = ("A YNAB tracking account. These are usually updated by hand, so check the balance is up to date. " + row.note).trim();
       }
     });
     return data;
@@ -632,7 +644,7 @@
     var months = lastMonths(13), warnings = [];
     return apiGet("ynab", token, "/plans?include_accounts=true").then(function (r) {
       var plans = ((r.data && r.data.plans) || []).slice();
-      if (!plans.length) throw new Error("No plans were found in this YNAB account.");
+      if (!plans.length) throw new Error("YNAB didn’t return any plans for this account. Check that you have a plan in YNAB, then connect again.");
       // The plan changed most recently is the one in use.
       plans.sort(function (a, b) { return String(b.last_modified_on || "").localeCompare(String(a.last_modified_on || "")); });
       var budget = plans[0], id = encodeURIComponent(budget.id);
@@ -646,7 +658,7 @@
         accounts,
         apiGet("ynab", token, "/plans/" + id + "/transactions?since_date=" + months[0] + "-01").then(
           function (t) { return (t.data && t.data.transactions) || []; },
-          function () { warnings.push("The page could not read your YNAB transactions, so the hawl table is not complete."); return null; }),
+          function () { warnings.push("Mizan couldn’t read your YNAB transactions, so “Your balances over the past year” will be incomplete."); return null; }),
         metalPrices(currency)
       ]).then(function (res) {
         var data = ynabData(budget, res[0], res[1], res[2], months);
@@ -686,10 +698,11 @@
   // ---------------------------------------------------------------------------
 
   var D, money, price, accountRows, debtRows, summaryText = "";
+  var HOME_TITLE = document.title;
   var METAL = { silver: "Silver", gold: "Gold" };
   var MORTGAGE = { none: "Not deducted", next: "Next payment", year: "Next 12 months" };
 
-  function setView(view) {
+  function setView(view, fromHistory) {
     var reviewing = view === "review";
     $("reviewView").hidden = !reviewing;
     $("estimateView").hidden = reviewing;
@@ -698,6 +711,13 @@
     (reviewing ? $("reviewStep") : $("estimateStep")).setAttribute("aria-current", "step");
     (reviewing ? $("reviewHead") : $("estimateHead")).focus({ preventScroll: true });
     window.scrollTo(0, 0);
+    document.title = (reviewing ? "Check your balances" : "Your zakat estimate") + " | Mizan";
+    // One history entry per step, so Back returns to the previous step. The address does not change.
+    var h = window.history;
+    if (!fromHistory && h && h.pushState) {
+      if (h.state && h.state.view) { if (h.state.view !== view) h.pushState({ view: view }, ""); }
+      else h.replaceState({ view: view }, "");
+    }
   }
 
   function show(data) {
@@ -709,20 +729,25 @@
     document.querySelectorAll(".provider-name").forEach(function (el) { el.textContent = D.provider || "Lunch Money"; });
 
     $("sub").textContent = D.sample ? "Sample accounts · " + cur + " · Fictional balances" : D.budget + " · " + cur + " · " + fdate(D.generated);
-    $("priceInfo").textContent = D.prices.fallback ? "You can enter prices manually." : "Prices from " + D.prices.source + " · " + fdate(D.prices.date) + ". You can edit these values.";
+    $("priceInfo").textContent = D.prices.fallback ? "Enter today’s price per gram for each metal." : "Prices from " + D.prices.source + " · " + fdate(D.prices.date) + ". You can edit them.";
     $("priceWarn").hidden = !D.prices.fallback;
-    $("priceWarn").textContent = "We couldn't load gold and silver prices in " + cur + ". Enter today's prices here to complete your estimate.";
+    $("priceWarn").textContent = "Mizan couldn’t load gold and silver prices in " + cur + ". Enter today's prices here to complete your estimate.";
     $("goldPrice").value = D.prices.gold ? D.prices.gold.toFixed(3) : "";
     $("silverPrice").value = D.prices.silver ? D.prices.silver.toFixed(4) : "";
 
     accountRows = buildRows(D.accounts, "accountRows");
-    debtRows = buildRows(D.debts, "debtRows");
+    debtRows = buildRows(D.debts, "debtRows", "Subtract");
     $("noDebts").hidden = D.debts.length > 0;
     $("mortgageInfo").textContent = D.mortgages.length ? "A mortgage was found in " + (D.sample ? "the sample data" : D.provider) + ". Enter only the amount you can deduct; the full balance is not deducted automatically." : "";
     var stale = accountRows.concat(debtRows).filter(function (r) { return r.stale && r.data.include && r.data.amount; })
       .map(function (r) { return r.data.name; });
     $("staleWarn").hidden = !stale.length;
-    $("staleWarn").textContent = stale.length + (stale.length === 1 ? " balance may be" : " balances may be") + " out of date. Check the rows marked ‘not current’ against your bank before continuing.";
+    $("staleWarn").textContent = stale.length + (stale.length === 1 ? " balance may be" : " balances may be") + " out of date. Look for “May be out of date” below and type in today’s amount if it is different. You can still continue.";
+    if (D.sample) {
+      $("reviewIntro").textContent = "These are made-up balances so you can see how Mizan works. Try unticking an account or changing an amount. Nothing here is real.";
+      if (stale.length) $("staleWarn").textContent += " This one is part of the sample.";
+    }
+    $("connectedStep").textContent = D.sample ? "✓ 01 Sample" : "✓ 01 Connected";
     $("debtSettings").open = debtRows.some(function (r) { return r.stale && r.cb.checked && num(r.input); });
     $("dataWarn").hidden = !(D.warnings && D.warnings.length);
     $("dataWarn").textContent = (D.warnings || []).join(" ");
@@ -735,27 +760,40 @@
     setView("review");
   }
 
-  function buildRows(list, tbodyId) {
+  function buildRows(list, tbodyId, verb) {
     var tbody = $(tbodyId), rows = [];
+    var badge = '<span class="badge">May be out of date</span> ';
+    var typeIt = " If your bank shows a different amount, type it in the box.";
+    verb = verb || "Include";
     tbody.innerHTML = "";
     list.forEach(function (a) {
       var tr = document.createElement("tr");
       var old = a.updated ? (new Date(D.generated) - new Date(a.updated)) / 86400000 > 3 : false;
       var stale = old || ["relink", "error", "revoked", "not found"].indexOf(a.status) >= 0;
+      // The date line shows only when it says something: an out-of-date balance, or a date that is not the fetch date.
+      var dated = a.updated || D.provider !== "YNAB";
+      var dateLine = a.status === "closed" ? ""
+        : stale ? '<div class="note">' + badge + (dated ? "Last updated " + esc(fdate(a.updated)) + "." : "YNAB could not update this account from your bank.") + typeIt + "</div>"
+        : dated && a.updated !== D.generated ? '<div class="note">Balance from ' + esc(fdate(a.updated)) + "</div>" : "";
       tr.innerHTML =
-        '<td><label class="include-target"><input type="checkbox" aria-label="Include ' + esc(a.name) + '"' + (a.include ? " checked" : "") + '></label></td>' +
-        '<td><span class="name">' + esc(a.name) + "</span>" +
-        '<div class="note"><span class="source-state">' + (D.sample ? "Sample balance" : D.provider) + '</span></div>' +
-        (a.status === "closed" ? "" : a.updated || D.provider !== "YNAB" ? '<div class="note">Balance from ' + esc(fdate(a.updated)) +
-          (stale ? ' <span class="badge">not current</span>' : "") + "</div>"
-          // YNAB balances have no date: the only warning is a bank import error.
-          : stale ? '<div class="note">Bank import error in YNAB <span class="badge">not current</span></div>' : "") +
+        '<td><label class="include-target"><input type="checkbox" aria-label="' + verb + " " + esc(a.name) + '"' + (a.include ? " checked" : "") + '></label></td>' +
+        '<td><span class="name">' + esc(a.name) + '</span> <span class="row-state" hidden>' + (verb === "Subtract" ? "Not subtracted" : "Not counted") + '</span>' +
+        '<div class="note row-source" hidden><span class="source-state"></span> <button type="button" class="link-button small" data-reset>Undo</button></div>' +
+        dateLine +
         (a.note ? '<div class="note">' + esc(a.note) + "</div>" : "") + "</td>" +
-        '<td class="num"><input type="number" step="0.01" aria-label="Amount for ' + esc(a.name) + '"></td>';
+        '<td class="num"><input type="number" step="0.01" aria-label="Amount' + (verb === "Subtract" ? " to subtract" : "") + " for " + esc(a.name) + '"></td>';
       var cb = tr.querySelector("input[type=checkbox]"), input = tr.querySelector("input[type=number]");
+      var reset = tr.querySelector("[data-reset]");
       input.value = Number(a.amount).toFixed(2);
+      if (stale) tr.classList.add("stale");
+      // Show an edited amount like its neighbours, but only when that loses nothing. The number itself does not change.
+      input.addEventListener("change", function () { if (input.value !== "" && Number(num(input).toFixed(2)) === num(input)) input.value = num(input).toFixed(2); });
+      // A click fires no input event, so Undo draws the page again itself.
+      reset.addEventListener("click", function () { input.value = Number(a.amount).toFixed(2); render(); (input.disabled ? cb : input).focus(); });
+      reset.setAttribute("aria-label", "Undo change to " + a.name);
       tbody.appendChild(tr);
-      rows.push({ data: a, cb: cb, input: input, tr: tr, stale: stale, source: tr.querySelector(".source-state") });
+      rows.push({ data: a, cb: cb, input: input, tr: tr, stale: stale, source: tr.querySelector(".source-state"),
+                  sourceLine: tr.querySelector(".row-source"), state: tr.querySelector(".row-state") });
     });
     return rows;
   }
@@ -861,10 +899,10 @@
     if (Math.abs(added) < 0.00000001) added = 0;
     var net = assetTotal - deductions;
     return [
-      { key: "accounts", label: "Accounts", start: 0, end: accountTotal, amount: accountTotal },
+      { key: "accounts", label: "Your accounts", start: 0, end: accountTotal, amount: accountTotal },
       { key: "additions", label: "Added here", start: accountTotal, end: assetTotal, amount: added },
-      { key: "deductions", label: "Deductions", start: assetTotal, end: net, amount: deductions ? -deductions : 0 },
-      { key: "net", label: "After debts", start: 0, end: net, amount: net }
+      { key: "deductions", label: "Debts subtracted", start: assetTotal, end: net, amount: deductions ? -deductions : 0 },
+      { key: "net", label: "Total after debts", start: 0, end: net, amount: net }
     ];
   }
 
@@ -922,11 +960,15 @@
     var selected = accountRows.filter(function (r) { return r.cb.checked; });
     var accountTotal = selected.reduce(function (sum, r) { return sum + num(r.input); }, 0);
     var adjusted = selected.filter(isAdjusted).length;
-    $("accountSourceSummary").textContent = selected.length + " accounts included · " + adjusted + " adjusted here";
+    $("accountSourceSummary").textContent = (D.sample ? "Fictional sample balances" : "From " + (D.provider || "Lunch Money") + (D.generated ? ", fetched " + fdate(D.generated) : "")) +
+      " · " + selected.length + " of " + accountRows.length + " included" + (adjusted ? " · " + adjusted + " adjusted here" : "");
+    // A row says where its amount came from only when it was changed here. The line above gives the source of the rest.
     accountRows.concat(debtRows).forEach(function (r) {
       if (!r.source) return;
-      r.source.textContent = sourceOf(r);
-      r.source.classList.toggle("adjusted", isAdjusted(r));
+      var adj = isAdjusted(r);
+      r.source.textContent = adj ? "Adjusted here · was " + money.format(r.data.amount) : sourceOf(r);
+      r.source.classList.toggle("adjusted", adj);
+      if (r.sourceLine) r.sourceLine.hidden = !adj;
     });
     $("ledgerTotal").textContent = t.assetsReady ? money.format(t.net) : "Incomplete";
     $("calculationItems").innerHTML = calculationItems(t).map(function (item) {
@@ -941,7 +983,7 @@
     var steps = waterfallModel(accountTotal, t.assets, t.debts + t.mortgage);
     var extent = graphExtent(steps.reduce(function (all, step) { return all.concat([step.start, step.end]); }, []));
     var y = function (value) { return 16 + (extent.max - value) / (extent.max - extent.min) * 190; };
-    var svg = '<svg viewBox="0 0 720 230" role="img" aria-labelledby="calculationSvgTitle calculationSvgDesc"><title id="calculationSvgTitle">From your accounts to your net wealth</title><desc id="calculationSvgDesc">' + esc(steps.map(function (s) { return s.label + ": " + money.format(s.amount); }).join(". ")) + '</desc>';
+    var svg = '<svg viewBox="0 0 720 230" role="img" aria-labelledby="calculationSvgTitle calculationSvgDesc"><title id="calculationSvgTitle">From your accounts to your total after debts</title><desc id="calculationSvgDesc">' + esc(steps.map(function (s) { return s.label + ": " + money.format(s.amount); }).join(". ")) + '</desc>';
     [0, 0.5, 1].forEach(function (fraction) {
       var at = 16 + fraction * 190;
       svg += '<line class="chart-grid" x1="16" x2="704" y1="' + at + '" y2="' + at + '"/>';
@@ -957,13 +999,16 @@
     $("calculationSteps").innerHTML = steps.map(function (step) { return '<div class="' + step.key + '"><dt>' + step.label + '</dt><dd>' + esc(money.format(step.amount)) + '</dd></div>'; }).join("");
   }
 
+  // The bars spell out the mortgage choice; MORTGAGE keeps the short names used elsewhere.
+  var MORTGAGE_BAR = { none: "mortgage not deducted", next: "next mortgage payment deducted", year: "next 12 months of mortgage deducted" };
   function methodChartMarkup(methods) {
     var max = Math.max.apply(null, methods.map(function (m) { return m.ready ? m.due : 0; }).concat([1]));
     return methods.map(function (method) {
-      var label = METAL[method.metal] + " · " + MORTGAGE[method.mode];
+      var label = METAL[method.metal] + " nisab · " + MORTGAGE_BAR[method.mode];
+      var zero = method.net <= 0 ? "Nothing left after debts" : "Below the " + METAL[method.metal].toLowerCase() + " nisab";
       var amount = method.ready ? money.format(method.due) : "Incomplete";
       var width = method.ready ? method.due / max * 100 : 0;
-      return '<button type="button" class="method-bar" data-metal="' + method.metal + '" data-mortgage="' + method.mode + '" aria-pressed="' + method.selected + '" aria-label="' + esc("Use " + label + ": " + amount) + '"><span class="method-bar-heading"><span class="method-bar-label">' + label + '</span><span class="method-bar-value">' + esc(amount) + '</span></span><span class="method-bar-track" aria-hidden="true"><span class="method-bar-fill" style="--bar-size:' + width.toFixed(3) + '%"></span></span>' + (method.ready && method.due === 0 ? '<span class="method-bar-zero">Below this method\'s nisab, or no positive net wealth</span>' : "") + '</button>';
+      return '<button type="button" class="method-bar" data-metal="' + method.metal + '" data-mortgage="' + method.mode + '" aria-pressed="' + method.selected + '" aria-label="' + esc("Use " + label + ": " + amount + (method.ready && method.due === 0 ? ". " + zero : "")) + '"><span class="method-bar-heading"><span class="method-bar-label">' + label + (method.selected ? ' <span class="method-bar-current">In use</span>' : "") + '</span><span class="method-bar-value">' + esc(amount) + '</span></span><span class="method-bar-track" aria-hidden="true"><span class="method-bar-fill" style="--bar-size:' + width.toFixed(3) + '%"></span></span>' + (method.ready && method.due === 0 ? '<span class="method-bar-zero">' + zero + '</span>' : "") + '</button>';
     }).join("");
   }
 
@@ -973,7 +1018,7 @@
     var point = historyModel.points[i];
     $("historyDate").textContent = fdate(point.month) + (i === historyModel.points.length - 1 ? " · Today" : "");
     $("historyAmount").textContent = point.has ? money.format(point.total) : "No data";
-    $("historyState").textContent = !point.has ? "No selected balances available" : point.complete ? "All selected balances available" : "Partial subtotal · " + point.missing + (point.missing === 1 ? " balance missing" : " balances missing");
+    $("historyState").textContent = !point.has ? "No balances for this month" : point.complete ? "All selected balances known" : point.missing + (point.missing === 1 ? " balance missing" : " balances missing");
     $("historyState").classList.toggle("partial", point.has && !point.complete);
     $("historyCursor").setAttribute("aria-valuetext", $("historyDate").textContent + ": " + $("historyAmount").textContent + ". " + $("historyState").textContent);
     $("historySelection").setAttribute("x1", point.x.toFixed(2));
@@ -997,7 +1042,7 @@
     $("historyCursor").disabled = false;
     if (historySelection == null) historySelection = months.length - 1;
     historySelection = Math.min(historySelection, months.length - 1);
-    var svg = '<svg viewBox="0 0 720 240" role="img" aria-labelledby="historySvgTitle historySvgDesc"><title id="historySvgTitle">Your selected ' + esc(D.provider || "Lunch Money") + ' balances over time</title><desc id="historySvgDesc">Complete totals are connected only across adjacent complete months. Hollow markers show partial subtotals. Missing months have no marker. Use the slider or data table for exact amounts.</desc>';
+    var svg = '<svg viewBox="0 0 720 240" role="img" aria-labelledby="historySvgTitle historySvgDesc"><title id="historySvgTitle">Your selected ' + esc(D.provider || "Lunch Money") + ' balances over time</title><desc id="historySvgDesc">The line joins only neighbouring months where every selected balance is known. Hollow markers show months with some balances missing. Months with no balances have no marker. Use the slider or data table for exact amounts.</desc>';
     [18, 84, 150, 216].forEach(function (at) { svg += '<line class="chart-grid" x1="20" x2="700" y1="' + at + '" y2="' + at + '"/>'; });
     svg += '<line class="chart-zero" x1="20" x2="700" y1="' + historyModel.zeroY.toFixed(2) + '" y2="' + historyModel.zeroY.toFixed(2) + '"/>';
     if (ready) svg += '<line class="chart-threshold" x1="20" x2="700" y1="' + historyModel.thresholdY.toFixed(2) + '" y2="' + historyModel.thresholdY.toFixed(2) + '"/>';
@@ -1014,28 +1059,44 @@
     $("historyCursor").max = String(months.length - 1);
     $("historyCursor").value = String(historySelection);
     $("historyTicks").innerHTML = [0, Math.floor((months.length - 1) / 2), months.length - 1].map(function (i) { return '<span>' + esc(fdate(months[i].month)) + '</span>'; }).join("");
-    $("thresholdLegend").textContent = ready ? "Today's nisab: " + money.format(nisab) : "Nisab unavailable until a price and weight are entered";
+    $("thresholdLegend").innerHTML = '<i class="threshold-line"></i>' + esc(ready ? "Today’s nisab: " + money.format(nisab) : "Nisab unavailable until a price and weight are entered");
     updateHistorySelection();
   }
 
   function render() {
     var metal = radio("nisab"), mode = radio("mortgage"), t = totals(metal, mode);
-    $("mortgageChoice").textContent = MORTGAGE[mode];
+    var mortgageFound = D.mortgages && D.mortgages.length;
+    $("mortgageChoice").textContent = MORTGAGE[mode] + (mode === "none" && mortgageFound ? " · a mortgage was found, open to review" : "");
     $("methodSummary").textContent = METAL[metal] + " nisab · " + (mode === "none" ? "no mortgage deduction" : "mortgage: " + MORTGAGE[mode].toLowerCase());
-    $("resultMethod").textContent = METAL[metal] + " nisab · " + (mode === "none" ? "no mortgage deduction" : "mortgage: " + MORTGAGE[mode].toLowerCase());
-    $("debtSummary").textContent = t.debts ? money.format(t.debts) + " in selected deductions" : "No debt deductions selected";
+    $("resultMethod").textContent = "Method: " + METAL[metal].toLowerCase() + " nisab · " + (mode === "none" ? "no mortgage deduction" : "mortgage: " + MORTGAGE[mode].toLowerCase());
+    $("debtSummary").textContent = t.debts ? money.format(t.debts) + " is being subtracted · open to check" : "Nothing is being subtracted";
+    // The running total on Review balances: the same totals, before any mortgage choice.
+    $("reviewAssets").textContent = t.assetsReady ? money.format(t.assets) : "Needs a metal price";
+    $("reviewDebts").textContent = money.format(t.debts);
+    $("reviewNet").textContent = t.assetsReady ? money.format(t.assets - t.debts) : "Incomplete";
+    $("reviewMortgageNote").hidden = !t.mortgage;
     $("mortgageFields").hidden = mode === "none";
     if (!t.ready) { $("methodSettings").open = true; $("priceSettings").open = true; }
-    accountRows.concat(debtRows).forEach(function (r) { r.tr.classList.toggle("off", !r.cb.checked); });
+    accountRows.concat(debtRows).forEach(function (r) {
+      var off = !r.cb.checked;
+      r.tr.classList.toggle("off", off);
+      r.input.disabled = off;  // an unticked amount is not used, so it cannot be typed in
+      if (r.state) r.state.hidden = !off;
+    });
 
     $("due").textContent = t.ready ? money.format(t.due) : "Incomplete";
     $("due").classList.toggle("zero", t.due === 0);
     $("due").classList.toggle("incomplete", !t.ready);
-    $("estimateSummary").textContent = t.ready ? "Based on " + money.format(t.net) + " after eligible debts." : "Enter the " + t.missing.join(" and ") + " under Prices & nisab weights.";
+    var summary;
+    if (!t.ready) summary = "Enter the " + t.missing.join(" and ") + " under Prices & nisab weights.";
+    else if (t.due > 0) summary = "2.5% of " + money.format(t.net) + ", your total after debts.";
+    else if (t.net > 0) summary = "Nothing is due on these figures. Your total after debts, " + money.format(t.net) + ", is below the " + METAL[metal].toLowerCase() + " nisab of " + money.format(t.nisab) + ", the minimum you must own before zakat is due.";
+    else summary = "Nothing is due on these figures. Your total after debts is " + money.format(t.net) + ", so there is nothing to pay zakat on.";
+    $("estimateSummary").textContent = summary;
     $("resultBreakdown").hidden = !t.ready;
     var gap = t.net - t.nisab;
     var lines = [
-      "Zakat assets: " + money.format(t.assets) + ".",
+      "What you own that counts: " + money.format(t.assets) + ".",
       "Less debts due now: " + money.format(t.debts) + (t.mortgage ? ", and the mortgage: " + money.format(t.mortgage) : "") + ".",
       "<strong>Total after debts: " + money.format(t.net) + ".</strong>"
     ].concat(!t.ready ? [] : [
@@ -1045,14 +1106,17 @@
     ]);
     if (!t.ready) lines = ["Calculation incomplete. Enter the " + t.missing.join(" and ") + " under Prices &amp; nisab weights to calculate your estimate."];
     $("lines").innerHTML = lines.map(function (l) { return "<p>" + l + "</p>"; }).join("");
-    $("metalValue").textContent = !t.assetsReady ? "Add the missing metal prices on Your estimate to value your gold and silver." : (t.goldValue || t.silverValue)
-      ? "Value of your gold: " + money.format(t.goldValue) + ". Value of your silver: " + money.format(t.silverValue) + "." : "";
+    var metalParts = [];
+    if (pos($("goldGrams"))) metalParts.push(pos($("goldGrams")) + " g of " + num($("goldKarat")) + " karat gold: about " + money.format(t.goldValue));
+    if (pos($("silverGrams"))) metalParts.push(pos($("silverGrams")) + " g of silver: about " + money.format(t.silverValue));
+    $("metalValue").textContent = !t.assetsReady ? "Add the missing metal prices on Your estimate to value your gold and silver."
+      : metalParts.join(". ") + (metalParts.length ? "." : "");
 
     var methodText = METAL[metal] + " nisab, " + (mode === "none" ? "no mortgage deduction" : "mortgage: " + MORTGAGE[mode].toLowerCase());
     summaryText = !t.ready ? "" : [
       "Zakat estimate from Mizan, " + fdate(todayIso()),
       "Estimated zakat: " + money.format(t.due),
-      "Zakat assets: " + money.format(t.assets),
+      "What you own that counts: " + money.format(t.assets),
       "Less debts due now: " + money.format(t.debts) + (t.mortgage ? ", and the mortgage: " + money.format(t.mortgage) : ""),
       "Total after debts: " + money.format(t.net),
       METAL[metal] + " nisab: " + money.format(t.nisab) + " (" + t.grams + " g at " + price.format(t.unit) + " a gram)",
@@ -1061,13 +1125,22 @@
     ].join("\n");
     $("copySummary").disabled = !t.ready;
     $("copyStatus").textContent = "";
+    $("resetStatus").textContent = "";
+    // The ending follows the result: it only speaks of paying when something is due.
+    $("closeTitle").textContent = !t.ready ? "Your estimate isn’t finished yet." : t.due > 0 ? "That’s your estimate." : "Nothing is due on these figures.";
+    $("closeNote").textContent = !t.ready ? "Enter the " + t.missing.join(" and ") + " under Prices & nisab weights above to see your estimate."
+      : t.due > 0 ? "May Allah accept it from you."
+      : "With the method shown above, your total after debts is below the nisab. If your balances change, or you follow a different method, the result can change. Check again when your zakat date comes round.";
+    $("closeRecord").hidden = !t.ready;
+    $("resultNext").hidden = !t.ready;
 
     renderCalculation(t);
     var rows = "", methods = [];
     ["silver", "gold"].forEach(function (m) {
       ["none", "next", "year"].forEach(function (mm) {
         var x = totals(m, mm), sel = m === metal && mm === mode;
-        methods.push({ metal: m, mode: mm, ready: x.ready, due: x.due, selected: sel });
+        methods.push({ metal: m, mode: mm, ready: x.ready, due: x.due, net: x.net, selected: sel });
+        if (mm === "none") $(m + "NisabNote").textContent = x.nisabReady ? "· " + x.grams + " g · " + money.format(x.nisab) + " today" : "· price needed";
         rows += "<tr" + (sel ? ' class="selected"' : "") + "><td>" + METAL[m] + (sel ? '<span class="sr"> (your choice)</span>' : "") +
           "</td><td>" + MORTGAGE[mm] + "</td>" +
           '<td class="num">' + (x.nisabReady ? money.format(x.nisab) : "Incomplete") + '</td><td class="num">' + (x.assetsReady ? money.format(x.net) : "Incomplete") +
@@ -1082,28 +1155,34 @@
     var known = months.filter(function (m) { return m.has; });
     var missing = months.length - known.length;
     var complete = months.filter(function (m) { return m.complete; });
-    var completeLabel = complete.length + (complete.length === 1 ? " complete row" : " complete rows");
+    var checked = complete.length === 1 ? "the 1 month" : "all " + complete.length + " months";
+    var provider = D.provider || "Lunch Money";
     var partial = known.length - complete.length;
     var max = Math.max.apply(null, known.map(function (m) { return Math.abs(m.total); }).concat([t.nisab, 1]));
     var below = complete.filter(function (m) { return m.above === false; });
     var low = complete.reduce(function (a, b) { return !a || b.total < a.total ? b : a; }, null);
     var selected = accountRows.concat(debtRows).filter(function (r) { return r.cb.checked; });
     var late = openSpans(selected, last).filter(function (s, n) { return s.from > 0 && selected[n].data.status !== "closed"; }).length;
-    $("hawlSummary").textContent = (!low ? "No complete balance history is available to compare with the nisab." : !t.nisabReady ? "Enter the " + metal + " price and nisab weight under Prices & nisab weights to compare these accounts with the nisab." :
-      "Lowest total with all selected balances available: " + money.format(low.total) + " (" + fdate(low.month) + "). " +
-      (below.length ? "These accounts were below the " + metal + " nisab in " + below.length + " of " + completeLabel + ": " +
+    var notes = [];
+    if (!low) notes.push("No complete balance history is available to compare with the nisab.");
+    else if (!t.nisabReady) notes.push("Enter the " + metal + " price and nisab weight under Prices & nisab weights to compare these accounts with the nisab.");
+    else {
+      notes.push("Lowest month with every balance known: " + money.format(low.total) + " (" + fdate(low.month) + ").");
+      notes.push(below.length ? "These accounts were below the " + metal + " nisab in " + below.length + " of " + (complete.length === 1 ? "the 1 month" : "the " + complete.length + " months") + " Mizan could check: " +
         below.map(function (m) { return fdate(m.month); }).join(", ") + ". Ask a scholar how this affects your zakat year."
-        : "These accounts were at or above the " + metal + " nisab in all " + completeLabel + ".")) +
-      (partial ? " Partial history: " + partial + (partial === 1 ? " row is missing" : " rows are missing") + " selected account balances; partial totals are not classified against the nisab." : "") +
-      (missing ? " " + (D.provider || "Lunch Money") + " has no selected balances for " + missing + (missing === 1 ? " row" : " rows") + ", so the table cannot check them." : "") +
-      (late ? " " + late + (late === 1 ? " selected balance starts" : " selected balances start") + " after the first month, so the table counts " +
-        (late === 1 ? "it" : "them") + " only from the first month-end balance in " + (D.provider || "Lunch Money") + ". If one was open before then, its earlier balance is not counted." : "");
+        : "These accounts stayed at or above the " + metal + " nisab in " + checked + " Mizan could check.");
+    }
+    if (partial) notes.push(partial + (partial === 1 ? " month is missing some balances, so it isn’t" : " months are missing some balances, so they aren’t") + " compared with the nisab.");
+    if (missing) notes.push(provider + " has no balances for " + missing + (missing === 1 ? " month, so it" : " months, so they") + " can’t be checked.");
+    if (late) notes.push(late + (late === 1 ? " balance only appears" : " balances only appear") + " in " + provider + " part-way through the year. Anything held before then isn’t counted.");
+    $("hawlSummary").innerHTML = notes.map(function (n) { return "<p>" + esc(n) + "</p>"; }).join("");
     renderHistory(months, t.nisab, t.nisabReady);
     $("hawlRows").innerHTML = months.map(function (m, i) {
       var w = Math.max(0, m.total) / max * 100;
       return "<tr><td>" + fdate(m.month) + (i === last ? " (today)" : "") + '</td><td class="num">' +
-        (m.has ? money.format(m.total) + (m.complete ? "" : '<br><span class="note">Partial: ' + m.missing + ' missing</span>') : '<span class="note">No data</span>') + '</td><td class="barcell">' +
-        (m.above !== null ? '<div class="bar' + (m.above ? "" : " below") + '" style="width:' + w.toFixed(1) + '%"></div>' : "") + "</td></tr>";
+        (m.has ? money.format(m.total) + (m.complete ? "" : '<br><span class="note">' + m.missing + ' missing</span>') : '<span class="note">No data</span>') + '</td><td class="barcell">' +
+        (m.above !== null ? '<div class="bar' + (m.above ? "" : " below") + '" style="width:' + w.toFixed(1) + '%" aria-hidden="true"></div>' : "") +
+        '<span class="sr">' + (m.above === true ? "At or above the nisab" : m.above === false ? "Below the nisab" : "Not compared") + "</span></td></tr>";
     }).join("");
   }
 
@@ -1141,7 +1220,7 @@
     var error = params.get("error");
     if (error) {
       return { error: error === "access_denied" ? "You didn't allow access in YNAB. Choose Connect with YNAB to try again."
-        : "YNAB could not sign you in (" + error + "). Try again." };
+        : "YNAB couldn’t sign you in. Choose Connect with YNAB to try again. (Code: " + error + ")" };
     }
     if (!expected || params.get("state") !== expected) {
       return { error: "Mizan could not verify the YNAB sign-in. Choose Connect with YNAB to try again." };
@@ -1168,13 +1247,14 @@
     STATUS_IDS.forEach(function (id) { $(id).textContent = ""; });
     var status = $(statusId || "status");
     status.textContent = text || "";
-    status.className = "hero-status" + (isError ? " error" : "");
+    status.className = "hero-status" + (isError ? " error" : "") + (on && text ? " is-busy" : "");
   }
 
   // The home page and the connect screen. Once balances are loaded, the calculator stays in view.
   function route() {
     if (D) return;
     var connecting = /^#(connect|token)/.test(location.hash);  // #token: older links from the token guide
+    document.title = connecting ? "Connect your account | Mizan" : HOME_TITLE;
     $("home").hidden = connecting;
     $("connectView").hidden = !connecting;
     if (location.hash === "#connect-ynab") { document.querySelector("input[name=service][value=ynab]").checked = true; showService(); }
@@ -1198,7 +1278,7 @@
     if (signIn.error) { busy(false, signIn.error, true, "ynabStatus"); return; }
     var ynabToken = signIn.token;
     signIn = null;
-    busy(true, "The page reads your balances from YNAB...", false, "ynabStatus");
+    busy(true, "Reading your balances from YNAB. This can take a few seconds…", false, "ynabStatus");
     loadFromYnab(ynabToken).then(function (data) {
       ynabToken = null;
       busy(false, "");
@@ -1215,8 +1295,9 @@
   $("connectBtn").addEventListener("click", function () {
     var token = $("token").value.trim();
     $("token").value = "";  // the token is not kept in the page
-    if (!token) { busy(false, "Paste your Lunch Money access token first.", true, "connectStatus"); return; }
-    busy(true, "The page reads your balances from Lunch Money...", false, "connectStatus");
+    if (!token) { busy(false, "Paste your Lunch Money access token in the box above first.", true, "connectStatus"); tokenProblem(); return; }
+    $("token").removeAttribute("aria-invalid");
+    busy(true, "Reading your balances from Lunch Money. This can take a few seconds…", false, "connectStatus");
     loadFromLunchMoney(token).then(function (data) {
       token = null;
       busy(false, "");
@@ -1224,18 +1305,33 @@
     }, function (e) {
       token = null;
       busy(false, e.message, true, "connectStatus");
+      tokenProblem();
     });
   });
+  // After a failed try the box is empty: mark it and put the cursor back in it.
+  function tokenProblem() { $("token").setAttribute("aria-invalid", "true"); $("token").focus(); }
+  $("token").addEventListener("input", function () { this.removeAttribute("aria-invalid"); });
   $("token").addEventListener("keydown", function (e) { if (e.key === "Enter") $("connectBtn").click(); });
   sampleButtons.forEach(function (button) {
     button.addEventListener("click", function () {
       $("token").value = "";  // sample mode does not use a token, so do not keep one in the page
       var statusId = button.closest("#connectView") ? "connectSampleStatus" : button.closest(".final-cta") ? "finalStatus" : "status";
-      busy(true, "The page gets today's gold and silver prices...", false, statusId);
+      busy(true, "Getting today’s gold and silver prices…", false, statusId);
       sampleData().then(function (data) { busy(false, ""); show(data); });
     });
   });
-  $("restart").addEventListener("click", function () { location.reload(); });
+  // Amounts are never saved, so ask before clearing changes that were made here.
+  $("restart").addEventListener("click", function () {
+    var changed = (accountRows || []).concat(debtRows || []).some(function (r) { return isAdjusted(r) || r.cb.checked !== !!r.data.include; }) ||
+      ["cashHome", "crypto", "owed", "otherAssets", "goldGrams", "silverGrams", "otherDebts"].some(function (id) { return $(id).value !== ""; });
+    var ask = "Start again? The changes you made on this page will be cleared" + (D && D.sample ? "." : ", and you will need to connect again.") + " Your method choices stay.";
+    if (!changed || window.confirm(ask)) {
+      // Drop this visit's step entry first, so Back does not jump to a step from before the reload.
+      try { history.replaceState(null, ""); } catch (e) { /* history not available */ }
+      location.reload();
+    }
+  });
+  window.addEventListener("popstate", function (e) { if (D && e.state && e.state.view) setView(e.state.view, true); });
   $("continueEstimate").addEventListener("click", function () { setView("estimate"); });
   $("estimateStep").addEventListener("click", function () { setView("estimate"); });
   $("reviewStep").addEventListener("click", function () { setView("review"); });
@@ -1249,6 +1345,12 @@
     document.querySelector("input[name=nisab][value=silver]").checked = true;
     document.querySelector("input[name=mortgage][value=none]").checked = true;
     render();
+    $("resetStatus").textContent = "Method choices are back to the starting settings.";
+  });
+  // From the result card down to the ending, where Copy and Print are.
+  $("toClose").addEventListener("click", function () {
+    $("closeTitle").scrollIntoView();
+    $("closeTitle").focus({ preventScroll: true });
   });
   // The summary is plain text built from the same totals as the page. Nothing is sent anywhere.
   $("copySummary").addEventListener("click", function () {

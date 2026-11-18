@@ -24,21 +24,21 @@ A community project, made by Mazin Kanuga. Lunch Money did not make it and does 
 - Shows the path from account balances through additions and deductions in a waterfall graph.
 - Compares all 6 methods with selectable bars and a table.
 - Shows your month-end totals for the last 12 months. It tells you if your total was below the nisab in a month.
-- Marks balances that are not current, for example when a bank connection needs a relink. It also marks retirement accounts.
+- Marks balances that may be out of date, for example when a bank connection needs a relink. It also marks retirement accounts.
 - Shows **Incomplete** when a price needed for the selected nisab or your gold/silver holdings is missing. It never presents an incomplete calculation as zero zakat.
-- Labels partial balance-history rows and compares only rows with all selected balances against the nisab.
+- Says how many balances are missing in a balance-history row, and compares only rows with all selected balances against the nisab.
 - Has a sample mode, so you can try it without a token.
 
 The calculator has three steps: connect, review balances, and see your estimate. Extra assets and debts open on demand; method choices, prices and comparisons open on demand. An interactive balance-history graph appears below the calculation, with a monthly table available for exact amounts.
 
-[The project](about.html) explains why I built Mizan: less account-entry guesswork and a traceable calculation. The [Token guide](token-guide.html) walks through connecting Lunch Money. [How it works](how-it-works.html) explains privacy and calculations. The [Zakat guide](zakat-guide.html) groups rules and sources into expandable topics.
+[About](about.html) explains why I built Mizan: less account-entry guesswork and a traceable calculation. The [Token guide](token-guide.html) walks through connecting Lunch Money. [How it works](how-it-works.html) explains privacy and calculations. The [Zakat guide](zakat-guide.html) groups rules and sources into expandable topics.
 
 ## Your data and your token
 
-- **Read only.** The page sends only GET requests. It has no code that changes or deletes anything in Lunch Money.
+- **Read only.** Mizan sends only GET requests. It has no code that changes or deletes anything in Lunch Money.
 - **No application server.** The site has a calculator, 3 static guide pages, a project page, a shared stylesheet and 2 font files. Your browser talks directly to the Lunch Money API. No token or account balances go to the author.
-- **The token is not kept.** The page sends your token only to `api.lunchmoney.dev`, then forgets it. The page does not save the token in the browser, in a cookie or anywhere else. If your browser or a password manager asks to save it, click Never.
-- **Only 3 hosts.** A Content Security Policy lets the page connect only to `api.lunchmoney.dev`, `api.ynab.com` and `api.gold-api.com`. The fonts come from the same site as the page. Requests to gold-api.com include only your currency code (for example CAD). They do not include your token or your balances. Redirects are refused, so the token cannot follow a redirect to another host.
+- **The token is not kept.** Mizan sends your token only to `api.lunchmoney.dev`, then forgets it. Mizan does not save the token in the browser, in a cookie or anywhere else. If your browser or a password manager asks to save it, click Never.
+- **Only 3 hosts.** A Content Security Policy lets Mizan connect only to `api.lunchmoney.dev`, `api.ynab.com` and `api.gold-api.com`. The fonts come from the same site as the page. Requests to gold-api.com include only your currency code (for example CAD). They do not include your token or your balances. Redirects are refused, so the token cannot follow a redirect to another host.
 - **Saved in your browser:** only your choices (nisab, mortgage method, nisab weights, gold and silver purity). Amounts are never saved.
 - **Lunch Money tokens can change data.** Lunch Money has no read-only tokens. Make a separate token for this page, and revoke it on the [developers page](https://my.lunchmoney.app/developers) when you finish.
 
@@ -55,7 +55,7 @@ You can connect [YNAB](https://www.ynab.com) instead of Lunch Money. Choose **YN
 - Mizan uses the plan changed most recently, and tells you when you have more than one.
 - YNAB has no balance history, so month-end balances are rebuilt from today's balance and the transactions after each month's end.
 - Checking, savings and cash count. Credit cards are deducted. Loans are listed but not selected. Mortgages go to the mortgage setting. Tracking accounts count when the name looks like an investment, such as "TFSA" or "Brokerage".
-- The OAuth client ID is `YNAB_CLIENT_ID` in `index.html`. It is public; the page has no client secret. The app's redirect URI is the site root.
+- The OAuth client ID is `YNAB_CLIENT_ID` in `index.html`. It is public; Mizan has no client secret. The app's redirect URI is the site root.
 
 The [privacy policy](privacy.html) covers both services. Mizan is not made or supported by YNAB.
 
@@ -63,7 +63,7 @@ The [privacy policy](privacy.html) covers both services. Mizan is not made or su
 
 1. Follow the [Token guide](token-guide.html) to create a separate access token in Lunch Money.
 2. Open https://zakat.mazinkanuga.ca, paste the token, and click **Connect my accounts**.
-3. Review your accounts. Open **Add other assets** or **Review debts** as needed.
+3. Review your accounts. Open **Add other assets** or **Debts to subtract** as needed.
 4. Click **See my estimate**. Choose your nisab and any mortgage deduction. Trace the total through the ledger, compare methods, and explore monthly history as needed.
 
 You can move between Review balances and Your estimate without reconnecting or losing your entered amounts. The token input is masked in every browser. Mizan still does not save it.
@@ -84,7 +84,7 @@ Then open http://localhost:8000.
 - The hawl table uses Lunch Money's month-end balances for the included accounts, less the included debts. Today's row uses the current account and debt lists. Additional assets, other debts and the mortgage are excluded from every row, so the table's total can differ from the zakat estimate. It supports review and cannot confirm a completed hawl.
 - Closed and deleted accounts count for the months when they were open. A deleted home, car or loan is not used.
 - A month with no balances in Lunch Money (for example before you started to use it) shows "No data". It does not count as below the nisab.
-- A month missing some selected balances shows a partial total and is not classified against the nisab. Gaps for closed accounts also stay unknown. Zero balances count as data.
+- A month missing some selected balances shows a total of the balances available, with the number missing, and is not compared with the nisab. Gaps for closed accounts also stay unknown. Zero balances count as data.
 - A lunar year is 354 days, so 12 months is close but not exact.
 
 Scholars do not agree about some points:

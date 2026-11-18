@@ -2479,3 +2479,248 @@ table,.num,.equation-line strong,.account-tiles strong { font-variant-numeric:ta
   .calculator-page .result *,.calculator-page .result .due { color:#000!important; }
   .estimate-close { break-inside:avoid; }
 }
+
+/* ==========================================================================
+   Friendlier pass (November 2026). These rules come last so they win.
+   Each scope keeps its rules directly under its own marker line.
+   ========================================================================== */
+/* friendlier:shared */
+/* Header and footer links: taller tap targets, four nav links on one row at phone widths */
+.nav a { display:inline-flex; align-items:center; min-height:44px; padding:0; }
+.foot nav { gap:0 22px; }
+.foot nav a { display:inline-flex; align-items:center; min-height:44px; }
+@media(max-width:380px) {
+  .nav { gap:14px; }
+}
+/* Field edges: a clearer border on inputs, mixed from the existing muted and line tokens */
+:root { --field-line:color-mix(in srgb,var(--muted) 75%,var(--line)); }
+@media(prefers-color-scheme:dark) {
+  :root { --field-line:color-mix(in srgb,var(--muted) 45%,var(--line)); }
+}
+input[type=text],input[type=password],input[type=number],select { border-color:var(--field-line); }
+.service-opt span { border-color:var(--field-line); }
+/* Small print: nothing below 12px */
+.badge,.tag,th,.chart-unit,.eyebrow,.chart-heading .eyebrow,.toc p,.project-note-label,.source-summary { font-size:12px; }
+td .note,.history-state { font-size:13px; }
+.brand-sub,.doc td code,.formula,.formula .c { font-size:12px; }
+.equation-line strong span { font-size:max(12px,.6em); }
+/* Empty status lines stay in the page, taking no room, so their first message is announced */
+.connect-form #connectStatus:empty,.ynab-connect .hero-status:empty,.connect-view .view-head .hero-status:empty { display:block; position:absolute; margin:0; min-height:0; }
+/* The "Optional" tag in the request tables is plain text, not a choice button */
+.tag.opt { display:inline; padding:0; border:0; border-radius:0; background:none; cursor:auto; }
+/* Small links that stand alone on a line: a full tap height */
+.connect-view .connected a { display:inline-flex; align-items:center; min-height:44px; }
+@media(max-width:760px) {
+  .toc ul { gap:0 20px; }
+  .toc a { display:inline-block; padding:11px 0; }
+  .ayah figcaption a,.proof figcaption a { display:inline-block; padding:6px 0; }
+  /* The short "Use" header is for the eye only; the real header is what is read out */
+  .list th:first-child::after { content:'Use' / ''; }
+}
+/* friendlier:home */
+.final-cta p { text-wrap:balance; }
+.trust-list { font-size:14px; }
+.proof-summary { flex:1; margin:0 0 16px; color:var(--on-inkwell); font-size:15px; line-height:1.65; }
+.step-cards p a { font-weight:700; }
+/* One clean gap under the dark card, no rule touching its edge */
+.why-band { padding-bottom:clamp(64px,9vw,120px); }
+.why-band+.home-band { border-top:0; padding-top:0; }
+@media(max-width:1000px) {
+  .ayah { border-bottom:0; margin-bottom:0; padding-bottom:28px; }
+  .basics-ledger { border-bottom:0; }
+  .basics-band .price-preview { margin-top:0; }
+}
+@media(max-width:760px) {
+  .step-illo { display:none; }
+  .step-cards { gap:12px; }
+  .step-cards li { padding:20px 20px 22px; }
+  .step-cards .step-num { margin-top:0; }
+  .band-actions .button { display:flex; width:100%; }
+  .price-preview p { width:100%; }
+}
+/* friendlier:connect */
+/* Sample link under the heading, the "what comes next" lines, the busy line and the token box in error */
+.connect-view .view-head .connect-try { margin-top:8px; }
+.connect-try .link-button { font:inherit; font-weight:700; color:var(--ink); min-height:0; padding:0; }
+.connect-steps .connect-next,.ynab-connect .connect-next { margin:0; font-size:14px; color:var(--muted); }
+.hero-status.is-busy { color:var(--ink); font-weight:700; }
+.hero-status.is-busy::before { content:""; display:inline-block; width:12px; height:12px; margin-right:8px; vertical-align:-1px; border:2px solid var(--line); border-top-color:var(--ink); border-radius:50%; animation:status-spin .8s linear infinite; }
+@keyframes status-spin { to { transform:rotate(360deg); } }
+@media(prefers-reduced-motion:reduce) {
+  .hero-status.is-busy::before { animation:none; }
+}
+#token[aria-invalid=true] { border-color:var(--bad); box-shadow:0 0 0 1px var(--bad); }
+.connect-view a[target=_blank]>[aria-hidden] { font-size:.9em; margin-left:.15em; }
+#connectHead:focus,#connectHead:focus-visible { outline:none; }
+/* Step bar on phones: three equal cells on one row */
+@media(max-width:760px) {
+  .calculator-page .connect-view .progress { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .calculator-page .connect-view .progress span:not(.divider) { justify-content:flex-start; text-align:left; min-height:52px; padding:8px 10px; font-size:12.5px; line-height:1.25; }
+  .calculator-page .connect-view .progress .divider+span { border-left:1px solid var(--line); }
+  .connect-try .link-button { display:inline-block; padding:12px 0; margin:-12px 0; }
+}
+/* friendlier:review */
+/* Step bar on steps 02 and 03: same cells as the Connect screen */
+.calculator-page .progress span:first-child { display:flex; align-items:center; }
+#restart { min-height:44px; white-space:nowrap; flex-shrink:0; }
+/* Account rows: only the lines that differ are shown, at a size that can be read */
+#reviewView td .note { font-size:13px; line-height:1.5; }
+#reviewView .badge { font-size:12px; padding:2px 7px; }
+#reviewView .source-summary { font:13px/1.5 var(--font); margin:-6px 0 16px; }
+#reviewView tr.off .name { text-decoration:none; }
+.row-state { margin-left:6px; color:var(--muted); font-size:12px; white-space:nowrap; }
+.list tr.stale input[type=number] { border-color:var(--warn-ink); }
+#reviewView .link-button[data-reset] { min-height:24px; padding:2px 0; margin-left:2px; font-size:13px; font-weight:700; }
+/* Other assets: two labelled groups */
+#extraAssets .fields { gap:28px; }
+.field-group { display:grid; gap:16px; min-width:0; margin:0; padding:0; border:0; }
+.field-group legend { padding:0; margin-bottom:4px; color:var(--ink); font-size:14px; font-weight:700; }
+.field-group .note { margin-top:-8px; font-size:13px; text-align:right; }
+/* The quick check and the running total. The quick check comes first in the page, so it is read
+   and reached before the rows; on wide screens it sits above the total in the side column. */
+.calculator-page .review-layout { grid-template-rows:auto 1fr; row-gap:16px; }
+.calculator-page .review-main { grid-row:1 / span 2; }
+.calculator-page .review-aside { grid-row:2; align-self:start; }
+.calculator-page .review-guide { grid-column:1; grid-row:1; padding:28px; background:var(--panel); border-radius:20px; }
+.calculator-page .review-guide h2 { font-size:19px; }
+.calculator-page .review-guide ol { padding-left:18px; font-size:14px; color:var(--text); }
+.calculator-page .review-guide li { margin-bottom:12px; }
+.calculator-page .review-guide h2,.calculator-page .review-guide ol { display:block; }
+.review-guide .inline-note { margin-top:8px; }
+.review-guide a[target=_blank]>[aria-hidden] { font-size:.9em; margin-left:.15em; }
+.review-total { display:grid; gap:6px; margin:20px 0 0; padding-top:16px; border-top:1px solid var(--line); }
+.review-total div { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+.review-total dt { color:var(--muted); font-size:13px; }
+.review-total dd { margin:0; color:var(--ink); font:14px/1.4 var(--mono); font-variant-numeric:tabular-nums; text-align:right; }
+.calculator-page .review-continue .review-total dd { margin:0; }
+.review-total .sum { margin-top:4px; padding-top:10px; border-top:1px solid var(--line); }
+.review-total .sum dt { color:var(--ink); font-weight:700; }
+.review-total .sum dd { font-size:15px; font-weight:700; }
+.review-continue #reviewMortgageNote { margin-top:8px; }
+.calculator-page .review-continue .primary { width:100%; }
+.calculator-page .review-continue>:first-child { margin-top:0; padding-top:0; border-top:0; }
+/* Narrow side column: each amount sits under its label */
+@media(min-width:761px) and (max-width:1000px) {
+  .calculator-page .review-guide,.calculator-page .review-aside { padding:20px; }
+  .review-total div { display:block; }
+  .review-total dd { text-align:left; }
+  .calculator-page .review-continue .primary { padding-left:12px; padding-right:12px; }
+}
+@media(max-width:760px) {
+  .calculator-page .progress { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .calculator-page .progress span:not(.divider),.calculator-page .progress button { display:flex; align-items:center; justify-content:flex-start; text-align:left; min-height:52px; padding:8px 10px; font-size:12.5px; line-height:1.25; border-radius:0; }
+  .calculator-page .progress .divider+* { border-left:1px solid var(--line); }
+  /* The quick check comes first; the total and the button stay at the bottom edge */
+  html { scroll-padding-bottom:88px; }
+  .calculator-page .review-aside { display:contents; }
+  .calculator-page .review-guide { padding:16px 18px; background:var(--panel); border-radius:16px; }
+  .calculator-page .review-guide h2 { margin:0 0 8px; font-size:16px; }
+  .calculator-page .review-guide li { margin-bottom:4px; }
+  .calculator-page .review-guide ol { margin-bottom:0; }
+  #reviewView td .note .badge { display:table; margin-bottom:2px; }
+  #reviewView .link-button[data-reset] { min-height:44px; padding:0 8px; }
+  .calculator-page .review-guide,.calculator-page .review-continue { align-self:stretch; }
+  .calculator-page .review-continue { order:2; position:sticky; bottom:0; z-index:2; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0 calc(10px + env(safe-area-inset-bottom)); background:var(--bg); border-top:1px solid var(--line); }
+  .calculator-page .review-continue .inline-note,.calculator-page .review-continue .review-total div:not(.sum) { display:none; }
+  .calculator-page .review-continue .review-total { margin:0; padding:0; border:0; min-width:0; }
+  .calculator-page .review-continue .review-total .sum { display:block; margin:0; padding:0; border:0; }
+  .calculator-page .review-continue .review-total .sum dt { font-size:12px; font-weight:400; color:var(--muted); }
+  .calculator-page .review-continue .review-total .sum dd { font-size:16px; text-align:left; }
+  .calculator-page .review-continue .primary { width:auto; margin:0; flex-shrink:0; }
+  .calculator-page .review-main .disclosure:last-child { border-bottom:0; }
+  .field-group .note { text-align:left; }
+}
+/* friendlier:estimate */
+/* Result card: the figure stays at the top when the working is open; its links read on the dark card */
+.calculator-page .estimate-layout>.result { align-items:start; }
+.calculator-page .result a { color:inherit; }
+.calculator-page .result .due-hint { margin:14px 0 0; max-width:52ch; }
+.calculator-page .result .due-hint a { white-space:nowrap; }
+/* The working and the copy link share one row until the working is opened */
+.result-context { display:flex; flex-wrap:wrap; align-items:center; gap:0 24px; }
+.result-context .result-method { flex:0 0 100%; }
+.result-context .result-breakdown { flex:1 1 auto; }
+.result-context .result-breakdown[open] { flex-basis:100%; }
+.result-next { margin:0; }
+#estimateView .scroll-hint { display:none; }
+.calculator-page .result-next .link-button { min-height:44px; color:var(--on-inkwell); font-size:14px; font-weight:700; text-align:left; }
+/* Small controls that open the working: a full tap height */
+#estimateView .ledger-detail>summary,#estimateView .result-breakdown>summary { min-height:44px; }
+#estimateView button.link-button { min-height:44px; }
+.estimate-choice .inline-note a { display:inline-flex; align-items:center; min-height:44px; }
+#estimateView a[target=_blank]>[aria-hidden] { font-size:.9em; margin-left:.15em; }
+/* Small print in the estimate, at a size that can be read */
+#estimateView th,#estimateView .chart-unit,.source-tag { font-size:12px; }
+#estimateView td .note,#estimateView .history-state { font-size:13px; }
+.source-tag.imported { color:var(--text); }
+.source-tag.local { color:var(--ink); font-weight:700; }
+/* Nisab choice: each metal shows its weight and today's amount */
+.estimate-choice .choice-options { flex-wrap:wrap; }
+.opt-note { color:var(--muted); font-size:13px; font-variant-numeric:tabular-nums; }
+/* Method comparison: the row in use is marked in words as well as by its border */
+.method-bar[aria-pressed=true] { border-width:2px; padding:11px 13px; }
+.method-bar-current { margin-left:8px; color:var(--ink); font-size:13px; font-weight:800; white-space:nowrap; }
+#comparison>.note { margin:0 0 14px; }
+/* Balance history notes: one short paragraph each */
+#hawlSummary p { margin:0 0 8px; }
+#hawlSummary p:last-child { margin-bottom:0; }
+.history-panel>.note { font-size:14px; line-height:1.6; max-width:68ch; }
+/* The ending: copy, print, or go back */
+.close-actions .link-button { flex:0 0 auto; min-height:44px; margin-left:6px; padding:4px 0; }
+.estimate-close #closeRecord { margin:4px 0 0; font-size:14px; }
+@media(max-width:760px) {
+  /* Wide tables show a soft edge where there is more to scroll to */
+  #estimateView .history-panel .scroll { --scroll-cover:var(--card); }
+  #estimateView .ledger-detail .scroll { background:linear-gradient(to right,var(--scroll-cover,var(--bg)) 40%,transparent) 0 0/32px 100% no-repeat local,linear-gradient(to left,var(--scroll-cover,var(--bg)) 40%,transparent) 100% 0/32px 100% no-repeat local,linear-gradient(to left,color-mix(in srgb,var(--ink) 28%,transparent),transparent) 100% 0/24px 100% no-repeat scroll; }
+  #estimateView .scroll-hint { display:block; font-size:13px; margin:0 0 8px; }
+  .method-bar-current { display:block; margin:2px 0 0; }
+  /* On phones the four figures read as a short ledger in place of the small bar chart */
+  .waterfall-chart svg { display:none; }
+  .calculation-steps { grid-template-columns:1fr; gap:0; border-top:2px solid var(--ink); }
+  .calculation-steps div[class] { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:12px 0; border-top:0; border-bottom:1px solid var(--line); }
+  .calculation-steps dt { margin:0; font-size:14px; color:var(--text); }
+  .calculation-steps div.net { border-bottom:3px double var(--ink); font-weight:800; }
+  .close-actions .link-button { flex:1 0 100%; margin:0; justify-content:flex-start; text-align:left; }
+  /* The two nisab choices stack, each on one line */
+  .estimate-choice .choice-options { display:grid; }
+  .estimate-choice .opt { justify-content:flex-start; }
+}
+@media print {
+  .result-next,#closeRecord { display:none!important; }
+}
+/* friendlier:guides */
+/* Reading pages: a comfortable measure and body size on the two long guides */
+.doc p,.doc li { font-size:16px; line-height:1.75; max-width:68ch; }
+.doc .callout { max-width:68ch; }
+/* Sub-headings inside an open topic sit one level below the topic title */
+.topic-content h4 { font-size:16px; margin:28px 0 10px; }
+.doc td { font-size:14px; }
+/* Topic toggles: a full tap height */
+.article-topic>summary,.token-trouble .disclosure>summary { min-height:44px; }
+.doc p.note a[href="token-guide.html"] { white-space:nowrap; }
+.topic-content>h4:first-child { margin-top:0; }
+/* A way back to the calculator at the end of a reading page */
+.doc .read-next,.policy .read-next { display:flex; flex-wrap:wrap; align-items:center; gap:14px 24px; max-width:none; margin:40px 0 64px; padding-top:28px; border-top:1px solid var(--line); }
+.doc .read-next { margin-top:0; padding-top:0; border-top:0; }
+.policy .read-next { margin:0; }
+.source-note { margin-top:18px; line-height:1.7; }
+.doc .scroll-hint { display:none; }
+@media(max-width:760px) {
+  /* Tables wrap to fit the screen; only the four-column ones still scroll */
+  .doc table { min-width:0; }
+  .doc th { white-space:normal; }
+  .doc td.n { padding-left:12px; }
+  .doc table.wide { min-width:600px; }
+  .doc .scroll-hint { display:block; font-size:13px; margin:18px 0 0; }
+  .doc .scroll-hint+.scroll { margin-top:8px; }
+  .read-next a:not(.button) { display:inline-flex; align-items:center; min-height:44px; }
+  .doc .scroll-wide { background:linear-gradient(to right,var(--bg) 40%,transparent) 0 0/32px 100% no-repeat local,linear-gradient(to left,var(--bg) 40%,transparent) 100% 0/32px 100% no-repeat local,linear-gradient(to left,color-mix(in srgb,var(--ink) 16%,transparent),transparent) 100% 0/12px 100% no-repeat scroll; }
+  /* The two three-column tables of views stack, one view per block */
+  .doc .scroll-stack { border:0; border-radius:0; padding:0; }
+  .doc .stack-sm thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+  .doc .stack-sm tr { display:block; padding:14px 0; border-bottom:1px solid var(--line); }
+  .doc .stack-sm tbody tr:last-child { border-bottom:0; }
+  .doc .stack-sm td { display:block; border:0; padding:0 0 10px; }
+  .doc .stack-sm td:last-child { padding-bottom:0; }
+  .doc .stack-sm td[data-label]::before { content:attr(data-label); display:block; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+}

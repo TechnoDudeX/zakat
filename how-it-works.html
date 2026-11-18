@@ -22,46 +22,49 @@
     <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false" fill="none"><rect x="1" y="1" width="42" height="42" rx="12" fill="currentColor"/><path d="M11 29V15L22 25L33 15V29" stroke="var(--on-deep)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 34H29" stroke="var(--on-deep)" stroke-width="2" stroke-linecap="round"/><circle cx="22" cy="11" r="2" fill="var(--accent)"/></svg>
     <span class="brand-name">Mizan <span class="brand-ar" lang="ar">ميزان</span><span class="brand-sub">Made by Mazin</span></span>
   </a>
-  <nav class="nav" aria-label="Main"><a href="index.html">Calculator</a><a href="about.html">The project</a><a href="token-guide.html">Token guide</a></nav>
+  <nav class="nav" aria-label="Main"><a href="index.html">Calculator</a><a href="zakat-guide.html">Zakat guide</a><a href="how-it-works.html" aria-current="page">How it works</a><a href="about.html">About</a></nav>
 </div></header>
-<main id="main" class="wrap"><div class="page-head"><p class="eyebrow">How it works &amp; privacy</p><h1>What happens to<br>your data?</h1><p class="lead">Mizan does the calculation in your browser. Your token and account balances aren't sent to me.</p></div><div class="layout"><nav class="toc" aria-label="On this page"><p>On this page</p><ul><li><a href="#overview">The short version</a></li><li><a href="#privacy">Privacy & connections</a></li><li><a href="#calculation">The calculation</a></li><li><a href="#troubleshooting">Limits & troubleshooting</a></li><li><a href="#security">Security headers</a></li></ul></nav><div class="doc"><section class="quick-start" id="overview"><h2>Your browser does the work.</h2><p>Mizan reads balances directly from Lunch Money and prices from the metal-price service. It calculates in your browser, without sending your token or account balances to Mizan's author.</p><p>It uses read-only requests. Your token and balances are not saved by Mizan. Only your method preferences stay in this browser.</p><p class="note">Need help connecting? <a href="token-guide.html">Start with the token guide</a></p></section><section class="article-group" id="privacy"><h2>Privacy & connections</h2><details class="article-topic" id="token"><summary><h3>Your token</h3></summary><div class="topic-content">
+<main id="main" class="wrap"><div class="page-head"><p class="eyebrow">How it works</p><h1>How Mizan<br>works.</h1><p class="lead">What Mizan reads, how it turns your balances into an estimate, and what it cannot tell you. The calculation happens in your browser.</p><p class="note">Only want the privacy summary? <a href="privacy.html">Read the privacy policy</a>.</p></div><div class="layout"><nav class="toc" aria-label="On this page"><p>On this page</p><ul><li><a href="#overview">The short version</a></li><li><a href="#privacy">Privacy &amp; connections</a></li><li><a href="#calculation">The calculation</a></li><li><a href="#troubleshooting">Limits &amp; troubleshooting</a></li><li><a href="#security">Security</a></li></ul></nav><div class="doc"><section class="quick-start" id="overview"><h2>Your browser does the work.</h2><p>Mizan reads your balances directly from Lunch Money or YNAB, and gold and silver prices from the metal-price service. The maths happens in your browser. Your token and balances are never sent to me.</p><p>Mizan only ever reads. Your token and balances are not saved by Mizan. Only your method preferences stay in this browser.</p><p class="note">Need help connecting? <a href="token-guide.html">Start with the token guide</a></p></section><section class="article-group" id="privacy"><h2>Privacy &amp; connections</h2><details class="article-topic" id="token"><summary><h3>Your token</h3></summary><div class="topic-content">
         <p class="sub">Lunch Money has no "log in with Lunch Money" button for other apps yet, so Mizan uses an access token that you make in Lunch Money.</p>
         <ol>
-          <li>You paste the token in the field and click <strong>Connect</strong>.</li>
-          <li>The page copies the token into a variable in memory, and clears the field at once, before the first request.</li>
-          <li>The page sends the token only in the <code>Authorization: Bearer</code> header of the requests to <code>api.lunchmoney.dev</code>. The token is never in a web address.</li>
-          <li>When the requests finish, the page sets the variable to <code>null</code>. No code uses the token again.</li>
+          <li>You paste the token in the field and choose <strong>Connect my accounts</strong>.</li>
+          <li>Mizan copies the token into a variable in memory, and clears the field at once, before the first request.</li>
+          <li>Mizan sends the token only in the <code>Authorization: Bearer</code> header of the requests to <code>api.lunchmoney.dev</code>. The token is never in a web address.</li>
+          <li>When the requests finish, Mizan sets the variable to <code>null</code>. No code uses the token again.</li>
         </ol>
         <p>The token field uses a password input with autocomplete disabled and hints asking password managers (1Password, LastPass and Bitwarden) to ignore it. These hints are not a guarantee: a browser or password manager may still offer to save it. The password input masks the characters in browsers, including Firefox.</p>
         <div class="callout"><p><strong>Lunch Money tokens can change data.</strong> Lunch Money has no read-only tokens yet. Mizan never changes data, but the token itself can. Make a separate token for Mizan, and revoke it on the Lunch Money developers page when you finish.</p></div>
       </div></details>
-<details class="article-topic" id="requests"><summary><h3>Requests</h3></summary><div class="topic-content">
+<details class="article-topic" id="requests"><summary><h3>The requests Mizan makes</h3></summary><div class="topic-content">
+        <p>When you connect Lunch Money, Mizan makes eight requests: six to Lunch Money and two to the metal-price service. All of them only read; none can change anything.</p>
         <p class="sub">Every request uses <code>fetch()</code> with <code>method: "GET"</code>, <code>credentials: "omit"</code>, <code>cache: "no-store"</code>, <code>redirect: "error"</code> and <code>referrerPolicy: "no-referrer"</code>. Because redirects are an error, the token cannot follow a redirect to another host.</p>
-        <div class="scroll"><table>
-          <thead><tr><th>#</th><th>Request</th><th>Type</th><th>What the page reads</th></tr></thead>
+        <p class="note scroll-hint">Swipe sideways to see the whole table.</p>
+        <div class="scroll scroll-wide" tabindex="0" role="region" aria-label="Requests to Lunch Money and the metal-price service"><table class="wide">
+          <thead><tr><th>#</th><th>Request</th><th>Type</th><th>What Mizan reads</th></tr></thead>
           <tbody>
             <tr><td class="n">1</td><td><code>GET /v2/me</code></td><td><span class="tag">Required</span></td><td>Your budget name and its primary currency. This request goes first, alone.</td></tr>
             <tr><td class="n">2</td><td><code>GET /v2/plaid_accounts</code></td><td><span class="tag">Required</span></td><td>Your synced bank, card, investment and loan accounts.</td></tr>
             <tr><td class="n">3</td><td><code>GET /v2/manual_accounts</code></td><td><span class="tag">Required</span></td><td>Your manual accounts.</td></tr>
             <tr><td class="n">4</td><td><code>GET /v2/crypto/manual</code></td><td><span class="tag opt">Optional</span></td><td>Your manual crypto.</td></tr>
             <tr><td class="n">5</td><td><code>GET /v2/crypto/synced</code></td><td><span class="tag opt">Optional</span></td><td>Your synced crypto, 1 row for each coin.</td></tr>
-            <tr><td class="n">6</td><td><code>GET /v2/balance_history</code></td><td><span class="tag opt">Optional</span></td><td>Month-end balances from 12 months ago to last month, for the hawl.</td></tr>
+            <tr><td class="n">6</td><td><code>GET /v2/balance_history</code></td><td><span class="tag opt">Optional</span></td><td>Month-end balances from 12 months ago to last month, for the hawl, the full lunar year your wealth must be held.</td></tr>
             <tr><td class="n">7</td><td><code>GET api.gold-api.com/price/XAU/&lt;CUR&gt;</code></td><td><span class="tag opt">Optional</span></td><td>The gold price in your currency. No token.</td></tr>
             <tr><td class="n">8</td><td><code>GET api.gold-api.com/price/XAG/&lt;CUR&gt;</code></td><td><span class="tag opt">Optional</span></td><td>The silver price in your currency. No token.</td></tr>
           </tbody>
         </table></div>
-        <p>After request 1 succeeds, requests 2 to 8 start at the same time. Requests 1 to 6 use the <a href="https://lunchmoney.dev/introduction" rel="noreferrer">current v2 API</a> at <code>https://api.lunchmoney.dev/v2</code>. The page asks for <code>balance_history</code> only up to last month, because the current month can be in the future for the server in some time zones. For today, the page uses the amounts on the screen.</p>
+        <p>After request 1 succeeds, requests 2 to 8 start at the same time. Requests 1 to 6 use the <a href="https://lunchmoney.dev/introduction" rel="noreferrer">current v2 API</a> at <code>https://api.lunchmoney.dev/v2</code>. Mizan asks for <code>balance_history</code> only up to last month, because the current month can be in the future for the server in some time zones. For today, Mizan uses the amounts on the screen.</p>
       </div></details>
 <details class="article-topic" id="ynab"><summary><h3>Connecting YNAB</h3></summary><div class="topic-content">
         <p class="sub">YNAB uses its own sign-in (OAuth), so there is no token to copy. Mizan asks YNAB for <strong>read-only</strong> access, which YNAB enforces: any request that would change your plan is refused.</p>
         <ol>
-          <li>You choose <strong>Connect with YNAB</strong>. The page saves a random one-time code (the <code>state</code>) in session storage and sends you to <code>app.ynab.com</code>.</li>
+          <li>You choose <strong>Connect with YNAB</strong>. Mizan saves a random one-time code (the <code>state</code>) in session storage and sends you to <code>app.ynab.com</code>.</li>
           <li>You sign in on YNAB's site and allow access. Mizan never sees your YNAB password.</li>
-          <li>YNAB sends you back with a short-lived access token in the address fragment (after <code>#</code>), which browsers never send to a server. The page checks the one-time code, deletes it, and removes the token from the address bar and browser history at once.</li>
+          <li>YNAB sends you back with a short-lived access token in the address fragment (after <code>#</code>), which browsers never send to a server. Mizan checks the one-time code, deletes it, and removes the token from the address bar and browser history at once.</li>
           <li>The token is kept only in memory for the requests below, sent only in the <code>Authorization: Bearer</code> header to <code>api.ynab.com</code>, then set to <code>null</code>. YNAB ends it after 2 hours in any case.</li>
         </ol>
-        <div class="scroll"><table>
-          <thead><tr><th>#</th><th>Request</th><th>Type</th><th>What the page reads</th></tr></thead>
+        <p class="note scroll-hint">Swipe sideways to see the whole table.</p>
+        <div class="scroll scroll-wide" tabindex="0" role="region" aria-label="Requests to YNAB"><table class="wide">
+          <thead><tr><th>#</th><th>Request</th><th>Type</th><th>What Mizan reads</th></tr></thead>
           <tbody>
             <tr><td class="n">1</td><td><code>GET /v1/plans?include_accounts=true</code></td><td><span class="tag">Required</span></td><td>Your plans with their accounts, balances and currency. Mizan uses the plan changed most recently, and says so when you have more than one.</td></tr>
             <tr><td class="n">2</td><td><code>GET /v1/plans/{id}/transactions?since_date=…</code></td><td><span class="tag opt">Optional</span></td><td>Transactions from the last 13 months, used only to work out month-end balances for the hawl.</td></tr>
@@ -71,23 +74,25 @@
           <li><strong>Amounts:</strong> YNAB stores amounts in thousandths (milliunits), so Mizan divides by 1,000. Credit cards and loans are negative in YNAB and are shown as positive debts.</li>
           <li><strong>Account types:</strong> checking, savings and cash count. Credit cards are deducted by default; loans and lines of credit are listed but not selected. Mortgages go to the mortgage setting. Tracking accounts count when their name looks like an investment (for example “TFSA” or “Brokerage”); others, such as a house or car, are listed but not selected.</li>
           <li><strong>History:</strong> YNAB has no balance history, so each month-end balance is today’s balance less the transactions dated after that month. Months before an account’s first transaction, while it was still empty, are treated as before it opened.</li>
-          <li><strong>Not current:</strong> an account whose bank import has an error in YNAB is marked “not current”. Tracking accounts get a note, because their balances are usually updated by hand.</li>
+          <li><strong>Out of date:</strong> an account whose bank import has an error in YNAB is marked “May be out of date”. Tracking accounts get a note, because their balances are usually updated by hand.</li>
         </ul>
         <p>To remove Mizan's access early, go to Account Settings in YNAB. See the <a href="privacy.html">privacy policy</a>.</p>
       </div></details>
-<details class="article-topic" id="saved"><summary><h3>What the page saves</h3></summary><div class="topic-content">
-        <p>The page saves only your choices, in your browser's <code>localStorage</code>, under the key <code>lunchmoney-zakat-choices-v1</code>:</p>
+<details class="article-topic" id="saved"><summary><h3>What Mizan saves</h3></summary><div class="topic-content">
+        <p>Mizan saves only your choices, in your browser's <code>localStorage</code>, under the key <code>lunchmoney-zakat-choices-v1</code>:</p>
         <ul>
-          <li>the nisab metal (silver or gold) and the mortgage method</li>
+          <li>the nisab metal (silver or gold) and the mortgage method. The nisab is the minimum you must own before zakat is due</li>
           <li>the 2 nisab weights</li>
           <li>the gold purity and the silver purity</li>
         </ul>
         <p>It never saves amounts or your token. A reload or <strong>Start again</strong> removes all amounts. <strong>Reset my method choices</strong> removes the saved choices and sets the defaults again.</p>
       </div></details>
 </section>
-<section class="article-group" id="calculation"><h2>How the calculation works</h2><details class="article-topic" id="accounts"><summary><h3>From accounts to rows</h3></summary><div class="topic-content">
+<section class="article-group" id="calculation"><h2>The calculation</h2><details class="article-topic" id="accounts"><summary><h3>Which accounts are counted</h3></summary><div class="topic-content">
+        <p>Each account is sorted into a group by its type. The group decides where the account appears and whether it starts selected.</p>
         <p class="sub">The function <code>kindOf()</code> puts each Lunch Money account in 1 group, from its type. The amount is <code>to_base</code>: the balance in your budget's currency, at the Lunch Money exchange rate. This follows the official <a href="https://lunchmoney.dev/amounts-and-balances" rel="noreferrer">amounts and balances guide</a>.</p>
-        <div class="scroll"><table>
+        <p class="note scroll-hint">Swipe sideways to see the whole table.</p>
+        <div class="scroll scroll-wide" tabindex="0" role="region" aria-label="How Lunch Money account types are grouped"><table class="wide">
           <thead><tr><th>Lunch Money type</th><th>Mizan group</th><th>Where it goes</th><th>Selected at the start</th></tr></thead>
           <tbody>
             <tr><td>cash, depository, checking, savings</td><td>Cash</td><td>Review balances, accounts</td><td>Yes</td></tr>
@@ -99,25 +104,32 @@
             <tr><td>real estate, vehicle, any other type</td><td>Skip</td><td>Not used</td><td>Not used</td></tr>
           </tbody>
         </table></div>
-        <h3>Special cases</h3>
+        <h4>Special cases</h4>
         <ul>
           <li><strong>Closed and inactive accounts</strong> get the amount 0. Their history stays, so they count in the hawl for the months when they had a balance.</li>
           <li><strong>Deleted accounts</strong> from the balance history are used in the same way. A deleted home, car or loan is not used.</li>
-          <li><strong>Crypto with no price:</strong> when Lunch Money has no price for a coin, <code>to_base</code> is empty. The page shows the row at 0, not selected, and asks you to type the value. It never uses the number of coins as money.</li>
+          <li><strong>Crypto with no price:</strong> when Lunch Money has no price for a coin, <code>to_base</code> is empty. Mizan shows the row at 0, not selected, and asks you to type the value. It never uses the number of coins as money.</li>
           <li><strong>Credit cards:</strong> a balance below 0 today (a credit) becomes 0. A card that you paid in full stays in the list, for its past month-end balances.</li>
-          <li><strong>Retirement accounts</strong> (RRSP, RRIF, LIRA, 401(k), IRA, Roth, pension and others) get a note. The page tests the subtype and the account's own name, not the bank name.</li>
-          <li><strong>Other currencies:</strong> an account in a different currency gets a note that the amount is at the Lunch Money exchange rate.</li>
-          <li><strong>Balances that are not current:</strong> a row gets the badge "not current" when its balance is more than 3 days old, or when its connection needs a relink or has an error.</li>
+          <li><strong>Retirement accounts</strong> (RRSP, RRIF, LIRA, 401(k), IRA, Roth, pension and others) get a note. Mizan tests the subtype and the account's own name, not the bank name.</li>
+          <li><strong>Other currencies:</strong> an account in a different currency gets a note that the amount shown was converted by Lunch Money.</li>
+          <li><strong>Balances that may be out of date:</strong> a row gets the badge "May be out of date" when its balance is more than 3 days old, or when its connection needs a relink or has an error.</li>
         </ul>
       </div></details>
-<details class="article-topic" id="trace"><summary><h3>Following every amount</h3></summary><div class="topic-content"><p>Each account is marked <strong>Lunch Money</strong> when its amount matches the imported balance rounded to cents, or <strong>Adjusted here</strong> when you edit it. Manual additions and deductions are marked <strong>Added here</strong>. Sample mode uses fictional balances labelled <strong>Sample balance</strong>.</p><p>On Your estimate, the waterfall graph uses the same amounts as the calculation: selected accounts, added assets, deductions, and the total after debts. Open <strong>See every amount in this total</strong> to review every included account, asset and deduction. Missing metal prices stay incomplete.</p><p>The balance-history graph connects only adjacent months with all selected account and debt balances available. Hollow points are partial subtotals; missing months have no point. Use the slider with a pointer or arrow keys for exact amounts, or open the monthly table. The graph excludes manually added assets, other debts and mortgage deductions, just like the history table.</p></div></details>
+<details class="article-topic" id="trace"><summary><h3>Following every amount</h3></summary><div class="topic-content"><p>In <strong>See every amount in this total</strong>, each account is marked <strong>Lunch Money</strong> or <strong>YNAB</strong> when its amount matches the imported balance rounded to cents, or <strong>Adjusted here</strong> when you edit it. Manual additions and deductions are marked <strong>Added here</strong>. Sample mode uses fictional balances labelled <strong>Sample balance</strong>.</p><p>On Your estimate, the waterfall graph uses the same amounts as the calculation: selected accounts, added assets, deductions, and the total after debts. Open <strong>See every amount in this total</strong> to review every included account, asset and deduction. Missing metal prices stay incomplete.</p><p>The balance-history graph connects only adjacent months with all selected account and debt balances available. Hollow points are months with some balances missing; months with no balances have no point. Use the slider with a pointer or arrow keys for exact amounts, or open the monthly table. The graph excludes manually added assets, other debts and mortgage deductions, just like the history table.</p></div></details>
 <details class="article-topic" id="prices"><summary><h3>Gold and silver prices</h3></summary><div class="topic-content">
-        <p>The page asks <code>api.gold-api.com</code> for the price of 1 troy ounce of gold (<code>XAU</code>) and silver (<code>XAG</code>) in your budget's currency. It divides each price by <code>31.1034768</code>, the number of grams in 1 troy ounce, to get the price of 1 gram of pure metal.</p>
-        <p>The page checks that both prices are more than 0 and in your currency. If a request fails, or the service does not have your currency, both price fields stay empty, and a warning asks you to type today's prices. You can always change the prices.</p>
+        <p>Mizan asks <code>api.gold-api.com</code> for the price of 1 troy ounce of gold (<code>XAU</code>) and silver (<code>XAG</code>) in your budget's currency. It divides each price by <code>31.1034768</code>, the number of grams in 1 troy ounce, to get the price of 1 gram of pure metal.</p>
+        <p>Mizan checks that both prices are more than 0 and in your currency. If a request fails, or the service does not have your currency, both price fields stay empty, and a warning asks you to type today's prices. You can always change the prices.</p>
       </div></details>
 <details class="article-topic" id="formulas"><summary><h3>The formulas</h3></summary><div class="topic-content">
+        <ul>
+          <li><strong>What you own</strong> = selected account balances + anything you add (cash at home, other crypto, money owed to you, other assets, gold and silver by weight and purity).</li>
+          <li><strong>What you deduct</strong> = selected debts + other debts due now + the mortgage amount for your chosen option.</li>
+          <li><strong>Total</strong> = what you own minus what you deduct.</li>
+          <li><strong>Zakat</strong> = 2.5% of the total when it is at or above the nisab (the minimum you must own before zakat is due); 0 when the complete total is below it; Incomplete when a needed price or nisab weight is missing.</li>
+        </ul>
         <p class="sub">The function <code>totals()</code> reads the current input values each time you change something. Imported account amounts are rounded to 2 decimal places in their fields; gold prices to 3 and silver prices to 4. The calculation uses those values and formats the result as currency.</p>
-<div class="formula"><span class="c">assets</span>   = selected account balances
+        <p class="note">The same calculation, as Mizan computes it:</p>
+<div class="formula" tabindex="0" role="region" aria-label="Formulas"><span class="c">assets</span>   = selected account balances
          + cash at home + other crypto + money owed to you + other assets
          + gold grams  x (karat / 24) x gold price for 1 g
          + silver grams x purity      x silver price for 1 g
@@ -134,10 +146,10 @@
 <span class="c">zakat</span>    = total x 2.5%   if total &gt; 0 and total &gt;= nisab
          = 0              if the complete total is below the nisab
          = incomplete     if a required price or nisab weight is missing</div>
-        <p>Fields for amounts that cannot be below 0 count as 0 when they are below 0. An account in the account list can be below 0, for example an overdraft. The page calculates the same totals for all 6 methods (silver or gold nisab, with each of the 3 mortgage choices) and shows them side by side.</p>
+        <p>Fields for amounts that cannot be below 0 count as 0 when they are below 0. An account in the account list can be below 0, for example an overdraft. Mizan calculates the same totals for all 6 methods (silver or gold nisab, with each of the 3 mortgage choices) and shows them side by side.</p>
         <p>A method needs its nisab metal's price and weight. If you add gold or silver that you own under Add other assets, its price is also required, even when you choose the other metal for the nisab. Missing prices show <strong>Incomplete</strong>, rather than a zero zakat amount. The estimate assumes that your hawl is complete; the history table does not decide whether zakat is due.</p>
         <p>For a mortgage deduction, enter the deductible amount per payment under your chosen method. For the next 12 months, use the average deductible amount per payment and the number of payments. Mizan does not separate principal and interest for you.</p>
-        <h3>Example: the sample data</h3>
+        <h4>Example: the sample data</h4>
         <div class="scroll"><table>
           <thead><tr><th>Item</th><th>Amount (CAD)</th></tr></thead>
           <tbody>
@@ -152,25 +164,25 @@
 <details class="article-topic" id="hawl"><summary><h3>The hawl check</h3></summary><div class="topic-content">
         <p class="sub">The hawl is a lunar year used in deciding when zakat is due. Scholars differ on how changes below the nisab affect it. This table provides month-end history for your review; it cannot confirm a complete hawl.</p>
         <ol>
-          <li>The page makes 13 rows: the last 12 months and today.</li>
+          <li>Mizan makes 13 rows: the last 12 months and today.</li>
           <li>For each past month, it adds the month-end balances of the selected accounts in the account list, and it subtracts the selected debts in the debt list.</li>
           <li>For today, it uses the amounts that you see in the account and debt lists.</li>
           <li>A past month with no balance for any selected account shows "No data", for example the months before you started to use Lunch Money. It does not count as below the nisab.</li>
-          <li>A month with some selected balances missing shows a <strong>Partial</strong> label and a total of the balances available. It is not classified as above or below the nisab. Missing balances are unknown, including gaps for closed accounts.</li>
-          <li>The page compares complete rows with today's nisab. It shows the lowest complete total, and lists complete rows that were below the nisab. A zero balance counts as data.</li>
+          <li>A month with some selected balances missing shows how many are missing, such as <strong>1 missing</strong>, and a total of the balances available. It is not classified as above or below the nisab. Missing balances are unknown, including gaps for closed accounts.</li>
+          <li>Mizan compares complete rows with today's nisab. It shows the lowest complete total, and lists complete rows that were below the nisab. A zero balance counts as data.</li>
         </ol>
         <p>The table excludes the additional assets, other debts and the mortgage, including in today's row. Its totals can differ from your zakat estimate.</p>
-        <div class="callout"><p>The page cannot see a drop below the nisab inside a month, because Lunch Money keeps 1 balance for each month. 12 calendar months are close to a lunar year (354 days) but not the same. The <a href="zakat-guide.html#hawl">Zakat guide</a> explains the hawl rules.</p></div>
+        <div class="callout"><p>Mizan cannot see a drop below the nisab inside a month, because Lunch Money keeps 1 balance for each month. 12 calendar months are close to a lunar year (354 days) but not the same. The <a href="zakat-guide.html#hawl">Zakat guide</a> explains the hawl rules.</p></div>
       </div></details>
 </section>
-<section class="article-group" id="troubleshooting"><h2>Things to know</h2><details class="article-topic" id="errors"><summary><h3>Errors and warnings</h3></summary><div class="topic-content">
+<section class="article-group" id="troubleshooting"><h2>Limits &amp; troubleshooting</h2><details class="article-topic" id="errors"><summary><h3>Errors and warnings</h3></summary><div class="topic-content">
         <div class="scroll"><table>
           <thead><tr><th>Case</th><th>What you see</th></tr></thead>
           <tbody>
             <tr><td>The token does not work (401 or 403)</td><td>An error. Copy all of the token again, or make a new token.</td></tr>
-            <tr><td>Too many requests (429)</td><td>An error. Wait 1 minute, then try again.</td></tr>
+            <tr><td>Too many requests (429)</td><td>An error. Wait a few minutes, then try again.</td></tr>
             <tr><td>No connection, or a redirect</td><td>An error. Check your internet connection.</td></tr>
-            <tr><td>A required request fails</td><td>The page stops and stays on the connect screen.</td></tr>
+            <tr><td>A required request fails</td><td>Mizan stops and stays on the connect screen.</td></tr>
             <tr><td>Crypto or balance history fails</td><td>A warning. The calculator still works without that data.</td></tr>
             <tr><td>No price in your currency</td><td>A warning. Type today's gold and silver prices.</td></tr>
           </tbody>
@@ -178,17 +190,17 @@
       </div></details>
 <details class="article-topic" id="limits"><summary><h3>Limits</h3></summary><div class="topic-content">
         <ul>
-          <li>The rate is always 2.5% of the whole total. The page has no option for a solar year.</li>
-          <li>Shares, funds and retirement accounts count at their full value. The page has no option to count only part of an investment, or to delay zakat on retirement money. You can change an amount or clear the box.</li>
+          <li>The rate is always 2.5% of the whole total. Mizan has no option for a solar year.</li>
+          <li>Shares, funds and retirement accounts count at their full value. Mizan has no option to count only part of an investment, or to delay zakat on retirement money. You can change an amount or untick the account.</li>
           <li>Jewellery has no separate option. If you add gold or silver under Add other assets, it counts at its weight, purity and price.</li>
           <li>The hawl uses month-end balances and today's nisab. It does not use past prices, and it does not include the additional assets, the other debts or the mortgage.</li>
-          <li>The page reads only the budget of your token.</li>
-          <li>The page does not pay zakat or keep a record of it.</li>
+          <li>Mizan reads one budget: the one your Lunch Money token belongs to, or your most recently changed YNAB plan.</li>
+          <li>Mizan does not pay zakat or keep a record of it.</li>
           <li>Mizan gives an estimate. Ask your imam or a zakat scholar to confirm the method that you follow.</li>
         </ul>
       </div></details>
 </section>
-<section class="article-group" id="security"><h2>For a closer look</h2><details class="article-topic" id="headers"><summary><h3>Security headers</h3></summary><div class="topic-content">
+<section class="article-group" id="security"><h2>Security</h2><details class="article-topic" id="headers"><summary><h3>Security headers</h3></summary><div class="topic-content">
         <p>The page sets this Content Security Policy in a meta tag, and Netlify sends it again as a header:</p>
         <div class="scroll"><table>
           <thead><tr><th>Rule</th><th>Effect</th></tr></thead>
@@ -203,9 +215,11 @@
           </tbody>
         </table></div>
         <p>Netlify also sends <code>Referrer-Policy: no-referrer</code>, <code>X-Content-Type-Options: nosniff</code>, <code>X-Frame-Options: DENY</code> and a <code>Permissions-Policy</code> that turns off the camera, the microphone, location and payment.</p>
-      </div></details></section></div></div></main><footer class="foot"><div class="wrap foot-inner">
+      </div></details></section>
+<p class="read-next"><a class="button primary" href="./">Open the calculator</a></p>
+</div></div></main><footer class="foot"><div class="wrap foot-inner">
   <div><p>Made by Mazin Kanuga.</p><p>A community project for <a href="https://lunchmoney.app" rel="noreferrer">Lunch Money</a> and <a href="https://www.ynab.com" rel="noreferrer">YNAB</a> users.</p></div>
-  <nav aria-label="Footer"><a href="zakat-guide.html">Zakat guide</a><a href="how-it-works.html">How it works</a><a href="privacy.html">Privacy policy</a><a href="https://github.com/TechnoDudeX/zakat" rel="noreferrer">Source code</a><a href="https://gold-api.com" rel="noreferrer">Metal prices</a></nav>
+  <nav aria-label="Footer"><a href="zakat-guide.html">Zakat guide</a><a href="how-it-works.html">How it works</a><a href="token-guide.html">Token guide</a><a href="privacy.html">Privacy policy</a><a href="https://github.com/TechnoDudeX/zakat" rel="noreferrer">Source code</a><a href="https://gold-api.com" rel="noreferrer">Metal prices</a></nav>
 </div></footer>
 <script>(function () {
   function revealAnchor() {
