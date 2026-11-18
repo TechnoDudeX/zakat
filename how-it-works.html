@@ -37,7 +37,7 @@
       </div></details>
 <details class="article-topic" id="requests"><summary><h3>The requests Mizan makes</h3></summary><div class="topic-content">
         <p>When you connect Lunch Money, Mizan makes eight requests: six to Lunch Money and two to the metal-price service. All of them only read; none can change anything.</p>
-        <p class="sub">Every request uses <code>fetch()</code> with <code>method: "GET"</code>, <code>credentials: "omit"</code>, <code>cache: "no-store"</code>, <code>redirect: "error"</code> and <code>referrerPolicy: "no-referrer"</code>. Because redirects are an error, the token cannot follow a redirect to another host.</p>
+        <p class="sub">Every request uses <code>fetch()</code> with <code>method: "GET"</code>, <code>credentials: "omit"</code>, <code>cache: "no-store"</code>, <code>redirect: "error"</code> and <code>referrerPolicy: "no-referrer"</code>. Because redirects are an error, the token cannot follow a redirect to another host. If you sign in with Lunch Money instead of pasting a token, there is one extra request: a <code>POST</code> to Lunch Money’s <code>/oauth/token</code> that swaps the one-time sign-in code for a read-only access token. It changes nothing in your budget.</p>
         <p class="note scroll-hint">Swipe sideways to see the whole table.</p>
         <div class="scroll scroll-wide" tabindex="0" role="region" aria-label="Requests to Lunch Money and the metal-price service"><table class="wide">
           <thead><tr><th>#</th><th>Request</th><th>Type</th><th>What Mizan reads</th></tr></thead>

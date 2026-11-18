@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The page can connect only to the Lunch Money and YNAB APIs and the gold and silver price API. Fonts come only from this site. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src https://api.lunchmoney.dev https://api.ynab.com https://api.gold-api.com; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src https://api.lunchmoney.dev https://api-alpha.lunchmoney.dev https://api.ynab.com https://api.gold-api.com; img-src data:; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="Mazin Kanuga">
 <meta name="description" content="Mizan is a zakat calculator for Lunch Money and YNAB users. It reads your balances and gets today's gold and silver prices. Read only. Your token goes only to the Lunch Money or YNAB API.">
@@ -201,6 +201,13 @@
             <label class="service-opt"><input type="radio" name="service" value="ynab"><span>YNAB</span></label>
           </div>
         </fieldset>
+        <div class="ynab-connect lm-oauth" id="lmOauth" data-service="lunchmoney">
+          <p class="ynab-lead">Sign in on Lunch Money’s own site and pick the budget to read. Mizan only gets permission to read, so it can’t change anything.</p>
+          <button type="button" class="primary" id="lmOauthBtn">Sign in with Lunch Money <span aria-hidden="true">→</span></button>
+          <p id="lmOauthStatus" class="hero-status" role="status"></p>
+          <p class="connect-next">You’ll approve on Lunch Money’s site, then come straight back here to review your accounts.</p>
+          <p class="lm-oauth-or">Or use an access token instead:</p>
+        </div>
         <ol class="connect-steps" data-service="lunchmoney">
           <li><span>1</span><div><strong>Create an access token in Lunch Money</strong><p>In Lunch Money, go to Settings → Developers and request a new access token. Name it “Mizan”. <a href="token-guide.html" target="_blank" rel="noopener">Step-by-step guide<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></p></div></li>
           <li><span>2</span><div><strong>Paste it here</strong>
@@ -222,7 +229,7 @@
       </div>
       <aside class="connect-aside" aria-label="About your data">
         <h2>What happens to your data</h2>
-        <ul data-service="lunchmoney"><li>Your token goes straight from your browser to Lunch Money, and nowhere else. The person who made Mizan never sees it.</li><li>Mizan only looks up your accounts and balances. It never adds, edits or deletes anything.</li><li id="tokenNotice">The box is emptied as soon as you choose Connect my accounts, and the token is never saved.</li></ul>
+        <ul data-service="lunchmoney"><li>Your token goes straight from your browser to Lunch Money, and nowhere else. The person who made Mizan never sees it.</li><li>Mizan only looks up your accounts and balances. It never adds, edits or deletes anything.</li><li id="tokenNotice">The box is emptied as soon as you choose Connect my accounts, and the token is never saved.</li><li id="lmOauthNotice">If you sign in instead, Lunch Money gives Mizan read-only access to the budget you pick. It’s kept only in memory and never saved. You can remove Mizan from Connected apps in Lunch Money at any time.</li></ul>
         <ul data-service="ynab" hidden><li>You sign in on YNAB’s site. Mizan never sees your password.</li><li>YNAB gives Mizan a temporary access token. It’s removed from the address bar at once, kept only in memory, and never saved.</li><li>Your balances and transactions are never saved or shared.</li></ul>
         <p class="aside-links"><a href="privacy.html" target="_blank" rel="noopener">Privacy policy<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a> · <a href="how-it-works.html" target="_blank" rel="noopener">How it works<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></p>
       </aside>
@@ -364,11 +371,29 @@
   }
 
   // ---------------------------------------------------------------------------
-  // Reading data. The only request method in this file is GET.
+  // Reading data. Every request for balances is a GET. The one POST in this file
+  // exchanges a Lunch Money sign-in code for an access token (see lmExchange).
   // ---------------------------------------------------------------------------
+
+  // Lunch Money OAuth, in early access. During testing, OAuth tokens only work on the
+  // alpha server, and Lunch Money has asked that it is not released to the public yet,
+  // so sign-in only appears on localhost until LM_OAUTH.public is set to true.
+  // The client is a public client (no secret: this page has nowhere to keep one) with
+  // read-only scopes and no offline_access, so there is no refresh token.
+  var LM_OAUTH = {
+    issuer: "https://api-alpha.lunchmoney.dev",
+    clientId: "",
+    public: false
+  };
+  LM_OAUTH.authorize = LM_OAUTH.issuer + "/oauth/authorize";
+  LM_OAUTH.token = LM_OAUTH.issuer + "/oauth/token";
+  LM_OAUTH.api = LM_OAUTH.issuer + "/v2";
+  LM_OAUTH.enabled = !!LM_OAUTH.clientId &&
+    (LM_OAUTH.public || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname || ""));
 
   var SERVICES = {
     lunchmoney: { name: "Lunch Money", api: API },
+    "lunchmoney-oauth": { name: "Lunch Money", api: LM_OAUTH.api },
     ynab: { name: "YNAB", api: "https://api.ynab.com/v1" }
   };
 
@@ -380,6 +405,7 @@
     }).then(function (r) {
       if (r.status === 401 || r.status === 403) {
         throw new Error(service === "ynab" ? "YNAB didn’t accept the sign-in. It may have expired. Choose Connect with YNAB to sign in again."
+          : service === "lunchmoney-oauth" ? "Lunch Money didn’t accept the sign-in. It may have expired. Choose Sign in with Lunch Money to try again."
           : "Lunch Money didn’t accept that token. Mizan has cleared the box, so paste the whole token again. If you can no longer see it in Lunch Money, make a new one.");
       }
       if (r.status === 429) throw new Error(s.name + " is getting too many requests. Wait a few minutes, then try again.");
@@ -389,7 +415,6 @@
       throw new Error("Mizan couldn’t reach " + s.name + ". Check your internet connection, or pause any ad or tracker blocker for this page, then try again.");
     });
   }
-  function lmGet(token, path) { return apiGet("lunchmoney", token, path); }
 
   function metalPrices(currency) {
     var cur = currency.toUpperCase();
@@ -426,7 +451,9 @@
     el.textContent = "Gold " + format(prices.gold, 3) + " (" + quoteTime(prices.goldUpdatedAt) + ") · Silver " + format(prices.silver, 4) + " (" + quoteTime(prices.silverUpdatedAt) + ") · Fetched " + fetchedAt.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" }) + " · gold-api.com";
   }
 
-  function loadFromLunchMoney(token) {
+  // service: "lunchmoney" for a pasted access token, "lunchmoney-oauth" after signing in.
+  function loadFromLunchMoney(token, service) {
+    var lmGet = function (t, path) { return apiGet(service || "lunchmoney", t, path); };
     var months = lastMonths(13), warnings = [];
     // The parts that the calculator can work without: show a warning, not an error.
     var optional = function (key, text) {
@@ -1229,6 +1256,77 @@
   }
 
   // ---------------------------------------------------------------------------
+  // Lunch Money sign-in: authorization code with PKCE (S256), as a public client.
+  // The state and code verifier live in sessionStorage for this one round trip only.
+  // ---------------------------------------------------------------------------
+
+  var LM_OAUTH_KEY = "mizan-lm-oauth";
+
+  function base64url(bytes) {
+    var s = "";
+    bytes.forEach(function (b) { s += String.fromCharCode(b); });
+    return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  }
+  function randomString(n) { var b = new Uint8Array(n); crypto.getRandomValues(b); return base64url(b); }
+
+  function startLmSignIn() {
+    var failed = function (text) { busy(false, text, true, "lmOauthStatus"); };
+    if (!LM_OAUTH.enabled) { failed("Lunch Money sign-in is not set up yet. Use an access token instead."); return; }
+    if (!window.crypto || !crypto.subtle) { failed("This browser can’t do Lunch Money sign-in safely. Use an access token instead."); return; }
+    var state = randomString(32), verifier = randomString(48);
+    crypto.subtle.digest("SHA-256", new TextEncoder().encode(verifier)).then(function (hash) {
+      try { sessionStorage.setItem(LM_OAUTH_KEY, JSON.stringify({ state: state, verifier: verifier })); } catch (e) {
+        failed("Your browser blocked the site storage that Lunch Money sign-in needs. Allow site data for this page, or use an access token.");
+        return;
+      }
+      location.assign(LM_OAUTH.authorize + "?" + new URLSearchParams({
+        response_type: "code", client_id: LM_OAUTH.clientId, redirect_uri: ynabRedirectUri(), state: state,
+        code_challenge: base64url(new Uint8Array(hash)), code_challenge_method: "S256"
+      }).toString());
+    }, function () { failed("Mizan couldn’t start the Lunch Money sign-in. Try again, or use an access token."); });
+  }
+
+  // Back from Lunch Money: the result is in the query string. Read it, then remove it from
+  // the address bar and history before anything else, and use the stored state only once.
+  function lmReturn() {
+    if (!LM_OAUTH.enabled) return null;
+    var params = new URLSearchParams(location.search || "");
+    if (!params.has("state") || !(params.has("code") || params.has("error"))) return null;
+    history.replaceState(null, "", location.pathname + "#connect");
+    var stored = null;
+    try { stored = JSON.parse(sessionStorage.getItem(LM_OAUTH_KEY) || "null"); sessionStorage.removeItem(LM_OAUTH_KEY); } catch (e) { /* no storage */ }
+    var again = " Choose Sign in with Lunch Money to try again.";
+    if (!stored || params.get("state") !== stored.state) return { error: "Mizan could not verify the Lunch Money sign-in." + again };
+    if (params.get("iss") !== LM_OAUTH.issuer) return { error: "The sign-in did not come from Lunch Money, so Mizan ignored it." + again };
+    var error = params.get("error");
+    if (error) {
+      return { error: error === "access_denied" ? "You didn’t allow access in Lunch Money." + again
+        : "Lunch Money couldn’t sign you in." + again + " (Code: " + error + ")" };
+    }
+    return { code: params.get("code"), verifier: stored.verifier };
+  }
+
+  // The one POST: swap the single-use code for a short-lived access token.
+  function lmExchange(code, verifier) {
+    return fetch(LM_OAUTH.token, {
+      method: "POST", credentials: "omit", cache: "no-store", redirect: "error", referrerPolicy: "no-referrer",
+      headers: { "Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json" },
+      body: new URLSearchParams({
+        grant_type: "authorization_code", code: code, redirect_uri: ynabRedirectUri(),
+        code_verifier: verifier, client_id: LM_OAUTH.clientId
+      }).toString()
+    }).then(function (r) {
+      if (!r.ok) throw new Error("Lunch Money didn’t accept the sign-in (error " + r.status + "). Choose Sign in with Lunch Money to try again.");
+      return r.json();
+    }, function () {
+      throw new Error("Mizan couldn’t reach Lunch Money. Check your internet connection, or pause any ad or tracker blocker for this page, then try again.");
+    }).then(function (t) {
+      if (!t || typeof t.access_token !== "string" || !t.access_token) throw new Error("Lunch Money sent back an unexpected answer. Choose Sign in with Lunch Money to try again.");
+      return t.access_token;
+    });
+  }
+
+  // ---------------------------------------------------------------------------
   // Start
   // ---------------------------------------------------------------------------
 
@@ -1236,15 +1334,21 @@
     metalPrices("CAD").then(function (prices) { renderHomePrices(prices, new Date()); });
   }
 
-  var STATUS_IDS = ["status", "finalStatus", "connectStatus", "connectSampleStatus", "ynabStatus"];
+  // Without a Lunch Money OAuth client (or outside early-access hosts), only the token form shows.
+  if (!LM_OAUTH.enabled) {
+    ["lmOauth", "lmOauthNotice"].forEach(function (id) { var el = $(id); if (el && el.parentNode) el.parentNode.removeChild(el); });
+  }
+
+  var STATUS_IDS = ["status", "finalStatus", "connectStatus", "connectSampleStatus", "ynabStatus", "lmOauthStatus"];
   var sampleButtons = document.querySelectorAll(".sample-start");
 
   // statusId: which status line, next to the button that was used, shows the message.
   function busy(on, text, isError, statusId) {
     $("connectBtn").disabled = on;
     $("ynabConnectBtn").disabled = on;
+    if ($("lmOauthBtn")) $("lmOauthBtn").disabled = on;
     sampleButtons.forEach(function (b) { b.disabled = on; });
-    STATUS_IDS.forEach(function (id) { $(id).textContent = ""; });
+    STATUS_IDS.forEach(function (id) { if ($(id)) $(id).textContent = ""; });
     var status = $(statusId || "status");
     status.textContent = text || "";
     status.className = "hero-status" + (isError ? " error" : "") + (on && text ? " is-busy" : "");
@@ -1272,8 +1376,10 @@
   document.querySelectorAll("input[name=service]").forEach(function (el) { el.addEventListener("change", showService); });
   // Runs on load and on hashchange: a return from YNAB is handled first, then the screen is chosen.
   function arrive() {
-    var signIn = D ? null : ynabReturn();  // before route(), which reads the cleaned address
+    var lmSignIn = D ? null : lmReturn();  // before route(), which reads the cleaned address
+    var signIn = D ? null : ynabReturn();
     route();
+    if (lmSignIn) { finishLmSignIn(lmSignIn); return; }
     if (!signIn) return;
     if (signIn.error) { busy(false, signIn.error, true, "ynabStatus"); return; }
     var ynabToken = signIn.token;
@@ -1288,9 +1394,26 @@
       busy(false, e.message, true, "ynabStatus");
     });
   }
+  function finishLmSignIn(result) {
+    if (result.error) { busy(false, result.error, true, "lmOauthStatus"); return; }
+    busy(true, "Reading your balances from Lunch Money. This can take a few seconds…", false, "lmOauthStatus");
+    var token = null;
+    lmExchange(result.code, result.verifier).then(function (t) {
+      token = t;
+      return loadFromLunchMoney(token, "lunchmoney-oauth");
+    }).then(function (data) {
+      token = null;
+      busy(false, "");
+      show(data);
+    }, function (e) {
+      token = null;
+      busy(false, e.message, true, "lmOauthStatus");
+    });
+  }
   window.addEventListener("hashchange", arrive);
   arrive();
   $("ynabConnectBtn").addEventListener("click", startYnabSignIn);
+  if ($("lmOauthBtn")) $("lmOauthBtn").addEventListener("click", startLmSignIn);
 
   $("connectBtn").addEventListener("click", function () {
     var token = $("token").value.trim();

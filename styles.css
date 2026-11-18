@@ -2539,6 +2539,8 @@ td .note,.history-state { font-size:13px; }
   .price-preview p { width:100%; }
 }
 /* friendlier:connect */
+.lm-oauth { margin-bottom:22px; }
+.lm-oauth-or { justify-self:stretch; margin:8px 0 0; padding-top:18px; border-top:1px solid var(--line); font-weight:700; color:var(--ink); }
 /* Sample link under the heading, the "what comes next" lines, the busy line and the token box in error */
 .connect-view .view-head .connect-try { margin-top:8px; }
 .connect-try .link-button { font:inherit; font-weight:700; color:var(--ink); min-height:0; padding:0; }

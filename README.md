@@ -35,7 +35,7 @@ The calculator has three steps: connect, review balances, and see your estimate.
 
 ## Your data and your token
 
-- **Read only.** Mizan sends only GET requests. It has no code that changes or deletes anything in Lunch Money.
+- **Read only.** Mizan reads your data only with GET requests. It has no code that changes or deletes anything in Lunch Money. The one POST is the standard OAuth step that swaps a Lunch Money sign-in code for a read-only access token; it changes nothing in your budget.
 - **No application server.** The site has a calculator, 3 static guide pages, a project page, a shared stylesheet and 2 font files. Your browser talks directly to the Lunch Money API. No token or account balances go to the author.
 - **The token is not kept.** Mizan sends your token only to `api.lunchmoney.dev`, then forgets it. Mizan does not save the token in the browser, in a cookie or anywhere else. If your browser or a password manager asks to save it, click Never.
 - **Only 3 hosts.** A Content Security Policy lets Mizan connect only to `api.lunchmoney.dev`, `api.ynab.com` and `api.gold-api.com`. The fonts come from the same site as the page. Requests to gold-api.com include only your currency code (for example CAD). They do not include your token or your balances. Redirects are refused, so the token cannot follow a redirect to another host.
