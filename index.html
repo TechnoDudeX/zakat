@@ -229,7 +229,7 @@
       </div>
       <aside class="connect-aside" aria-label="About your data">
         <h2>What happens to your data</h2>
-        <ul data-service="lunchmoney"><li>Your token goes straight from your browser to Lunch Money, and nowhere else. The person who made Mizan never sees it.</li><li>Mizan only looks up your accounts and balances. It never adds, edits or deletes anything.</li><li id="tokenNotice">The box is emptied as soon as you choose Connect my accounts, and the token is never saved.</li><li id="lmOauthNotice">If you sign in instead, Lunch Money gives Mizan read-only access to the budget you pick. It’s kept only in memory and never saved. You can remove Mizan from Connected apps in Lunch Money at any time.</li></ul>
+        <ul data-service="lunchmoney"><li>Your token goes straight from your browser to Lunch Money, and nowhere else. The person who made Mizan never sees it.</li><li>Mizan only looks up your accounts and balances. It never adds, edits or deletes anything.</li><li id="tokenNotice">The box is emptied as soon as you choose Connect my accounts, and the token is never saved.</li><li id="lmOauthNotice">If you sign in instead, Lunch Money gives Mizan read-only access to the budget you pick. It’s kept only in memory, never saved, and ended as soon as your balances are read. You can remove Mizan from Connected apps in Lunch Money at any time.</li></ul>
         <ul data-service="ynab" hidden><li>You sign in on YNAB’s site. Mizan never sees your password.</li><li>YNAB gives Mizan a temporary access token. It’s removed from the address bar at once, kept only in memory, and never saved.</li><li>Your balances and transactions are never saved or shared.</li></ul>
         <p class="aside-links"><a href="privacy.html" target="_blank" rel="noopener">Privacy policy<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a> · <a href="how-it-works.html" target="_blank" rel="noopener">How it works<span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></p>
       </aside>
@@ -371,25 +371,30 @@
   }
 
   // ---------------------------------------------------------------------------
-  // Reading data. Every request for balances is a GET. The one POST in this file
-  // exchanges a Lunch Money sign-in code for an access token (see lmExchange).
+  // Reading data. Every request for balances is a GET. The only POSTs in this file are
+  // Lunch Money sign-in: one swaps the sign-in code for an access token (lmExchange),
+  // and one ends that token once balances are read (lmRevoke).
   // ---------------------------------------------------------------------------
 
   // Lunch Money OAuth, in early access. During testing, OAuth tokens only work on the
   // alpha server, and Lunch Money has asked that it is not released to the public yet,
-  // so sign-in only appears on localhost until LM_OAUTH.public is set to true.
+  // so sign-in only appears on localhost and the private alpha deploy (alphaHost, an
+  // unlisted Netlify deploy for Lunch Money's testers) until LM_OAUTH.public is set to true.
   // The client is a public client (no secret: this page has nowhere to keep one) with
   // read-only scopes and no offline_access, so there is no refresh token.
   var LM_OAUTH = {
     issuer: "https://api-alpha.lunchmoney.dev",
     clientId: "oauth_3d51adfa-6ac3-4daa-80b5-c340f4c439d4",
+    alphaHost: "alpha-2112dbbcc3--lunchmoney-zakat.netlify.app",
     public: false
   };
   LM_OAUTH.authorize = LM_OAUTH.issuer + "/oauth/authorize";
   LM_OAUTH.token = LM_OAUTH.issuer + "/oauth/token";
+  LM_OAUTH.revoke = LM_OAUTH.issuer + "/oauth/revoke";
   LM_OAUTH.api = LM_OAUTH.issuer + "/v2";
   LM_OAUTH.enabled = !!LM_OAUTH.clientId &&
-    (LM_OAUTH.public || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname || ""));
+    (LM_OAUTH.public || location.hostname === LM_OAUTH.alphaHost ||
+      /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname || ""));
 
   var SERVICES = {
     lunchmoney: { name: "Lunch Money", api: API },
@@ -1306,7 +1311,7 @@
     return { code: params.get("code"), verifier: stored.verifier };
   }
 
-  // The one POST: swap the single-use code for a short-lived access token.
+  // First of the two POSTs (lmRevoke is the second): swap the single-use code for a short-lived access token.
   function lmExchange(code, verifier) {
     return fetch(LM_OAUTH.token, {
       method: "POST", credentials: "omit", cache: "no-store", redirect: "error", referrerPolicy: "no-referrer",
@@ -1317,13 +1322,26 @@
       }).toString()
     }).then(function (r) {
       if (!r.ok) throw new Error("Lunch Money didn’t accept the sign-in (error " + r.status + "). Choose Sign in with Lunch Money to try again.");
-      return r.json();
+      return r.json().catch(function () { return null; });  // falls to the "unexpected answer" message below
     }, function () {
       throw new Error("Mizan couldn’t reach Lunch Money. Check your internet connection, or pause any ad or tracker blocker for this page, then try again.");
     }).then(function (t) {
       if (!t || typeof t.access_token !== "string" || !t.access_token) throw new Error("Lunch Money sent back an unexpected answer. Choose Sign in with Lunch Money to try again.");
       return t.access_token;
     });
+  }
+
+  // Once balances are read, Mizan ends the token so it stops working at once instead of
+  // at expiry. Lunch Money answers 200 whatever happens, so this is best-effort cleanup
+  // and nothing waits on it. It ends this token only; Mizan stays in the person's
+  // authorised apps in Lunch Money until they remove it there.
+  function lmRevoke(token) {
+    if (!token) return;
+    fetch(LM_OAUTH.revoke, {
+      method: "POST", credentials: "omit", cache: "no-store", redirect: "error", referrerPolicy: "no-referrer",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ client_id: LM_OAUTH.clientId, token: token, token_type_hint: "access_token" }).toString()
+    }).catch(function () { /* the token still expires within the hour */ });
   }
 
   // ---------------------------------------------------------------------------
@@ -1402,10 +1420,12 @@
       token = t;
       return loadFromLunchMoney(token, "lunchmoney-oauth");
     }).then(function (data) {
+      lmRevoke(token);
       token = null;
       busy(false, "");
       show(data);
     }, function (e) {
+      lmRevoke(token);
       token = null;
       busy(false, e.message, true, "lmOauthStatus");
     });
